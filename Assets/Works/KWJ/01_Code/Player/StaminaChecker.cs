@@ -1,8 +1,8 @@
 ﻿using System.Collections;
-using Code.Entities;
+using KWJ.Entities;
 using UnityEngine;
 
-namespace Code.Players
+namespace KWJ.Players
 {
     public class StaminaChecker : MonoBehaviour, IEntityComponent
     {

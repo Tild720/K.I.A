@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
-using Settings.InputSystem;
-using Code.Entities;
-using Code.SO;
 using Unity.Cinemachine;
+using Settings.InputSystem;
+using KWJ.Entities;
+using KWJ.SO;
 
-namespace Code.Players
+namespace KWJ.Players
 {
     public class Player : Entity
     {
@@ -18,8 +18,7 @@ namespace Code.Players
         protected override void Awake()
         {
             base.Awake();
-            
-            m_entityHealth.SetMaxHealth(PlayerStatsSo.MaxHealth);
+
         }
     }
 }

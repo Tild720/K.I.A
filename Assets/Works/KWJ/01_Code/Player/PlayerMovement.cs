@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
-using Code.Entities;
+using KWJ.Entities;
 
-namespace Code.Players
+namespace KWJ.Players
 {
     //플레이어의 모든 육체적 움직임 관리.
     public class PlayerMovement : MonoBehaviour, IEntityComponent
@@ -61,21 +61,8 @@ namespace Code.Players
         
         private void Update()
         {
+            CameraRotation();
             
-            _cameraRotations += new Vector3(_cameraRotation.y, _cameraRotation.x);
-            
-            _cameraRotations.x = Mathf.Clamp(_cameraRotations.x, -80f, 70f);
-            
-            float targetRotationZ = Mathf.Clamp(-_cameraRotation.x * 2f, -10f, 10f);
-            _cameraCurrentRotationZ = Mathf.Lerp(_cameraCurrentRotationZ, targetRotationZ, Time.deltaTime * 5f);
-            
-            Quaternion currentCameraRotation = _agent.CinemaCamera.transform.localRotation;
-            Quaternion targetCameraRotation = Quaternion.Euler(-_cameraRotations.x, _cameraRotations.y, _cameraCurrentRotationZ);
-            Quaternion smoothCameraRotation = Quaternion.Lerp(currentCameraRotation, targetCameraRotation, _cameraRotationSmooth * Time.deltaTime);
-
-            _agent.CinemaCamera.transform.localRotation = smoothCameraRotation;
-            
-
             if (!_groundChecker.GroundCheck())
             {
                 
@@ -96,6 +83,7 @@ namespace Code.Players
         
         private void FixedUpdate()
         {
+                
             if(IsFlyAway) return;
                 
             Quaternion cameraRotation = Quaternion.Euler(0, _agent.CinemaCamera.transform.localEulerAngles.y, 0); //회전에 따라 이동 방향이도 수정
@@ -103,6 +91,22 @@ namespace Code.Players
             moveDir.y = _rigidbody.linearVelocity.y;
  
             _rigidbody.linearVelocity = cameraRotation * moveDir;
+        }
+
+        private void CameraRotation()
+        {
+            _cameraRotations += new Vector3(_cameraRotation.y, _cameraRotation.x);
+            
+            _cameraRotations.x = Mathf.Clamp(_cameraRotations.x, -80f, 70f);
+            
+            float targetRotationZ = Mathf.Clamp(-_cameraRotation.x * 2f, -10f, 10f);
+            _cameraCurrentRotationZ = Mathf.Lerp(_cameraCurrentRotationZ, targetRotationZ, Time.deltaTime * 5f);
+            
+            Quaternion currentCameraRotation = _agent.CinemaCamera.transform.localRotation;
+            Quaternion targetCameraRotation = Quaternion.Euler(-_cameraRotations.x, _cameraRotations.y, _cameraCurrentRotationZ);
+            Quaternion smoothCameraRotation = Quaternion.Lerp(currentCameraRotation, targetCameraRotation, _cameraRotationSmooth * Time.deltaTime);
+
+            _agent.CinemaCamera.transform.localRotation = smoothCameraRotation;
         }
         
         public void SetVelocityZero() => _rigidbody.linearVelocity = Vector3.zero;

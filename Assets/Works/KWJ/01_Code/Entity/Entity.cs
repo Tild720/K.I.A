@@ -3,9 +3,9 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using Code.Entities.FSM;
+using KWJ.Entities.FSM;
 
-namespace Code.Entities
+namespace KWJ.Entities
 {
     [DefaultExecutionOrder(-100)]
     public class Entity : MonoBehaviour

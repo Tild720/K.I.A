@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
-using Code.Entities;
+using KWJ.Entities;
 
-namespace Code.Players
+namespace KWJ.Players
 {
     public class GroundChecker : MonoBehaviour, IEntityComponent
     {

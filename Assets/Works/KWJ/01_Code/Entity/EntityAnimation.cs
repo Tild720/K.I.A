@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Code.Entities
+namespace KWJ.Entities
 {
     [RequireComponent(typeof(Animator))]
     public class EntityAnimation : MonoBehaviour, IEntityComponent

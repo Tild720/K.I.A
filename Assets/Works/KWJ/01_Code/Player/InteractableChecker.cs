@@ -1,21 +1,25 @@
-﻿using System;
-using UnityEngine;
-using Code.Entities;
-using Code.Interactable;
+﻿using UnityEngine;
+using KWJ.Entities;
+using KWJ.Interactable;
+using KWJ.Players;
 
 namespace Code.Players
 {
     public class InteractableChecker : MonoBehaviour, IEntityComponent
     {
-        public InteractCommand InteractCommand => _interactCommand;
-        private InteractCommand _interactCommand;
+        public IInteractable Interactable => _interactable;
+        private IInteractable _interactable;
         
+        private PlayerInteractor _interactor;
         private Player _agent;
+        
         private Camera _camera;
         
         public void Initialize(Entity entity)
         {
             _agent = entity as Player;
+            _interactor = entity.GetCompo<PlayerInteractor>();
+            
             _camera = Camera.main;
         }
 
@@ -30,14 +34,15 @@ namespace Code.Players
 
             if (Physics.Raycast(ray, out RaycastHit hit, _agent.PlayerStatsSo.InteractionRange, ~0, QueryTriggerInteraction.Collide))
             {
-                if (hit.transform.TryGetComponent<InteractCommand>(out var interactable))
+                if (hit.transform.TryGetComponent<IInteractable>(out var interactable))
                 {
-                    _interactCommand = interactable;
+                    _interactable = interactable;
                     return;
                 }
             }
 
-            _interactCommand = null;
+            if(!_interactor.IsInteracting)
+                _interactable = null;
         }
 
         private void OnDrawGizmos()

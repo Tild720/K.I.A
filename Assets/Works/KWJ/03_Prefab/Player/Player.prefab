@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2664316020298814246}
   - component: {fileID: 6733212413866578112}
+  - component: {fileID: 6675917217482169985}
+  - component: {fileID: 7358558399394484024}
   m_Layer: 3
   m_Name: InteractableChecker
   m_TagString: Untagged
@@ -44,6 +46,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29dbac991efb495aa593616c05d3efdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6675917217482169985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 96663466996771721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ef23c4b4c580214899168b514acf1c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _outline: {fileID: 7358558399394484024}
+--- !u!114 &7358558399394484024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 96663466996771721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &756554722987242468
 GameObject:
   m_ObjectHideFlags: 0
@@ -741,6 +774,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce6823a249f34f7db215ae5c56573b21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _catchPoint: {fileID: 0}
 --- !u!1 &9029799155654158408
 GameObject:
   m_ObjectHideFlags: 0
@@ -752,7 +786,6 @@ GameObject:
   - component: {fileID: 3141437755973926950}
   - component: {fileID: 5165407648978085750}
   - component: {fileID: 5412619170999900032}
-  - component: {fileID: 5858387825004279544}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -828,15 +861,3 @@ MonoBehaviour:
   <PlayerInputSo>k__BackingField: {fileID: 11400000, guid: 9d0965a9c9f3dd0458e509d2b91bb7d3, type: 2}
   <PlayerStatsSo>k__BackingField: {fileID: 11400000, guid: e5df950557651134192742be7ef6919d, type: 2}
   <CinemaCamera>k__BackingField: {fileID: 6397882457352191806}
---- !u!114 &5858387825004279544
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9029799155654158408}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5eb84e834c04581a60fc44e1a5d933c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

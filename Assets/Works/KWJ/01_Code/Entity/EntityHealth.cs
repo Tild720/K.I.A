@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Code.Entities
+namespace KWJ.Entities
 {
     public class EntityHealth : MonoBehaviour, IEntityComponent
     {

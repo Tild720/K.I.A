@@ -1,4 +1,4 @@
-﻿namespace Code.Entities
+﻿namespace KWJ.Entities
 {
     public interface IAfterInitialize
     {
