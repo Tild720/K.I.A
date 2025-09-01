@@ -36,7 +36,9 @@ namespace Code.Players
             {
                 if (hit.transform.TryGetComponent<IInteractable>(out var interactable))
                 {
-                    _interactable = interactable;
+                    if(!_interactor.IsInteracting)
+                        _interactable = interactable;
+                    
                     return;
                 }
             }

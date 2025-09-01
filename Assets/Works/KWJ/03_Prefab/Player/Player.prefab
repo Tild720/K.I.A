@@ -72,8 +72,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMode: 0
-  outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 2
+  outlineColor: {r: 1, g: 0.9749821, b: 0, a: 1}
+  outlineWidth: 10
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
@@ -309,7 +309,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _whatIsGround:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
   _boxSize: {x: 0.3, y: 0.3, z: 0.3}
 --- !u!1 &1748260706692825824
 GameObject:
@@ -419,6 +419,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 5165407648978085750}
+  _cameraRotationSmooth: 30
 --- !u!1 &2794803617486011424
 GameObject:
   m_ObjectHideFlags: 0
@@ -774,7 +775,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce6823a249f34f7db215ae5c56573b21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _catchPoint: {fileID: 0}
+  _catchPoint: {fileID: 4296006762291701490}
 --- !u!1 &9029799155654158408
 GameObject:
   m_ObjectHideFlags: 0
