@@ -13,16 +13,10 @@ MonoBehaviour:
   m_Name: PlayerStatsSO
   m_EditorClassIdentifier: 
   MaxHealth: 100
-  AttackPower: 0
-  MaxHunger: 100
   WalkSpeed: 2
   RunSpeed: 7
   JumpPower: 5
-  AttackSpeed: 0
+  ThrowPower: 5
   InteractionRange: 3
   MaxStamina: 10
   StaminaDaley: 1
-  CameraRotationSmooth: 10
-  CameraRotationZMaxClamp: 5
-  CameraRotationZMinClamp: 5
-  CameraRotationZSmoothSpeed: 1

@@ -8,6 +8,7 @@ namespace KWJ.Interactable.PickUpable
     public class PickUpableObject : MonoBehaviour, IInteractable
     {
         private PlayerInteractor _interactor;
+        private Player _player;
         private bool _isPickUp;
 
         public GameObject GameObject => gameObject;
@@ -22,6 +23,7 @@ namespace KWJ.Interactable.PickUpable
         public void PointerDown(Entity entity)
         {
             _interactor = entity.GetCompo<PlayerInteractor>();
+            _player = entity as Player;
                 
             _isPickUp = true;
             _rigidbody.useGravity = false;
@@ -31,12 +33,16 @@ namespace KWJ.Interactable.PickUpable
 
         public void PointerUp(Entity entity)
         {
-            _interactor = null;
-            
             _isPickUp = false;
             _rigidbody.useGravity = true;
-        }
 
+            Vector3 forceDir = _interactor.CatchPoint.position - transform.position;
+            float distance = forceDir.magnitude;
+            
+            _rigidbody.AddForce(forceDir * distance * _player.PlayerStatsSo.ThrowPower, ForceMode.Impulse);
+            
+            _interactor = null;
+        }
 
         private IEnumerator MoveToCatchPoint(Transform targetTrm)
         {
@@ -46,6 +52,8 @@ namespace KWJ.Interactable.PickUpable
                 
                 transform.position = Vector3.Lerp(transform.position,
                     targetTrm.position, 5 * Time.deltaTime);
+
+                transform.rotation = targetTrm.rotation;
                 
                 if(!_isPickUp)
                     break;

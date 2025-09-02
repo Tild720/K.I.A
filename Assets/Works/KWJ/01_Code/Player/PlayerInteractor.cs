@@ -14,8 +14,6 @@ namespace KWJ.Players
         public bool IsInteracting => _isInteracting;
         private bool _isInteracting;
         
-        private bool _isFirstClicking;
-        
         public void Initialize(Entity entity)
         {
             _agent = entity as Player;

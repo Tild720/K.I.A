@@ -505,10 +505,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 999007141379281442, guid: f32d836ddea566440bea50909911cbaa, type: 3}
-      propertyPath: _catchPoint
-      value: 
-      objectReference: {fileID: 1259029249}
     - target: {fileID: 3141437755973926950, guid: f32d836ddea566440bea50909911cbaa, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.2024364
@@ -549,26 +545,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7358558399394484024, guid: f32d836ddea566440bea50909911cbaa, type: 3}
-      propertyPath: outlineWidth
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7358558399394484024, guid: f32d836ddea566440bea50909911cbaa, type: 3}
-      propertyPath: outlineColor.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7358558399394484024, guid: f32d836ddea566440bea50909911cbaa, type: 3}
-      propertyPath: outlineColor.g
-      value: 0.9749821
-      objectReference: {fileID: 0}
-    - target: {fileID: 7358558399394484024, guid: f32d836ddea566440bea50909911cbaa, type: 3}
-      propertyPath: outlineColor.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8717878985740587807, guid: f32d836ddea566440bea50909911cbaa, type: 3}
-      propertyPath: _whatIsGround.m_Bits
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 9029799155654158408, guid: f32d836ddea566440bea50909911cbaa, type: 3}
       propertyPath: m_Name
       value: Player
@@ -578,11 +554,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f32d836ddea566440bea50909911cbaa, type: 3}
---- !u!4 &1259029249 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4296006762291701490, guid: f32d836ddea566440bea50909911cbaa, type: 3}
-  m_PrefabInstance: {fileID: 974737344}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1284322211
 GameObject:
   m_ObjectHideFlags: 0
