@@ -12,7 +12,6 @@ namespace Works.Tild.Code
             Health--;
             if (Health > 0)
             {
-                
                 Instantiate(cuttedPrefab, hit, Quaternion.identity);
             }
             else

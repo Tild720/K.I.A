@@ -2,14 +2,9 @@ using System;
 using UnityEngine;
 
 public class MouseLock : MonoBehaviour
-{
-    private void Start()
+{ 
+    void LateUpdate()
     {
         Cursor.lockState = CursorLockMode.None;
-    }
-
-    void Update()
-    {
-      
     }
 }
