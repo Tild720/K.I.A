@@ -21,9 +21,12 @@ namespace KWJ.Entities
         {
             
         }
-        
-        public void SetBool(int hash, bool value) => animator.SetBool(hash, value);
-        
+
+        public void SetBool(int hash, bool value)
+        {
+            //animator.SetBool(hash, value);
+        }
+
         public void SetAnimationActive(bool value) => animator.enabled = value;
         
         public void StartAttackAnimation() => IsAttackAnimation?.Invoke(true);

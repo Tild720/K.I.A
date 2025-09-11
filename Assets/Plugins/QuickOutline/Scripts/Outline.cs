@@ -80,10 +80,10 @@ public class Outline : MonoBehaviour {
 
   private bool needsUpdate;
 
-  public void SettingOnFocus(GameObject gameObject) {
+  private void SettingOnFocus(GameObject renderOject) {
 
     // Cache renderers
-    renderers = gameObject.GetComponentsInChildren<Renderer>();
+    renderers = renderOject.GetComponentsInChildren<Renderer>();
 
     // Instantiate outline materials
     outlineMaskMaterial = Instantiate(Resources.Load<Material>(@"Materials/OutlineMask"));
@@ -93,15 +93,15 @@ public class Outline : MonoBehaviour {
     outlineFillMaterial.name = "OutlineFill (Instance)";
 
     // Retrieve or generate smooth normals
-    LoadSmoothNormals(gameObject);
+    LoadSmoothNormals(renderOject);
 
     // Apply material properties immediately
     needsUpdate = true;
   }
 
-  public void OnFocus(GameObject gameObject)
+  public void OnFocus(GameObject renderOject)
   {
-    SettingOnFocus(gameObject);
+    SettingOnFocus(renderOject);
     
     foreach (var renderer in renderers) {
 

@@ -10,10 +10,12 @@ namespace KWJ.Players
         
         [SerializeField] private int _cameraRotationSmooth;
 
+        public bool IsStopMovement;
         public bool IsJumping => _rigidbody.linearVelocity.y > 3;
         public bool IsFalling => _rigidbody.linearVelocity.y < -3;
         public bool IsRuning { get; private set; }
-        public bool IsFlyAway { get; set; }
+        
+        private bool _isFlyAway;
         
         private GroundChecker _groundChecker;
         private StaminaChecker _staminaChecker;
@@ -67,11 +69,11 @@ namespace KWJ.Players
             {
                 
                 _rigidbody.linearVelocity += Vector3.up * (Physics.gravity.y * (3 * Time.deltaTime));
-                IsFlyAway = true;
+                _isFlyAway = true;
             }
             else
             {
-                IsFlyAway = false;
+                _isFlyAway = false;
             }
 
             if (!_staminaChecker.CanRun)
@@ -84,7 +86,7 @@ namespace KWJ.Players
         private void FixedUpdate()
         {
                 
-            if(IsFlyAway) return;
+            if(_isFlyAway) return;
                 
             Quaternion cameraRotation = Quaternion.Euler(0, _agent.CinemaCamera.transform.localEulerAngles.y, 0); //회전에 따라 이동 방향이도 수정
             Vector3 moveDir = new Vector3(_velocity.x, 0, _velocity.y) * _moveSpeed;

@@ -14,7 +14,7 @@ namespace KWJ.Players
         
         [field:Header("Camera")]
         [field: SerializeField] public CinemachineCamera CinemaCamera { get; private set; }
-        
+        [field: SerializeField] public Transform HeadPoint { get; private set; }
         protected override void Awake()
         {
             base.Awake();
