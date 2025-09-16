@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Linq;
 using System.Text;
 using TMPro;
@@ -24,6 +25,10 @@ namespace Code.NPC
     {
          [SerializeField] private NPCLine[] npcLines;
          [SerializeField] private TextMeshProUGUI ui;
+         [SerializeField] private float animationSpeed;
+         
+         private Coroutine _textCoroutine;
+         
          public void Speech(string lineType)
          {
              var lines = npcLines.Where(line => line.lineType == lineType).ToArray();
@@ -39,10 +44,21 @@ namespace Code.NPC
 
          private void ShowTextUI(string text)
          {
-             Debug.Log(text);
+             //Debug.Log(text);
              //StringBuilder << 얘도 아쉽다=.
-             ui.maxVisibleCharacters = 10; // 나중에 다시 공부해
-             
+             ui.text = text;
+             //ui.maxVisibleCharacters = 10; // 나중에 다시 공부해
+             StartCoroutine(TextAnimationCoroutine());
+         }
+
+         private IEnumerator TextAnimationCoroutine()
+         {
+             ui.maxVisibleCharacters = 0;
+             for (int i = 0; i < ui.text.Length; i++)
+             {
+                 yield return new WaitForSeconds(animationSpeed);
+                 ui.maxVisibleCharacters++;
+             }
          }
     }
 }
