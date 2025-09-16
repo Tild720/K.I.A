@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlayerJumpState
   m_EditorClassIdentifier: 
   stateType: 6
-  className: Code.Players.FSM.PlayerJumpState
+  className: KWJ.Players.FSM.PlayerJumpState
   animationName: JUMP
   animationHash: -1859720286
   _stateIndex: 2

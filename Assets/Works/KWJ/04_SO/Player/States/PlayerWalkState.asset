@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlayerWalkState
   m_EditorClassIdentifier: 
   stateType: 1
-  className: Code.Players.FSM.PlayerWalkState
+  className: KWJ.Players.FSM.PlayerWalkState
   animationName: WALK
   animationHash: -1157326879
   _stateIndex: 5

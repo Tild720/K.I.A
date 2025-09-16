@@ -3,41 +3,39 @@ using System.Linq;
 using System.Reflection;
 using KWJ.Entities.FSM;
 using UnityEditor;
+using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace KWJ.Editor
 {
     [CustomEditor(typeof(StateSO))]
     public class StateSoEditor : UnityEditor.Editor
     {
-        private SerializedProperty _stateIndex;
-        private SerializedProperty _animationName;
-        private SerializedProperty _stateType;
+        [SerializeField] private VisualTreeAsset editorUI = default;
         
-        private void OnEnable()
+        public override VisualElement CreateInspectorGUI()
         {
-            _stateIndex = serializedObject.FindProperty("_stateIndex");
-            _animationName = serializedObject.FindProperty("animationName");
-            _stateType = serializedObject.FindProperty("stateType");
+            VisualElement root = new VisualElement();
+            editorUI.CloneTree(root);
+            
+            DropdownField dropdown = root.Q<DropdownField>("ClassDropdownField");
+            CreateDropdownList(dropdown);
+            
+            return root;
         }
 
-        public override void OnInspectorGUI()
+        private void CreateDropdownList(DropdownField dropdown)
         {
+            dropdown.choices.Clear();
+            
             Assembly assembly = Assembly.GetAssembly(typeof(EntityState));
+            List<string> derivedTypes = assembly.GetTypes()
+                .Where(type => type.IsAbstract == false 
+                               && type.IsSubclassOf(typeof(EntityState)))
+                .Select(type => type.FullName)
+                .ToList();
             
-            List<string> StateType = assembly.GetTypes().Where(type => type.IsAbstract == false && 
-                    type.IsSubclassOf(typeof(EntityState))).Select(name => name.FullName).ToList();
-
-            
-            StateSO state = (StateSO)target;
-            
-            _stateIndex.intValue = EditorGUILayout.Popup("State Type", _stateIndex.intValue, StateType.ToArray());
-            //_stateIndex.intValue = StateType.IndexOf(state.className);
-            
-            EditorGUILayout.PropertyField(_stateType); 
-            state.className = EditorGUILayout.TextField("Class Name",StateType[_stateIndex.intValue]);
-            EditorGUILayout.PropertyField(_animationName);
-            
-            serializedObject.ApplyModifiedProperties();
+            dropdown.choices.AddRange(derivedTypes);
         }
     }
 }
