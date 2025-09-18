@@ -11,8 +11,12 @@ namespace KWJ.Interactable
 
         private void Update()
         {
+            if(!_isGrillOn) return;
+            
             if (_boxChecker.BoxOverlapCheck())
             {
+                GameObject[] foodIngredients = _boxChecker.GetOverlapData();
+                
                 
             }
         }
