@@ -1,10 +1,9 @@
 using KWJ.Entities;
-using KWJ.Interactable;
 using KWJ.Players;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Works.KWJ._01_Code.Interactable
+namespace KWJ.Interactable
 {
     public class Computer : MonoBehaviour, IInteractable
     {
@@ -18,6 +17,7 @@ namespace Works.KWJ._01_Code.Interactable
         private Player _player;
         
         private bool _isInteracting;
+
         public void PointerDown(Entity entity)
         {
             _player = entity as Player;
