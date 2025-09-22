@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace KWJ.Interactable.PickUpable
 {
+    [RequireComponent(typeof(Rigidbody))]
     public class PickUpableObject : MonoBehaviour, IInteractable
     {
         private PlayerInteractor _interactor;
@@ -14,10 +15,9 @@ namespace KWJ.Interactable.PickUpable
         public GameObject GameObject => gameObject;
         private Rigidbody _rigidbody;
 
-        private void Awake()
+        protected virtual void Awake()
         {
             _rigidbody = GetComponent<Rigidbody>();
-            
         }
 
         public void PointerDown(Entity entity)

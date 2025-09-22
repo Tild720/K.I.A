@@ -7,6 +7,7 @@ namespace Code.Players
 {
     public class InteractableChecker : MonoBehaviour, IEntityComponent
     {
+        [SerializeField] private LayerMask _targetMask;
         public IInteractable Interactable => _interactable;
         private IInteractable _interactable;
 
@@ -34,7 +35,7 @@ namespace Code.Players
         {
             Ray ray = new Ray(_camera.transform.position, _camera.transform.forward);
 
-            if (Physics.Raycast(ray, out RaycastHit hit, _agent.PlayerStatsSo.InteractionRange, ~0, QueryTriggerInteraction.Collide))
+            if (Physics.Raycast(ray, out RaycastHit hit, _agent.PlayerStatsSo.InteractionRange, _targetMask, QueryTriggerInteraction.Collide))
             {
                 if (hit.transform.TryGetComponent<IInteractable>(out var interactable))
                 {

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 584092121728777035}
   - component: {fileID: 8332844251096500541}
   - component: {fileID: 7301967238005264951}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.23, y: 1.375, z: -2.6}
-  m_LocalScale: {x: 0.101969995, y: 0.03461, z: 0.101969995}
+  m_LocalScale: {x: 0.339193, y: 0.11512671, z: 0.339193}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -127,7 +127,7 @@ MonoBehaviour:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: KWJ.Interactable.Grill, Assembly-CSharp
         m_MethodName: OnGrill
-        m_Mode: 6
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

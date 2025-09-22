@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5275761057071197330}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CamPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 3508757141045181594}
   - component: {fileID: 2686695867999790822}
   - component: {fileID: 238361691128205422}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,7 +128,7 @@ GameObject:
   - component: {fileID: 8967940315796887144}
   - component: {fileID: 7877964790971090979}
   - component: {fileID: 3332819670307886947}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Computer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -185,4 +185,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 409ee76aea6004b419e2b451782a6de2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnComputerEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OffComputerEvent:
+    m_PersistentCalls:
+      m_Calls: []
   _cameraPoint: {fileID: 5275761057071197330}

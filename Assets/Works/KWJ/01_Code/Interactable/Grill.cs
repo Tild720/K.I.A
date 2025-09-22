@@ -14,8 +14,6 @@ namespace KWJ.Interactable
 
         private void Update()
         {
-            //print(_isGrillOn);
-            
             if(!_isGrillOn) return;
             
             if (_boxChecker.BoxOverlapCheck())
@@ -26,11 +24,10 @@ namespace KWJ.Interactable
                 {
                     CookableIngredient cookable
                         = foodIngredient.GetComponentInChildren<CookableIngredient>();
+                    
+                    if (cookable ==null || cookable.CookingType != cookingType) continue;
 
-                    if (cookable.CookingType == cookingType)
-                    {
-                        cookable.CookingTimer(Time.deltaTime);
-                    }
+                    cookable.CookingTimer(Time.deltaTime);
                 }
             }
         }
