@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace KWJ.Interactable
 {
-    public class Grill : MonoBehaviour
+    public class Kitchenware : MonoBehaviour
     {
         [SerializeField] private BoxOverlapChecker _boxChecker;
         

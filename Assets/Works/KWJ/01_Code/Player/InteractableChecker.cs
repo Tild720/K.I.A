@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
 using KWJ.Entities;
 using KWJ.Interactable;
-using KWJ.Players;
 
-namespace Code.Players
+namespace KWJ.Players
 {
     public class InteractableChecker : MonoBehaviour, IEntityComponent
     {
