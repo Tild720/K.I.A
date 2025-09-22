@@ -9,6 +9,8 @@ namespace Code.Players
     {
         public IInteractable Interactable => _interactable;
         private IInteractable _interactable;
+
+        public bool IsHasIInteractable => _interactable != null;
         
         private PlayerInteractor _interactor;
         private Player _agent;

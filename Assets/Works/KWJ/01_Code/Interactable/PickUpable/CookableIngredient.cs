@@ -26,7 +26,9 @@ namespace KWJ.Interactable.PickUpable
     }
     public class CookableIngredient : PickUpableObject
     {
-        [SerializeField] private CookingType cookingType;
+        public CookingType CookingType => cookingCookingType;
+        [SerializeField] private CookingType cookingCookingType;
+        public CookingState CookingState => cookingState;
         [Space]
         [SerializeField] private CookingState cookingState;
         [SerializeField] [Range(0, 1)] private float doneness01;
@@ -41,17 +43,16 @@ namespace KWJ.Interactable.PickUpable
             }
         }
 
-        private void Update()
-        {
-            if (doneness01 >= donenessModerate)
-                cookingState = CookingState.Moderate;
-            else if (doneness01 >= donenessExcessive)
-                cookingState = CookingState.Excessive;
-        }
+        public void SetCookingState(CookingState state) => cookingState = state;
 
         public void CookingTimer(float time)
         {
-            doneness01 += time;
+            doneness01 += time * 0.2f;
+            
+            if (doneness01 >= donenessModerate && cookingState == CookingState.Insufficient)
+                cookingState = CookingState.Moderate;
+            else if (doneness01 >= donenessExcessive && cookingState == CookingState.Moderate)
+                cookingState = CookingState.Excessive;
         }
     }
 }

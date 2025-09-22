@@ -7,14 +7,14 @@ namespace KWJ.Interactable
 {
     public class Button : MonoBehaviour, IInteractable
     {
-        public UnityEvent<bool> onClick;
+        public UnityEvent onClick;
 
         private bool _isFirstClick;
 
         public void PointerDown(Entity entity)
         {
             _isFirstClick = !_isFirstClick;
-            onClick?.Invoke(_isFirstClick);
+            onClick?.Invoke();
         }
 
         public void PointerUp(Entity entity)
@@ -22,6 +22,6 @@ namespace KWJ.Interactable
       
         }
 
-        public GameObject GameObject { get; }
+        public GameObject GameObject =>  gameObject;
     }
 }
