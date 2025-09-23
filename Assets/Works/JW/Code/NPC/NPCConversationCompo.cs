@@ -28,7 +28,13 @@ namespace Code.NPC
          [SerializeField] private float animationSpeed;
          
          private Coroutine _textCoroutine;
-         
+         private WaitForSeconds _textWait;
+
+         private void Awake()
+         {
+             _textWait = new WaitForSeconds(animationSpeed);
+         }
+
          public void Speech(string lineType)
          {
              var lines = npcLines.Where(line => line.lineType == lineType).ToArray();
@@ -44,11 +50,12 @@ namespace Code.NPC
 
          private void ShowTextUI(string text)
          {
-             //Debug.Log(text);
-             //StringBuilder << 얘도 아쉽다=.
              ui.text = text;
-             //ui.maxVisibleCharacters = 10; // 나중에 다시 공부해
-             StartCoroutine(TextAnimationCoroutine());
+             
+             if (_textCoroutine != null)
+                 StopCoroutine(_textCoroutine);
+             
+             _textCoroutine = StartCoroutine(TextAnimationCoroutine());
          }
 
          private IEnumerator TextAnimationCoroutine()
@@ -56,7 +63,7 @@ namespace Code.NPC
              ui.maxVisibleCharacters = 0;
              for (int i = 0; i < ui.text.Length; i++)
              {
-                 yield return new WaitForSeconds(animationSpeed);
+                 yield return _textWait;
                  ui.maxVisibleCharacters++;
              }
          }
