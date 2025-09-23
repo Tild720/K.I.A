@@ -509,7 +509,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4725186470107634163}
-  - component: {fileID: 4114889910971876914}
+  - component: {fileID: 5111123896604318803}
   m_Layer: 0
   m_Name: Oven
   m_TagString: Untagged
@@ -537,7 +537,7 @@ Transform:
   - {fileID: 7267772516870629998}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4114889910971876914
+--- !u!114 &5111123896604318803
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -546,11 +546,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5517844850003765497}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f722eb4f0644e3aa40982216f5aceab, type: 3}
+  m_Script: {fileID: 11500000, guid: 20ba3d212bed47f3a635b9c4098dffd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _boxChecker: {fileID: 3295280882385606207}
+  boxChecker: {fileID: 3295280882385606207}
   cookingType: 2
+  door: {fileID: 2728587228016799668}
 --- !u!1 &6943377622851430556
 GameObject:
   m_ObjectHideFlags: 0
