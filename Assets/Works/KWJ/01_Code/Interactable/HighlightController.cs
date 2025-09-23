@@ -1,5 +1,6 @@
-﻿using Code.Players;
+﻿using KWJ.Players;
 using KWJ.Entities;
+using KWJ.Interactable;
 using UnityEngine;
 
 namespace KWJ.Code.Interactable
@@ -8,6 +9,9 @@ namespace KWJ.Code.Interactable
     {
         [SerializeField] private Outline _outline;
         private InteractableChecker _interactChecker;
+        
+        private IInteractable _interactableTemp;
+        
         private bool isFirstOnFocus = true;
 
         public void Initialize(Entity entity)
@@ -22,7 +26,8 @@ namespace KWJ.Code.Interactable
 
         private void Update()
         {
-            if (_interactChecker.Interactable != null)
+            if (_interactChecker.Interactable != null
+                && _interactableTemp == _interactChecker.Interactable)
             {
                 if(!isFirstOnFocus) return;
                 
@@ -35,6 +40,8 @@ namespace KWJ.Code.Interactable
                 _outline.OnUnfocus();
                 isFirstOnFocus = true;
             }
+
+            _interactableTemp = _interactChecker.Interactable;
         }
     }
 }
