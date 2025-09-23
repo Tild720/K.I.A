@@ -102,7 +102,7 @@ MonoBehaviour:
   donenessModerate: 0.389
   donenessExcessive: 0.73
   cookingTime: 2
-  _cookingColor: {r: 0, g: 0, b: 0, a: 0}
+  _cookingColor: {r: 0.34901962, g: 0.1495777, b: 0, a: 0}
   timerFill: {fileID: 7808316929761840688}
 --- !u!1 &893688927815869797
 GameObject:
@@ -230,6 +230,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6492963042928587527}
     m_Modifications:
+    - target: {fileID: 2049956744869119544, guid: 731136678fcc97e4d9bd181ed40fc25c, type: 3}
+      propertyPath: height
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2049956744869119544, guid: 731136678fcc97e4d9bd181ed40fc25c, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 6492963042928587527}
     - target: {fileID: 7801247662545473199, guid: 731136678fcc97e4d9bd181ed40fc25c, type: 3}
       propertyPath: m_PresetInfoIsWorld
       value: 1
@@ -272,11 +280,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8808861236959303988, guid: 731136678fcc97e4d9bd181ed40fc25c, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.0015000002
+      value: 0.0005
       objectReference: {fileID: 0}
     - target: {fileID: 8808861236959303988, guid: 731136678fcc97e4d9bd181ed40fc25c, type: 3}
       propertyPath: m_LocalScale.z
-      value: -0.0015000002
+      value: -0.0005
       objectReference: {fileID: 0}
     - target: {fileID: 8808861236959303988, guid: 731136678fcc97e4d9bd181ed40fc25c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -312,7 +320,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8808861236959303988, guid: 731136678fcc97e4d9bd181ed40fc25c, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8808861236959303988, guid: 731136678fcc97e4d9bd181ed40fc25c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

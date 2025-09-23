@@ -25,7 +25,7 @@ namespace KWJ.Interactable.PickUpable
         
         Max,
     }
-    public class CookableIngredient : PickUpableObject
+    public class CookableIngredient : PickUpable
     {
         public CookingType CookingType => cookingCookingType;
         [SerializeField] private CookingType cookingCookingType;
@@ -43,7 +43,7 @@ namespace KWJ.Interactable.PickUpable
         [Space]
         [SerializeField] private TimerFill timerFill;
 
-        private float _currentCookingTime;
+        private float _remainingCookingTime;
         
         private List<Material> _material;
 
@@ -64,7 +64,7 @@ namespace KWJ.Interactable.PickUpable
             
             cookingState = CookingState.Insufficient;
             doneness01 = 0f;
-            _currentCookingTime = cookingTime;
+            _remainingCookingTime = cookingTime;
             
             timerFill.gameObject.SetActive(false);
         }
@@ -72,14 +72,20 @@ namespace KWJ.Interactable.PickUpable
 
         public void CookingTimer(float time)
         {
+            if (doneness01 >= 1) return;
+
+            if (doneness01 == 0)
+                timerFill.SetCookFills(donenessModerate, donenessExcessive);
+            
             if(timerFill.gameObject.activeSelf == false)
                 timerFill.gameObject.SetActive(true);
             
             doneness01 += time / cookingTime;
-            _currentCookingTime -= time;
+            _remainingCookingTime -= time;
             
-            timerFill.SetFill(doneness01, _currentCookingTime);
-            ChangeCookingColor();
+            timerFill.SetCookFill(doneness01, _remainingCookingTime);
+            
+            ChangeCookingColor(time / cookingTime);
 
             if (doneness01 >= donenessModerate && cookingState == CookingState.Insufficient)
             {
@@ -91,11 +97,11 @@ namespace KWJ.Interactable.PickUpable
             }
         }
 
-        private void ChangeCookingColor()
+        private void ChangeCookingColor(float time)
         {
             foreach (var material in _material)
             {
-                material.color = Color.Lerp(material.color, _cookingColor, doneness01);
+                material.color = Color.Lerp(material.color, _cookingColor, time);
             }
         }
     }
