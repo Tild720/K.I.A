@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9831915757164e92bb75b0752fafc642, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cookingCookingType: 0
+  cookingType: 7
   cookingState: 0
   doneness01: 0
   donenessModerate: 0.389

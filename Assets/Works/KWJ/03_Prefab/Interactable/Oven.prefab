@@ -550,7 +550,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boxChecker: {fileID: 3295280882385606207}
-  cookingType: 2
+  cookingType: 4
   door: {fileID: 2728587228016799668}
 --- !u!1 &6943377622851430556
 GameObject:

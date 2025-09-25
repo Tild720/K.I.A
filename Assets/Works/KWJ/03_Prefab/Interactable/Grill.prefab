@@ -127,7 +127,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObOnKitchenwerafileID: 1084830480458085301}
+  m_GameObject: {fileID: 1084830480458085301}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5148319, y: -0, z: -0, w: 0.8572912}
   m_LocalPosition: {x: -0.456, y: 0.474, z: 0.57}
@@ -516,8 +516,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f722eb4f0644e3aa40982216f5aceab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _boxChecker: {fileID: 795983189235552497}
-  cookingType: 1
+  boxChecker: {fileID: 795983189235552497}
+  cookingType: 2
 --- !u!1 &5888979890880608256
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,10 +7,10 @@ namespace KWJ.Interactable
 {
     public class Computer : MonoBehaviour, IInteractable
     {
-        public UnityEvent OnComputerEvent;
-        public UnityEvent OffComputerEvent;
+        public UnityEvent onComputerEvent;
+        public UnityEvent offComputerEvent;
         
-        [SerializeField] private Transform _cameraPoint;
+        [SerializeField] private Transform cameraPoint;
         public GameObject GameObject => gameObject;
         
         private PlayerMovement _playerMovement;
@@ -31,11 +31,11 @@ namespace KWJ.Interactable
 
             if (!_isInteracting)
             {
-                _player.CinemaCamera.Follow = _cameraPoint;
+                _player.CinemaCamera.Follow = cameraPoint;
                 _playerMovement.IsStopMovement = true;
                 _isInteracting = true;
                 
-                OffComputerEvent?.Invoke();
+                offComputerEvent?.Invoke();
             }
             else
             {
@@ -43,7 +43,7 @@ namespace KWJ.Interactable
                 _playerMovement.IsStopMovement = false;
                 _isInteracting = false;
                 
-                OnComputerEvent?.Invoke();
+                onComputerEvent?.Invoke();
             }
         }
 

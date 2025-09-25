@@ -118,7 +118,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1501535632525967659}
+  - component: {fileID: 150153563}
   - component: {fileID: 403820436406961392}
   - component: {fileID: 132712701149519991}
   m_Layer: 0
@@ -128,7 +128,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &150153563OnKitchenwera659
+--- !u!4 &150153563
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -541,9 +541,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5785510886004375997}
-  - {fileID: 1501535632525967659}
   - {fileID: 5624358962851028355}
   - {fileID: 3339587437992196533}
+  - {fileID: 150153563}
   m_Father: {fileID: 4287024505655259808}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!33 &1241284762015433399
@@ -1100,8 +1100,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f722eb4f0644e3aa40982216f5aceab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _boxChecker: {fileID: 5257307745850155795}
-  cookingType: 0
+  boxChecker: {fileID: 5257307745850155795}
+  cookingType: 1
 --- !u!1 &8159715577557621702
 GameObject:
   m_ObjectHideFlags: 0
