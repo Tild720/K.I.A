@@ -6,7 +6,7 @@ using UnityEngine;
 namespace KWJ.Interactable.PickUpable
 {
     [RequireComponent(typeof(Rigidbody))]
-    public class PickUpableObject : MonoBehaviour, IInteractable
+    public class PickUpable : MonoBehaviour, IInteractable
     {
         private PlayerInteractor _interactor;
         private Player _player;
@@ -50,10 +50,10 @@ namespace KWJ.Interactable.PickUpable
             {
                 yield return new WaitForFixedUpdate();
                 
-                transform.position = Vector3.Lerp(transform.position,
+                _rigidbody.position = Vector3.Lerp(transform.position,
                     targetTrm.position, 5 * Time.deltaTime);
 
-                transform.rotation = targetTrm.rotation;
+                _rigidbody.rotation = targetTrm.rotation;
                 
                 if(!_isPickUp)
                     break;

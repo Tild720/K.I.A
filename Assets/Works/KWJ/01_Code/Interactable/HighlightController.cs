@@ -1,4 +1,4 @@
-﻿using Code.Players;
+﻿using KWJ.Players;
 using KWJ.Entities;
 using KWJ.Interactable;
 using UnityEngine;
@@ -7,12 +7,12 @@ namespace KWJ.Code.Interactable
 {
     public class HighlightController : MonoBehaviour, IEntityComponent
     {
-        [SerializeField] private Outline _outline;
+        [SerializeField] private Outline outline;
         private InteractableChecker _interactChecker;
         
         private IInteractable _interactableTemp;
         
-        private bool isFirstOnFocus = true;
+        private bool _isFirstOnFocus = true;
 
         public void Initialize(Entity entity)
         {
@@ -21,7 +21,7 @@ namespace KWJ.Code.Interactable
 
         private void OnDisable()
         {
-            _outline.OnUnfocus();
+            outline.OnUnfocus();
         }
 
         private void Update()
@@ -29,16 +29,16 @@ namespace KWJ.Code.Interactable
             if (_interactChecker.Interactable != null
                 && _interactableTemp == _interactChecker.Interactable)
             {
-                if(!isFirstOnFocus) return;
+                if(!_isFirstOnFocus) return;
                 
-                isFirstOnFocus = false;
+                _isFirstOnFocus = false;
                 
-                _outline.OnFocus(_interactChecker.Interactable.GameObject);
+                outline.OnFocus(_interactChecker.Interactable.GameObject);
             }
             else
             {
-                _outline.OnUnfocus();
-                isFirstOnFocus = true;
+                outline.OnUnfocus();
+                _isFirstOnFocus = true;
             }
 
             _interactableTemp = _interactChecker.Interactable;

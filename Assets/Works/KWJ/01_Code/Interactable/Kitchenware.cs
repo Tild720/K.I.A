@@ -4,21 +4,21 @@ using UnityEngine;
 
 namespace KWJ.Interactable
 {
-    public class Grill : MonoBehaviour
+    public class Kitchenware : MonoBehaviour
     {
-        [SerializeField] private BoxOverlapChecker _boxChecker;
+        [SerializeField] private BoxOverlapChecker boxChecker;
         
         [SerializeField] private CookingType cookingType;
         
-        private bool _isGrillOn;
+        protected bool m_IsOn;
 
-        private void Update()
+        protected virtual void Update()
         {
-            if(!_isGrillOn) return;
+            if(!m_IsOn) return;
             
-            if (_boxChecker.BoxOverlapCheck())
+            if (boxChecker.BoxOverlapCheck())
             {
-                GameObject[] foodIngredients = _boxChecker.GetOverlapData();
+                GameObject[] foodIngredients = boxChecker.GetOverlapData();
 
                 foreach (var foodIngredient in foodIngredients)
                 {
@@ -32,6 +32,6 @@ namespace KWJ.Interactable
             }
         }
 
-        public void OnGrill() => _isGrillOn = !_isGrillOn;
+        public void OnKitchenwera() => m_IsOn = !m_IsOn;
     }
 }
