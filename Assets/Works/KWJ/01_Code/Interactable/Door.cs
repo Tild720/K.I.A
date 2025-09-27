@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using KWJ.Entities;
 using KWJ.Interactable;
 using KWJ.Players;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Works.KWJ._01_Code.Interactable
+namespace KWJ.Interactable
 {
     public class Door : MonoBehaviour, IInteractable
     {
@@ -23,6 +22,7 @@ namespace Works.KWJ._01_Code.Interactable
         public GameObject GameObject => gameObject;
         private Rigidbody _rigidbody;
 
+        public bool IsClose => !_isOpen;
         private bool _isOpen;
 
         protected virtual void Awake()

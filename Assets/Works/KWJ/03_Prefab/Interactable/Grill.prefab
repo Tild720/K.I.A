@@ -516,8 +516,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f722eb4f0644e3aa40982216f5aceab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _boxChecker: {fileID: 795983189235552497}
-  cookingType: 1
+  boxChecker: {fileID: 795983189235552497}
+  cookingType: 2
 --- !u!1 &5888979890880608256
 GameObject:
   m_ObjectHideFlags: 0

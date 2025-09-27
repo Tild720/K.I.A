@@ -6,7 +6,7 @@ using UnityEngine;
 namespace KWJ.Interactable.PickUpable
 {
     [RequireComponent(typeof(Rigidbody))]
-    public class PickUpableObject : MonoBehaviour, IInteractable
+    public class PickUpable : MonoBehaviour, IInteractable
     {
         private PlayerInteractor _interactor;
         private Player _player;
