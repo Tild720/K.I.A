@@ -3,7 +3,7 @@ using KWJ.Entities;
 using KWJ.Interactable;
 using UnityEngine;
 
-namespace KWJ.Code.Interactable
+namespace KWJ.Interactable
 {
     public class HighlightController : MonoBehaviour, IEntityComponent
     {

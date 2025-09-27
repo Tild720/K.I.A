@@ -1,36 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using KWJ.UI;
+using KWJ.Define;
 
 namespace KWJ.Interactable.PickUpable
 {
-    [Flags]
-    public enum CookingType
-    {
-        None = 0,
-        
-        Boilable = 1 << 0, //삶기
-        Bakeable = 1 << 1, //굽기
-        Heatable = 1 << 2, //데우기
-        
-        Max = 1 << 3,
-    }
-    public enum CookingState
-    {
-        None = -1,
-        
-        Insufficient, //부족함
-        Moderate, //적당함
-        Excessive, //과함
-        
-        Max,
-    }
     public class CookableIngredient : PickUpable
     {
         public CookingType CookingType => cookingType;
         [SerializeField] private CookingType cookingType;
+        public IngredientType IngredientType => ingredientType;
+        [SerializeField] private IngredientType ingredientType;
         public CookingState CookingState => cookingState;
         [Space]
         [SerializeField] private CookingState cookingState;
