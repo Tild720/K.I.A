@@ -21,8 +21,17 @@ namespace KWJ.UI
 
         private async void DisableTimer()
         {
-            await Awaitable.WaitForSecondsAsync(disableTime, destroyCancellationToken);
-            gameObject.SetActive(false);
+            try
+            {
+                await Awaitable.WaitForSecondsAsync(disableTime, destroyCancellationToken);
+                gameObject.SetActive(false);
+            }
+            catch (OperationCanceledException) {}
+            catch (MissingReferenceException) {}
+        }
+
+        private void OnDestroy()
+        {
         }
 
         public void SetCookFills(float insufficient, float moderateCook)

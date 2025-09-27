@@ -23,4 +23,17 @@ namespace KWJ.Define
         
         Max,
     }
+    
+    public enum IngredientType
+    {
+        None = 0,
+        
+        TopBurgerBun,
+        Patty,
+        Lettuce,
+        Tomato,
+        BottomBurgerBun,
+                
+        Max,
+    }
 }

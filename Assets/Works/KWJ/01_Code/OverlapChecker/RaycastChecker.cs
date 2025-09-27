@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace KWJ.OverlapChecker
@@ -9,10 +10,13 @@ namespace KWJ.OverlapChecker
         
         [SerializeField] private Transform checkPoint;
         [SerializeField] private LayerMask targetMask;
+        [SerializeField] private Vector3 boxSize;
         [Space]
         [SerializeField] private float length;
         [SerializeField] private int maxCount;
         
+        [SerializeField] private bool isBoxCast;
+
         private RaycastHit[] _results;
         
         private void Awake()
@@ -34,7 +38,15 @@ namespace KWJ.OverlapChecker
         
         public GameObject[] GetRaycastData()
         {
-            int count = Physics.RaycastNonAlloc(checkPoint.position, transform.forward, _results, length, targetMask);
+            int count = 0;
+            
+            if(isBoxCast)
+                count =Physics.BoxCastNonAlloc(checkPoint.position, boxSize,
+                transform.forward, _results, Quaternion.identity, length, targetMask);
+            else
+                count = Physics.RaycastNonAlloc(checkPoint.position, transform.forward, _results, length, targetMask);
+            
+            Array.Sort(_results, (a, b) => a.distance.CompareTo(b.distance));
             
             GameObject[] targets = new GameObject[count];
 
@@ -53,6 +65,10 @@ namespace KWJ.OverlapChecker
 
             Gizmos.color = Color.red;
             Gizmos.DrawRay(checkPoint.position, transform.forward * length);
+            
+            if(!isBoxCast) return;
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireCube(checkPoint.position + transform.forward * length, boxSize);
         }
 #endif
     }

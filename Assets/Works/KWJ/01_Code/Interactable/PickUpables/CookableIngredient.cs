@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using KWJ.UI;
@@ -26,9 +27,11 @@ namespace KWJ.Interactable.PickUpable
         [Space]
         [SerializeField] private TimerFill timerFill;
 
-        private float _remainingCookingTime;
         
         private List<Material> _material;
+        
+        private float _remainingCookingTime;
+        private bool _isCompleteCooking;
 
         private void OnValidate()
         {
@@ -51,8 +54,16 @@ namespace KWJ.Interactable.PickUpable
             
             timerFill.gameObject.SetActive(false);
         }
-        public void SetCookingState(CookingState state) => cookingState = state;
 
+        public void SetCookingState(CookingState state) => cookingState = state;
+        
+        public void CompleteCooking(Transform dish)
+        {
+            transform.SetParent(dish);
+            m_rigidbody.isKinematic = true;
+            _isCompleteCooking = true;
+        }
+        
         public void CookingTimer(float time)
         {
             if (doneness01 >= 1) return;
