@@ -10,9 +10,11 @@ namespace Code.Chat
         Player, Target, Alert
     }
     [Serializable]
-    public struct Choices
+    public struct Choice
     {
+        public string action;
         public Message message;
+        
         public int points;
         public string reply;
         
@@ -26,11 +28,9 @@ namespace Code.Chat
     [Serializable]
     public class Chat
     {
-        public ChatType ChatType { get; }
+        public ChatType ChatType;
         public List<Message> Messages;
-        public List<Choices> Choices;
-        
-        public List<Message> reply;
+        public List<Choice> Choices;
         
     }
 }

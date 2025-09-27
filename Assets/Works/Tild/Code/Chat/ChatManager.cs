@@ -1,6 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using Code.Core.EventSystems;
 using UnityEngine;
+using Works.Tild.Code.Events;
 
 namespace Code.Chat
 {
@@ -10,6 +13,8 @@ namespace Code.Chat
         [SerializeField] private ChatBubble playerBubble; 
         [SerializeField] private ChatBubble targetBubble; 
         [SerializeField] private ChatBubble alertBubble; 
+        [SerializeField] private Transform bubbleParent; 
+        private readonly ChoiceEvent _choiceEvent = ChatEventChannel.ChoiceEvent;
         
         private int _chatIndex = 0;
         private bool _isChoiced = false;
@@ -17,6 +22,24 @@ namespace Code.Chat
         private void Start()
         {
             StartChat();
+        }
+
+        private void Awake()
+        {
+            GameEventBus.AddListener<ChoiceBtnEvent>(OnChoiceBtnEvent);
+        }
+
+        private void OnChoiceBtnEvent(ChoiceBtnEvent obj)
+        {
+            StartCoroutine(ChoiceReply(obj.choice));
+        }
+
+        private IEnumerator ChoiceReply(Choice choice)
+        {
+            ChatBubble bubble = Instantiate(targetBubble, bubbleParent);
+            bubble.Initialize(choice.message.message);
+            yield return new WaitForSeconds(choice.message.delay);
+            _isChoiced = true;
         }
 
         public void NextChat()
@@ -34,7 +57,7 @@ namespace Code.Chat
         
         public void StartChat()
         {
-            StopAllCoroutines(); // 진행 중인 대화 중단
+            StopAllCoroutines(); 
             if (_chatIndex < chatLists.Count)
             {
                 StartCoroutine(PlayChatCoroutine(chatLists[_chatIndex]));
@@ -47,7 +70,7 @@ namespace Code.Chat
             {
                 Chat currentChat = chatSO.Chats[i];
 
-                // 여러 메시지를 순서대로 출력
+              
                 foreach (var msg in currentChat.Messages)
                 {
                     ChatBubble bubble = null;
@@ -55,23 +78,29 @@ namespace Code.Chat
                     switch (currentChat.ChatType)
                     {
                         case ChatType.Player:
-                            bubble = Instantiate(playerBubble);
+                            bubble = Instantiate(playerBubble, bubbleParent);
                             break;
                         case ChatType.Target:
-                            bubble = Instantiate(targetBubble);
+                            bubble = Instantiate(targetBubble,bubbleParent);
                             break;
                         case ChatType.Alert:
-                            bubble = Instantiate(alertBubble);
+                            bubble = Instantiate(alertBubble,bubbleParent);
                             break;
                     }
 
                     if (bubble != null)
                         bubble.Initialize(msg.message);
-
+                    
+                    
              
                     yield return new WaitForSeconds(msg.delay);
-
+                    
                   
+                   
+                }
+                if (currentChat.ChatType == ChatType.Target)
+                {
+                    GameEventBus.RaiseEvent(_choiceEvent.Initializer(currentChat.Choices));
                     yield return new WaitUntil(() => _isChoiced == true);
                     _isChoiced = false;
                 }

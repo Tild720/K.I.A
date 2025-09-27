@@ -27,9 +27,9 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3328234964161883532}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1958898867499937862}
@@ -38,7 +38,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 600, y: -181.7}
-  m_SizeDelta: {x: 300, y: 100}
+  m_SizeDelta: {x: 300, y: 75}
   m_Pivot: {x: -0.7, y: 0}
 --- !u!222 &9189838988084991150
 CanvasRenderer:
@@ -140,8 +140,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 310.7, y: -71.665}
-  m_SizeDelta: {x: 521.4, y: 0}
+  m_AnchoredPosition: {x: 310.355, y: -71.665}
+  m_SizeDelta: {x: 520.71, y: 87.33}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4705095337997227347
 CanvasRenderer:
@@ -173,8 +173,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uBC15\uC2DC\uC601 \u314B \uB0B4\uAC00\uD587\uB2E4"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 943da2336a67244448b6b6e0a066fd6e, type: 2}
-  m_sharedMaterial: {fileID: -7307482667787937769, guid: 943da2336a67244448b6b6e0a066fd6e, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: dddf4c1a8adeb5640993f361db0622cc, type: 2}
+  m_sharedMaterial: {fileID: -4101372548856371373, guid: dddf4c1a8adeb5640993f361db0622cc, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

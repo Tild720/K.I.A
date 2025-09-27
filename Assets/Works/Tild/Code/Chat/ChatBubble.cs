@@ -13,7 +13,7 @@ namespace Code.Chat
         public void Initialize(string msg)
         {
             message.text = msg;
-            bubble.DOScale(Vector3.one, 1);
+            bubble.DOScale(Vector3.one, 0.3f);
         }
     }
 }
