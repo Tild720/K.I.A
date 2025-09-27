@@ -40,36 +40,41 @@ namespace Code.Chat
                 StartCoroutine(PlayChatCoroutine(chatLists[_chatIndex]));
             }
         }
-
+    
         private IEnumerator PlayChatCoroutine(ChatSO chatSO)
         {
             for (int i = 0; i < chatSO.Chats.Count; i++)
             {
-                IChat currentMessage = chatSO.Chats[i];
-                ChatBubble bubble = null;
-                
-                switch (currentMessage.ChatType)
+                Chat currentChat = chatSO.Chats[i];
+
+                // 여러 메시지를 순서대로 출력
+                foreach (var msg in currentChat.Messages)
                 {
-                    case ChatType.Player:
-                        bubble = Instantiate(playerBubble);
-                        break;
-                    case ChatType.Target:
-                        bubble = Instantiate(targetBubble);
-                        break;
-                    case ChatType.Alert:
-                        bubble = Instantiate(alertBubble);
-                        break;
+                    ChatBubble bubble = null;
+
+                    switch (currentChat.ChatType)
+                    {
+                        case ChatType.Player:
+                            bubble = Instantiate(playerBubble);
+                            break;
+                        case ChatType.Target:
+                            bubble = Instantiate(targetBubble);
+                            break;
+                        case ChatType.Alert:
+                            bubble = Instantiate(alertBubble);
+                            break;
+                    }
+
+                    if (bubble != null)
+                        bubble.Initialize(msg.message);
+
+             
+                    yield return new WaitForSeconds(msg.delay);
+
+                  
+                    yield return new WaitUntil(() => _isChoiced == true);
+                    _isChoiced = false;
                 }
-
-                if (bubble != null) 
-                    bubble.Initialize(currentMessage.Message.message);
-
-               
-                yield return new WaitForSeconds(currentMessage.Message.delay);
-                yield return new WaitUntil(() => _isChoiced = true) ;
-                _isChoiced = false;
-                
-                
             }
         }
     }

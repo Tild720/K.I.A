@@ -6,7 +6,7 @@ namespace Code.Chat
     [CreateAssetMenu(fileName = "Chat", menuName = "SO/Chat")]
     public class ChatSO : ScriptableObject
     {
-        public List<IChat> Chats;
+        public List<Chat> Chats;
         
     }
 }
