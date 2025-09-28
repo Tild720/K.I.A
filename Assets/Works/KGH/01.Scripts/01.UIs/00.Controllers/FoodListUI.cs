@@ -11,6 +11,7 @@ namespace UIs.Controllers
         [SerializeField] private Transform listRoot;
         [SerializeField] private List<FoodSO> foods;
         [SerializeField] private GameObject foodItemPrefab;
+        [SerializeField] private FoodInfoUI foodInfoUI;
         private void Start()
         {
             foreach (var food in foods)
@@ -23,12 +24,15 @@ namespace UIs.Controllers
                 button.onClick.AddListener(()=> HandleFoodSelect(food));
                 
                 var hoverHandler = item.GetComponent<HoverHandler>();
-                hoverHandler.onHoverChanged += _ => HandleFoodHover(food);
+                hoverHandler.onHoverChanged += v => HandleFoodHover(v, food);
             }
         }
-
-        private void HandleFoodHover(FoodSO food)
+        private void HandleFoodHover(bool value, FoodSO food)
         {
+            if (value)
+            {
+                foodInfoUI.SetUpFood(food);
+            }
         }
 
         private void HandleFoodSelect(FoodSO food)

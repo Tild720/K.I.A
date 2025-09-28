@@ -12,7 +12,7 @@ namespace UIs.Visuals.Handlers
 
         public void OnPointerEnter(PointerEventData eventData)
         {
-            _visualElement?.AddState(ConstDefine.HOVER, 1);
+            _visualElement?.AddState(ConstDefine.HOVER, 10);
             onHoverChanged?.Invoke(true);
         }
 
