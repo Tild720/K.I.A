@@ -1,0 +1,11 @@
+Model Information:
+* title:	Notch Tile | Tile Texture
+* source:	https://sketchfab.com/3d-models/notch-tile-tile-texture-f270e259b4c44e43b7a4d787bb058e4e
+* author:	CATholic (https://sketchfab.com/CATholic)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Notch Tile | Tile Texture" (https://sketchfab.com/3d-models/notch-tile-tile-texture-f270e259b4c44e43b7a4d787bb058e4e) by CATholic (https://sketchfab.com/CATholic) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
