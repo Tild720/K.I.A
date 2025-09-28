@@ -11,7 +11,7 @@ namespace UIs.Visuals
         [SerializeField] private bool isThisRoot;
         [SerializeField] private Transform stateRoot;
         private Dictionary<string, int> _states;
-        private Dictionary<string, IUIState> _effects = new Dictionary<string, IUIState>();
+        private Dictionary<string, List<IUIState>> _effects = new Dictionary<string, List<IUIState>>();
         private List<VisualElement> _children = new List<VisualElement>();
         private string _currentState;
         public string CurrentState => _currentState;
@@ -27,7 +27,14 @@ namespace UIs.Visuals
                 foreach (var effect in stateRoot.GetComponentsInChildren<IUIState>())
                 {
                     effect.Initialize(this);
-                    _effects.Add(effect.StateName, effect);
+                    if (_effects.ContainsKey(effect.StateName))
+                    {
+                        _effects[effect.StateName].Add(effect);
+                    }
+                    else
+                    {
+                        _effects[effect.StateName] = new List<IUIState> { effect };
+                    }
                 }
             }
 
@@ -79,8 +86,10 @@ namespace UIs.Visuals
             if (nextState != _currentState)
             {
                 _currentState = nextState;
+                
                 if (_effects.TryGetValue(_currentState, out var nextEffect))
-                    nextEffect.PlayEffect();
+                    nextEffect.ForEach(e => e.PlayEffect());
+                
                 OnStateChanged?.Invoke(_currentState);
             }
         }

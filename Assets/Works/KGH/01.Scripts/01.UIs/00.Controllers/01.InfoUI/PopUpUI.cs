@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using Region;
+using TMPro;
 using UIs.Visuals;
 using UnityEngine;
 
@@ -11,9 +12,12 @@ namespace UIs.Controllers.InfoUI
         [SerializeField] private TextMeshProUGUI healthText;
         [SerializeField] private TextMeshProUGUI moneyText;
         [SerializeField] private float popUpDuration = 2f;
+        [SerializeField] private InfoBarUI infoBar;
         private string _populationText;
         private string _healthText;
         private string _moneyText;
+        
+        private RegionManager RegionManager => RegionManager.Instance;
         
         private void Awake()
         {
@@ -22,7 +26,17 @@ namespace UIs.Controllers.InfoUI
             _moneyText = moneyText.text;
         }
         
-        public void SetUpInfo(int population, int health, int money)
+        [ContextMenu("ShowPopUp")]
+        public void ShowPopUp()
+        {
+            var currentRegion = RegionManager.CurrentRegion;
+            if (currentRegion == null) return;
+            SetUpInfo(currentRegion.population, currentRegion.health, 0);
+            StartPopUp();
+            infoBar.SetUpInfo(currentRegion.population, currentRegion.health, 0);
+        }
+
+        private void SetUpInfo(int population, int health, int money)
         {
             populationText.text = string.Format(_populationText, population);
             healthText.text = string.Format(_healthText, health);
