@@ -41,7 +41,7 @@ MonoBehaviour:
     Choices:
     - action: "\uBB3C\uC5B4\uBCF4\uAE30"
       message:
-        message: 
+        message: sadsdsd
         delay: 0
       points: 10
       reply: "\uB124\uB124"
