@@ -1,20 +1,27 @@
 ﻿using System;
 using System.Collections;
 using System.Linq;
-using System.Text;
 using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace Code.NPC
 {
+    public enum LineType
+    {
+        RequestFood, //음식 내놔
+        GoodFood,
+        NormalFood,
+        BadFood
+    }
+    
     [Serializable]
     public struct NPCLine
     {
-        public string lineType;
+        public LineType lineType;
         public string line;
         
-        public NPCLine(string lineType, string line)
+        public NPCLine(LineType lineType, string line)
         {
             this.lineType = lineType;
             this.line = line;
@@ -35,7 +42,7 @@ namespace Code.NPC
              _textWait = new WaitForSeconds(animationSpeed);
          }
 
-         public void Speech(string lineType)
+         public void Speech(LineType lineType)
          {
              var lines = npcLines.Where(line => line.lineType == lineType).ToArray();
                  
@@ -56,6 +63,7 @@ namespace Code.NPC
                  StopCoroutine(_textCoroutine);
              
              _textCoroutine = StartCoroutine(TextAnimationCoroutine());
+             Debug.Log(text);
          }
 
          private IEnumerator TextAnimationCoroutine()
