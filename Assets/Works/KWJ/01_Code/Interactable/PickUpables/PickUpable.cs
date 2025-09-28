@@ -12,18 +12,32 @@ namespace KWJ.Interactable.PickUpable
         private Player _player;
         private bool _isPickUp;
 
+        private bool _canPickUp = true;
+
         public GameObject GameObject => gameObject;
         
         public Rigidbody Rigidbody => m_rigidbody;
         protected Rigidbody m_rigidbody;
+        
+        private Collider _collider;
 
         protected virtual void Awake()
         {
-            m_rigidbody = GetComponent<Rigidbody>();
+            m_rigidbody = GetComponentInChildren<Rigidbody>();
+            _collider = GetComponentInChildren<Collider>();
+        }
+
+        protected virtual void SetCanPickUp(bool canPickUp)
+        {
+            _canPickUp = canPickUp;
+            m_rigidbody.isKinematic = !canPickUp;
+            _collider.enabled = canPickUp;
         }
 
         public void PointerDown(Entity entity)
         {
+            if(_canPickUp == false) return;
+            
             _interactor = entity.GetCompo<PlayerInteractor>();
             _player = entity as Player;
                 
@@ -35,6 +49,8 @@ namespace KWJ.Interactable.PickUpable
 
         public void PointerUp(Entity entity)
         {
+            if(_canPickUp == false && _isPickUp == false) return;
+            
             _isPickUp = false;
             m_rigidbody.useGravity = true;
 

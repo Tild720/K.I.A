@@ -185,10 +185,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 409ee76aea6004b419e2b451782a6de2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnComputerEvent:
+  onComputerEvent:
     m_PersistentCalls:
       m_Calls: []
-  OffComputerEvent:
+  offComputerEvent:
     m_PersistentCalls:
       m_Calls: []
-  _cameraPoint: {fileID: 5275761057071197330}
+  cameraPoint: {fileID: 5275761057071197330}

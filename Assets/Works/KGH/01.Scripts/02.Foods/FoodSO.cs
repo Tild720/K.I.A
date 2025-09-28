@@ -7,6 +7,7 @@ namespace Foods
     {
         public string foodName;
         public GameObject foodPrefab;
+        public Sprite icon;
         public int price;
         [TextArea]
         public string description;
