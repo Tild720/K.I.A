@@ -13,11 +13,13 @@ namespace KWJ.Interactable.PickUpable
         private bool _isPickUp;
 
         public GameObject GameObject => gameObject;
-        private Rigidbody _rigidbody;
+        
+        public Rigidbody Rigidbody => m_rigidbody;
+        protected Rigidbody m_rigidbody;
 
         protected virtual void Awake()
         {
-            _rigidbody = GetComponent<Rigidbody>();
+            m_rigidbody = GetComponent<Rigidbody>();
         }
 
         public void PointerDown(Entity entity)
@@ -26,7 +28,7 @@ namespace KWJ.Interactable.PickUpable
             _player = entity as Player;
                 
             _isPickUp = true;
-            _rigidbody.useGravity = false;
+            m_rigidbody.useGravity = false;
             
             StartCoroutine(MoveToCatchPoint(_interactor.CatchPoint));
         }
@@ -34,12 +36,12 @@ namespace KWJ.Interactable.PickUpable
         public void PointerUp(Entity entity)
         {
             _isPickUp = false;
-            _rigidbody.useGravity = true;
+            m_rigidbody.useGravity = true;
 
             Vector3 forceDir = _interactor.CatchPoint.position - transform.position;
             float distance = forceDir.magnitude;
             
-            _rigidbody.AddForce(forceDir * distance * _player.PlayerStatsSo.ThrowPower, ForceMode.Impulse);
+            m_rigidbody.AddForce(forceDir * distance * _player.PlayerStatsSo.ThrowPower, ForceMode.Impulse);
             
             _interactor = null;
         }
@@ -50,10 +52,10 @@ namespace KWJ.Interactable.PickUpable
             {
                 yield return new WaitForFixedUpdate();
                 
-                _rigidbody.position = Vector3.Lerp(transform.position,
+                m_rigidbody.position = Vector3.Lerp(transform.position,
                     targetTrm.position, 5 * Time.deltaTime);
 
-                _rigidbody.rotation = targetTrm.rotation;
+                m_rigidbody.rotation = targetTrm.rotation;
                 
                 if(!_isPickUp)
                     break;

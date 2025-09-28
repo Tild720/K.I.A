@@ -27,15 +27,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 842532088386279253}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7069834, y: 0, z: 0, w: 0.7072302}
-  m_LocalPosition: {x: -6.906, y: 1.44, z: -1.864}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 672952435204777802}
   - {fileID: 8424471157959552119}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: -89.98, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &6963401757944084733
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cookingType: 7
+  ingredientType: 2
   cookingState: 0
   doneness01: 0
   donenessModerate: 0.389

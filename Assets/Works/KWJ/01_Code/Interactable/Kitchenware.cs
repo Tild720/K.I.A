@@ -1,4 +1,5 @@
-﻿using KWJ.Interactable.PickUpable;
+﻿using KWJ.Define;
+using KWJ.Interactable.PickUpable;
 using KWJ.OverlapChecker;
 using UnityEngine;
 
@@ -25,7 +26,7 @@ namespace KWJ.Interactable
                     CookableIngredient cookable
                         = foodIngredient.GetComponentInChildren<CookableIngredient>();
                     
-                    if (cookable ==null || cookable.CookingType != cookingType) continue;
+                    if (cookable ==null || (cookable.CookingType & cookingType) != cookingType) continue;
 
                     cookable.CookingTimer(Time.deltaTime);
                 }

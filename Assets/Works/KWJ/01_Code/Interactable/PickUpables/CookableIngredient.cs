@@ -3,34 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using KWJ.UI;
+using KWJ.Define;
 
 namespace KWJ.Interactable.PickUpable
 {
-    [Flags]
-    public enum CookingType
-    {
-        None = 0,
-        
-        Boilable = 1 << 0, //삶기
-        Bakeable = 1 << 1, //굽기
-        Heatable = 1 << 2, //데우기
-        
-        Max = 1 << 3,
-    }
-    public enum CookingState
-    {
-        None = -1,
-        
-        Insufficient, //부족함
-        Moderate, //적당함
-        Excessive, //과함
-        
-        Max,
-    }
     public class CookableIngredient : PickUpable
     {
         public CookingType CookingType => cookingType;
         [SerializeField] private CookingType cookingType;
+        public IngredientType IngredientType => ingredientType;
+        [SerializeField] private IngredientType ingredientType;
         public CookingState CookingState => cookingState;
         [Space]
         [SerializeField] private CookingState cookingState;
@@ -45,9 +27,11 @@ namespace KWJ.Interactable.PickUpable
         [Space]
         [SerializeField] private TimerFill timerFill;
 
-        private float _remainingCookingTime;
         
         private List<Material> _material;
+        
+        private float _remainingCookingTime;
+        private bool _isCompleteCooking;
 
         private void OnValidate()
         {
@@ -70,8 +54,16 @@ namespace KWJ.Interactable.PickUpable
             
             timerFill.gameObject.SetActive(false);
         }
-        public void SetCookingState(CookingState state) => cookingState = state;
 
+        public void SetCookingState(CookingState state) => cookingState = state;
+        
+        public void CompleteCooking(Transform dish)
+        {
+            transform.SetParent(dish);
+            m_rigidbody.isKinematic = true;
+            _isCompleteCooking = true;
+        }
+        
         public void CookingTimer(float time)
         {
             if (doneness01 >= 1) return;
