@@ -1,4 +1,5 @@
-﻿using KWJ.Interactable.PickUpable;
+﻿using KWJ.Define;
+using KWJ.Interactable.PickUpable;
 using KWJ.OverlapChecker;
 using UnityEngine;
 
@@ -6,32 +7,32 @@ namespace KWJ.Interactable
 {
     public class Kitchenware : MonoBehaviour
     {
-        [SerializeField] private BoxOverlapChecker _boxChecker;
+        [SerializeField] private BoxOverlapChecker boxChecker;
         
         [SerializeField] private CookingType cookingType;
         
-        private bool _isGrillOn;
+        protected bool m_IsOn;
 
-        private void Update()
+        protected virtual void Update()
         {
-            if(!_isGrillOn) return;
+            if(!m_IsOn) return;
             
-            if (_boxChecker.BoxOverlapCheck())
+            if (boxChecker.BoxOverlapCheck())
             {
-                GameObject[] foodIngredients = _boxChecker.GetOverlapData();
+                GameObject[] foodIngredients = boxChecker.GetOverlapData();
 
                 foreach (var foodIngredient in foodIngredients)
                 {
                     CookableIngredient cookable
                         = foodIngredient.GetComponentInChildren<CookableIngredient>();
                     
-                    if (cookable ==null || cookable.CookingType != cookingType) continue;
+                    if (cookable ==null || (cookable.CookingType & cookingType) != cookingType) continue;
 
                     cookable.CookingTimer(Time.deltaTime);
                 }
             }
         }
 
-        public void OnGrill() => _isGrillOn = !_isGrillOn;
+        public void OnKitchenwera() => m_IsOn = !m_IsOn;
     }
 }

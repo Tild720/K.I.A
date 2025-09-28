@@ -516,8 +516,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f722eb4f0644e3aa40982216f5aceab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _boxChecker: {fileID: 795983189235552497}
-  cookingType: 1
+  boxChecker: {fileID: 795983189235552497}
+  cookingType: 2
 --- !u!1 &5888979890880608256
 GameObject:
   m_ObjectHideFlags: 0
@@ -1136,12 +1136,20 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7301967238005264951, guid: 4a4e1e1b244c9f948aec37e4b47ccce6, type: 3}
+      propertyPath: onClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnKitchenwera
+      objectReference: {fileID: 0}
+    - target: {fileID: 7301967238005264951, guid: 4a4e1e1b244c9f948aec37e4b47ccce6, type: 3}
       propertyPath: onClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: ToggleLight
       objectReference: {fileID: 0}
     - target: {fileID: 7301967238005264951, guid: 4a4e1e1b244c9f948aec37e4b47ccce6, type: 3}
       propertyPath: onClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
       value: ToggleLight
+      objectReference: {fileID: 0}
+    - target: {fileID: 7301967238005264951, guid: 4a4e1e1b244c9f948aec37e4b47ccce6, type: 3}
+      propertyPath: onClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: KWJ.Interactable.Kitchenware, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7301967238005264951, guid: 4a4e1e1b244c9f948aec37e4b47ccce6, type: 3}
       propertyPath: onClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName

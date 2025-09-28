@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aeccaa1ae1940c7be978fff052856c8, type: 3}
+  m_Name: Chat1
+  m_EditorClassIdentifier: 
+  Chats:
+  - ChatType: 0
+    Messages:
+    - message: "\uC548\uB155\uD558\uC138\uC694."
+      delay: 5
+    - message: "\uBC18\uAC11\uC2B5\uB2C8\uB2E4."
+      delay: 5
+    Choices:
+    - action: "\uBB3C\uC5B4\uBCF4\uAE30"
+      message:
+        message: 
+        delay: 0
+      points: 10
+      reply: "\uB124\uB124"
+    - action: "\uB05D\uB0B4\uAE30"
+      message:
+        message: 
+        delay: 0
+      points: 10
+      reply: "\uB124\u3154\uB124\uB124~"
+  - ChatType: 1
+    Messages:
+    - message: "\u314B\u314B\u314B\u314B\u314B\uC694."
+      delay: 5
+    - message: "\uAD6C\u3160\u3145\uADEF\uADEF"
+      delay: 5
+    Choices:
+    - action: "\uBB3C\uC5B4\uBCF4\uAE30"
+      message:
+        message: sadsdsd
+        delay: 0
+      points: 10
+      reply: "\uB124\uB124"
+    - action: "\uB05D\uB0B4\uAE30"
+      message:
+        message: 
+        delay: 0
+      points: 10
+      reply: "\uB124\u3154\uB124\uB124~"
