@@ -4,6 +4,6 @@
     {
         string StateName { get; }
         void Initialize(VisualElement owner);
-        void PlayEffect<T>(T before) where T : IUIState;
+        void PlayEffect();
     }
 }

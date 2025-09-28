@@ -8,18 +8,15 @@ namespace UIs.Visuals.Handlers
     public class HoverHandler : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         [SerializeField] private VisualElement _visualElement;
-        public Action<bool> onHoverChanged;
 
         public void OnPointerEnter(PointerEventData eventData)
         {
             _visualElement?.AddState(ConstDefine.HOVER, 10);
-            onHoverChanged?.Invoke(true);
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
             _visualElement?.RemoveState(ConstDefine.HOVER);
-            onHoverChanged?.Invoke(false);
         }
     }
 }

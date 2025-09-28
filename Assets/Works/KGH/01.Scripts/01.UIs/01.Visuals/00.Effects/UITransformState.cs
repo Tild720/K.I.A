@@ -24,7 +24,7 @@ namespace UIs.Visuals.Effects
                 Debug.LogWarning($"[UITransformState] No RectTransform component found on {owner.name}");
         }
 
-        public void PlayEffect<T>(T before) where T : IUIState
+        public void PlayEffect()
         {
             _target?.DOScale(targetScale, transition.duration).SetEase(transition.ease).SetUpdate(true);
         }

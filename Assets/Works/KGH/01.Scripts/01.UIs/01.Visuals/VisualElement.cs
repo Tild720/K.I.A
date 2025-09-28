@@ -14,6 +14,8 @@ namespace UIs.Visuals
         private Dictionary<string, IUIState> _effects = new Dictionary<string, IUIState>();
         private List<VisualElement> _children = new List<VisualElement>();
         private string _currentState;
+        public string CurrentState => _currentState;
+        public Action<string> OnStateChanged;
 
         private void Awake()
         {
@@ -33,7 +35,9 @@ namespace UIs.Visuals
             {
                 var visualElement = child.GetComponent<VisualElement>();
                 if (visualElement != null)
+                {
                     _children.Add(visualElement);
+                }
             }
 
             if (_states == null)
@@ -41,6 +45,14 @@ namespace UIs.Visuals
 
             _states[defaultState] = 0;
             _currentState = defaultState;
+        }
+
+        private void OnDestroy()
+        {
+            if (OnStateChanged != null)
+            {
+                OnStateChanged = null;
+            }
         }
 
         public void AddState(string stateName, int priority)
@@ -66,15 +78,10 @@ namespace UIs.Visuals
             var nextState = GetHighestPriorityState();
             if (nextState != _currentState)
             {
-                var beforeState = _currentState;
                 _currentState = nextState;
                 if (_effects.TryGetValue(_currentState, out var nextEffect))
-                {
-                    var beforeEffect = default(IUIState);
-                    if (beforeState != null)
-                        _effects.TryGetValue(beforeState, out beforeEffect);
-                    nextEffect.PlayEffect(beforeEffect);
-                }
+                    nextEffect.PlayEffect();
+                OnStateChanged?.Invoke(_currentState);
             }
         }
 

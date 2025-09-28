@@ -25,7 +25,7 @@ namespace UIs.Visuals.Effects
                 Debug.LogWarning($"[UIColorState] No Graphic component found on {owner.name}");
         }
 
-        public void PlayEffect<T>(T before) where T : IUIState
+        public void PlayEffect()
         {
             _target?.DOColor(targetColor, transition.duration).SetEase(transition.ease).SetUpdate(true);
         }

@@ -5,6 +5,7 @@
         #region States
 
         public const string HOVER = "hover";
+        public const string SELECTED = "selected";
 
         #endregion
     }
