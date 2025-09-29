@@ -72,6 +72,12 @@ namespace Code.NPC
         [ContextMenu("Refresh")]
         private void RefreshNPCPoint()
         {
+            if (_npc.Count <= 0)
+            {
+                GameEventBus.RaiseEvent(NPCEvents.NpcLineEndEvent);
+                return;
+            }
+            
             for (int i = 0; i < _npc.Count; i++)
             {
                 Vector3 point = npcStandingPoint.position + (npcOffset * i);
@@ -103,12 +109,15 @@ namespace Code.NPC
         {
             if (_npc.Count <= 0) return;
             
+            
             NPC npc = _npc[0];
             _npc.RemoveAt(0);
             npc.IsFront = false;
             npc.NPCDead(() => RefreshNPCPoint());
             if (_npc.Count > 0)
                 _npc[0].IsFront = true;
+            
+            GameEventBus.RaiseEvent(NPCEvents.NpcLineEndEvent);
         }
 
         [ContextMenu("Skep")]
