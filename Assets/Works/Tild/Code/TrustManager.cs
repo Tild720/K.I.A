@@ -3,11 +3,21 @@ using UnityEngine;
 
 namespace Works.Tild.Code
 {
-    [CreateAssetMenu(fileName = "TrustSO", menuName = "SO/Trust")]
-    public class TrustSO : ScriptableObject
+    public class TrustManager : MonoBehaviour
     {
         public int Trust { get; set; }
+        public static TrustManager Instance { get; private set; }
 
+        private void Awake()
+        {
+            if (Instance != null && Instance != this)
+            {
+                Destroy(this.gameObject);
+                return;
+            }
+
+            Instance = this;
+        }
         public void RemoveTrust(int percentage)
         {
             Trust -= percentage;
