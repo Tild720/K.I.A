@@ -41,12 +41,46 @@ namespace UIs.Controllers.FoodUI
             addButton.onClick.AddListener(OnAdd);
             subtractButton.onClick.AddListener(OnSubtract);
             confirmButton.onClick.AddListener(OnConfirm);
+            
+            countInputField.onEndEdit.AddListener(CheckValidInput);
+            countInputField.onValueChanged.AddListener(CheckMaxCharacters);
         }
 
         private void OnDestroy()
         {
             addButton.onClick.RemoveListener(OnAdd);
             subtractButton.onClick.RemoveListener(OnSubtract);
+            confirmButton.onClick.RemoveListener(OnConfirm);
+            countInputField.onEndEdit.RemoveListener(CheckValidInput);
+            countInputField.onValueChanged.RemoveListener(CheckMaxCharacters);
+        }
+
+        private void CheckMaxCharacters(string arg0)
+        {
+            if (arg0.Length > 3)
+            {
+                countInputField.text = arg0.Substring(0, 3);
+            }
+        }
+
+        private void CheckValidInput(string str)
+        {
+            if (!int.TryParse(str, out int value) || value < 0)
+            {
+                countInputField.text = "0";
+                return;
+            }
+            int maxBuyable = 99; // TODO: Calculate based on player's resources
+            if (value > maxBuyable)
+            {
+                countInputField.text = maxBuyable.ToString();
+                value = maxBuyable;
+            }
+            else
+            {
+                countInputField.text = value.ToString();
+            }
+            CheckButton();
         }
 
         public void SetUpFood(FoodSO food)
@@ -88,8 +122,32 @@ namespace UIs.Controllers.FoodUI
             count++;
             countInputField.text = count.ToString();
             
-            bool canPurchase = true; // TODO: Check if the player has enough resources to purchase
-            if (count > 1)
+            CheckButton();
+        }
+        public void OnSubtract()
+        {
+            var count = int.Parse(countInputField.text);
+            if (count > 0)
+            {
+                count--;
+                countInputField.text = count.ToString();
+            }
+            
+            CheckButton();
+        }
+
+        private void CheckButton()
+        {
+            var count = int.Parse(countInputField.text);
+            if (count <= 0)
+            {
+                _subtractButtonVisualElement.AddState("disabled", 20);
+                subtractButton.interactable = false;
+                
+                _confirmButtonVisualElement.AddState("disabled", 10);
+                confirmButton.interactable = false;
+            }
+            else
             {
                 _subtractButtonVisualElement.RemoveState("disabled");
                 subtractButton.interactable = true;
@@ -97,13 +155,9 @@ namespace UIs.Controllers.FoodUI
                 _confirmButtonVisualElement.RemoveState("disabled");
                 confirmButton.interactable = true;
             }
-            else
-            {
-                _subtractButtonVisualElement.AddState("disabled", 20);
-                subtractButton.interactable = false;
-            }
             
-            if (!canPurchase)
+            bool canPurchaseMore = true; // TODO: Check if the player has enough resources to purchase
+            if (!canPurchaseMore)
             {
                 _addButtonVisualElement.AddState("disabled", 20);
                 addButton.interactable = false;
@@ -112,32 +166,6 @@ namespace UIs.Controllers.FoodUI
             {
                 _addButtonVisualElement.RemoveState("disabled");
                 addButton.interactable = true;
-            }
-        }
-        public void OnSubtract()
-        {
-            var count = int.Parse(countInputField.text);
-            if (count > 1)
-            {
-                count--;
-                countInputField.text = count.ToString();
-            }
-            
-            if (count > 1)
-            {
-                _subtractButtonVisualElement.RemoveState("disabled");
-                subtractButton.interactable = true;
-                
-                _confirmButtonVisualElement.RemoveState("disabled");
-                confirmButton.interactable = true;
-            }
-            else
-            {
-                _subtractButtonVisualElement.AddState("disabled", 20);
-                subtractButton.interactable = false;
-                
-                _confirmButtonVisualElement.AddState("disabled", 10);
-                confirmButton.interactable = false;
             }
         }
 
