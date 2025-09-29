@@ -297,7 +297,8 @@ MonoBehaviour:
   currentAmountWater: 0
   minY: -0.0006
   maxY: 0.0006
-  cookingColor: {r: 0.79622644, g: 0.5358419, b: 0.13070129, a: 0}
+  cookingColor: {r: 0.79622644, g: 0.5358419, b: 0.13070129, a: 0.6666667}
+  baseColor: {r: 0.45887506, g: 0.87169814, b: 0.8672397, a: 0.5058824}
   water: {fileID: 5534439594415862563}
   liquidFood: {fileID: 5116267345839241638}
 --- !u!114 &5116267345839241638
@@ -329,16 +330,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boxChecker: {fileID: 1650390245277124960}
   foodRecipes:
-  - foodType: 2
-    <IngredientCounts>k__BackingField:
-    - ingredientType: 2
-      ingredientCount: 1
-    - ingredientType: 3
-      ingredientCount: 2
   - foodType: 1
     <IngredientCounts>k__BackingField:
-    - ingredientType: 5
-      ingredientCount: 1
+    - ingredientType: 8
+      ingredientCount: 3
+    - ingredientType: 7
+      ingredientCount: 2
+  - foodType: 2
+    <IngredientCounts>k__BackingField:
+    - ingredientType: 6
+      ingredientCount: 3
+  - foodType: 6
+    <IngredientCounts>k__BackingField:
+    - ingredientType: 2
+      ingredientCount: 3
 --- !u!1 &5534439594415862563
 GameObject:
   m_ObjectHideFlags: 0
