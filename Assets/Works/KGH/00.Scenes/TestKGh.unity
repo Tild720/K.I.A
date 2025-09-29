@@ -824,6 +824,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4287345843235635342, guid: a871a5c5e68143e499bd74d264d681f8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5310345005116389489, guid: a871a5c5e68143e499bd74d264d681f8, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -875,6 +879,10 @@ PrefabInstance:
     - target: {fileID: 5625399453504440778, guid: a871a5c5e68143e499bd74d264d681f8, type: 3}
       propertyPath: m_TextWrappingMode
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8053696902287527906, guid: a871a5c5e68143e499bd74d264d681f8, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9120957077336233900, guid: a871a5c5e68143e499bd74d264d681f8, type: 3}
       propertyPath: m_AnchorMax.y

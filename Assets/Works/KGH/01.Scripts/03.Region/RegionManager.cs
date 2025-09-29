@@ -9,6 +9,12 @@ namespace Region
         private List<RegionSO> _regions = new List<RegionSO>();
         public static RegionManager Instance { get; private set; }
 
+        public int Money;
+        public int Used;
+        public int HealthOrigin;
+        public int HealthFixed;
+        public int Died;
+        
         private void Awake()
         {
             if (Instance != null && Instance != this)
@@ -23,10 +29,6 @@ namespace Region
             {
                 var clone = item.Clone() as RegionSO;
                 _regions.Add(clone);
-                
-                //test code
-                clone.health += 100;
-                Debug.Log($"Clone {clone.regionName} Health: {clone.health} (original: {item.health})");
             }
 
             DontDestroyOnLoad(this.gameObject);
