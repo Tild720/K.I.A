@@ -1,7 +1,7 @@
 ﻿using KWJ.Food;
 using UnityEngine;
 
-namespace Works.KWJ._01_Code.Interactable
+namespace KWJ.Interactable
 {
     public class Pot : MonoBehaviour
     {
@@ -10,6 +10,5 @@ namespace Works.KWJ._01_Code.Interactable
         {
             
         }
-
     }
 }

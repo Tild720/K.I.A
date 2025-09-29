@@ -1,21 +1,28 @@
-﻿using System;
+﻿using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.InputSystem;
+using Random = UnityEngine.Random;
 
 namespace Code.NPC
 {
-    
-    
     public class NPC : MonoBehaviour
     {
         private NavMeshAgent _agent;
-        [SerializeField] private NPCConversationCompo  _conversation;
+        [SerializeField] private NPCConversationCompo _conversation;
+        [SerializeField] private float completeMoveWindow;
+        [SerializeField] private float patience;
+        [SerializeField] private float greed;
 
-        [SerializeField] private string testLineType;
+        private float _timer;
+
+        public bool IsMoveCompleted => Vector3.Distance(transform.position, _agent.destination) < completeMoveWindow;
+
+        public bool IsFront { get; set; } = false;
+
         private void Awake()
         {
             _agent = GetComponent<NavMeshAgent>();
+            _timer = 0;
         }
 
         public void MoveToPoint(Vector3 point)
@@ -23,10 +30,39 @@ namespace Code.NPC
             _agent.SetDestination(point);
         }
 
+        public string Speech(LineType type)
+        {
+            return _conversation.Speech(type);
+        }
+
+        public bool GetFood()
+        {
+            if (Random.value <= greed)
+            {
+                Speech(LineType.RequestFood);
+                return false;
+            }
+
+            return true;
+        }
+
+        public void NPCDead()
+        {
+            Debug.Log("죽음");
+            Destroy(gameObject);
+        }
+
         private void Update()
         {
-            if (Keyboard.current.tKey.wasPressedThisFrame)
-                _conversation.Speech(testLineType);
+            if (IsFront)
+            {
+                _timer += Time.deltaTime;
+                if (_timer >= patience)
+                {
+                    Speech(LineType.RequestFood);
+                    _timer = Random.Range(0, patience / 2);
+                }
+            }
         }
     }
 }
