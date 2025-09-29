@@ -1,5 +1,9 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using KWJ.Define;
+using KWJ.Food;
+using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -13,14 +17,23 @@ namespace Code.NPC
         [SerializeField] private float deleteTime;
         [SerializeField] private List<NPC> npcPrefabList;
         [SerializeField] private int npcCount;
-
+        [SerializeField] private TextMeshProUGUI ui;
+        [SerializeField] private float animationSpeed;
+         
+        private Coroutine _textCoroutine;
+        private WaitForSeconds _textWait;
         private List<NPC> _npc;
 
         public NPC GetCurrentNPC() => _npc[0];
+
+        private int _eatenCount;
         
         private void Awake()
         {
+            _textWait = new WaitForSeconds(animationSpeed);
+            
             _npc = new List<NPC>();
+            _eatenCount = 0;
             
             for (int i = 0; i < npcCount; i++)
             {
@@ -38,15 +51,20 @@ namespace Code.NPC
         [ContextMenu("Delete")]
         private async void DeleteFrontNPC()
         {
+            if (_npc.Count <= 0) return;
+            
+            _eatenCount++;
+            
             Vector3 dir = _npc[0].transform.right;
             Vector3 movePoint =  _npc[0].transform.position + dir * deleteDistance;
             
             _npc[0].MoveToPoint(movePoint);
             _npc[0].IsFront = false;
-            _npc.RemoveAt(0);
-            _npc[0].IsFront = true;
-            await Awaitable.WaitForSecondsAsync(deleteTime);
             NPC npc = _npc[0];
+            _npc.RemoveAt(0);
+            if (_npc.Count > 0)
+                _npc[0].IsFront = true;
+            await Awaitable.WaitForSecondsAsync(deleteTime);
             Destroy(npc.gameObject);
         }
 
@@ -63,7 +81,100 @@ namespace Code.NPC
         [ContextMenu("Delete")]
         private void InteractionNPC()
         {
-            _npc[0].Speech(LineType.RequestFood);
+            if (_npc.Count <= 0) return;
+            
+            ShowTextUI(_npc[0].Speech(LineType.RequestFood));
+        }
+
+        [ContextMenu("KILL")]
+        private void FrontNPCKill()
+        {
+            if (_npc.Count <= 0) return;
+            
+            NPC npc = _npc[0];
+            _npc.RemoveAt(0);
+            npc.IsFront = false;
+            npc.NPCDead();
+            if (_npc.Count > 0)
+                _npc[0].IsFront = true;
+            
+            RefreshNPCPoint();
+        }
+
+        [ContextMenu("Skep")]
+        private void SkepNPC()
+        {
+            if (_npc.Count <= 0) return;
+            
+            ShowTextUI(_npc[0].Speech(LineType.Complaint));
+            DeleteFrontNPC();
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (_npc.Count <= 0) return;
+            
+            if (other.TryGetComponent(out Food food))
+            {
+                if (_npc[0].GetFood())
+                {
+                    if (food.FoodState == FoodState.Good)
+                    {
+                        ShowTextUI(_npc[0].Speech(LineType.GoodFood), () =>
+                        {
+                            DeleteFrontNPC();
+                            RefreshNPCPoint();
+                        });
+                    }
+                    else if (food.FoodState == FoodState.Normal)
+                    {
+                         ShowTextUI(_npc[0].Speech(LineType.NormalFood), () =>
+                             {
+                                DeleteFrontNPC();
+                                RefreshNPCPoint();
+                             });
+                    }
+                    else
+                    {
+                        ShowTextUI(_npc[0].Speech(LineType.BadFood), () =>
+                            {
+                                DeleteFrontNPC();
+                                RefreshNPCPoint();
+                            });
+                    }
+                }
+                else
+                {
+                    ShowTextUI(_npc[0].Speech(LineType.RequestFood));
+                }
+                
+                Destroy(other.gameObject);
+            }
+        }
+        
+        private void ShowTextUI(string text, Action endCallback = null)
+        {
+            if (ui == null) return;
+             
+            ui.text = text;
+             
+            if (_textCoroutine != null)
+                StopCoroutine(_textCoroutine);
+             
+            _textCoroutine = StartCoroutine(TextAnimationCoroutine(endCallback));
+        }
+
+        private IEnumerator TextAnimationCoroutine(Action endCallback = null)
+        {
+            ui.maxVisibleCharacters = 0;
+            for (int i = 0; i < ui.text.Length; i++)
+            {
+                yield return _textWait;
+                ui.maxVisibleCharacters++;
+            }
+            
+            yield return _textWait;
+            endCallback?.Invoke();
         }
     }
 }

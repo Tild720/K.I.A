@@ -9,10 +9,9 @@ namespace Code.NPC
     {
         private NavMeshAgent _agent;
         [SerializeField] private NPCConversationCompo _conversation;
-        [SerializeField] private LineType testLineType;
         [SerializeField] private float completeMoveWindow;
         [SerializeField] private float patience;
-        [SerializeField, MinMaxRangeSlider(0, 1)] private float greed;
+        [SerializeField] private float greed;
 
         private float _timer;
 
@@ -31,9 +30,9 @@ namespace Code.NPC
             _agent.SetDestination(point);
         }
 
-        public void Speech(LineType type)
+        public string Speech(LineType type)
         {
-            _conversation.Speech(type);
+            return _conversation.Speech(type);
         }
 
         public bool GetFood()
@@ -45,6 +44,12 @@ namespace Code.NPC
             }
 
             return true;
+        }
+
+        public void NPCDead()
+        {
+            Debug.Log("죽음");
+            Destroy(gameObject);
         }
 
         private void Update()

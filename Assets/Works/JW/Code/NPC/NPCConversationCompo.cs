@@ -12,7 +12,8 @@ namespace Code.NPC
         RequestFood, //음식 내놔
         GoodFood,
         NormalFood,
-        BadFood
+        BadFood,
+        Complaint
     }
     
     [Serializable]
@@ -31,49 +32,21 @@ namespace Code.NPC
     public class NPCConversationCompo : MonoBehaviour
     {
          [SerializeField] private NPCLine[] npcLines;
-         [SerializeField] private TextMeshProUGUI ui;
-         [SerializeField] private float animationSpeed;
-         
-         private Coroutine _textCoroutine;
-         private WaitForSeconds _textWait;
-
-         private void Awake()
-         {
-             _textWait = new WaitForSeconds(animationSpeed);
-         }
-
-         public void Speech(LineType lineType)
+        
+         public string Speech(LineType lineType)
          {
              var lines = npcLines.Where(line => line.lineType == lineType).ToArray();
                  
              if (lines.Length > 0)
              {
                 int idx = Random.Range(0, lines.Length);
-                
-                ShowTextUI(lines[idx].line);
+                return lines[idx].line;
+                //ShowTextUI(lines[idx].line);
              }
-             
+
+             return " ";
          }
 
-         private void ShowTextUI(string text)
-         {
-             ui.text = text;
-             
-             if (_textCoroutine != null)
-                 StopCoroutine(_textCoroutine);
-             
-             _textCoroutine = StartCoroutine(TextAnimationCoroutine());
-             Debug.Log(text);
-         }
-
-         private IEnumerator TextAnimationCoroutine()
-         {
-             ui.maxVisibleCharacters = 0;
-             for (int i = 0; i < ui.text.Length; i++)
-             {
-                 yield return _textWait;
-                 ui.maxVisibleCharacters++;
-             }
-         }
+         
     }
 }

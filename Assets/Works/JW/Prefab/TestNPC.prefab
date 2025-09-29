@@ -146,7 +146,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conversation: {fileID: 6582826638888470744}
-  testLineType: 
+  testLineType: 0
+  completeMoveWindow: 0.1
+  patience: 0.72
+  greed: 0.25
 --- !u!114 &6582826638888470744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,6 +162,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c76a86a8bad4c4fb643364d4be37e52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  npcLines: []
-  ui: {fileID: 0}
-  animationSpeed: 0
+  npcLines:
+  - lineType: 0
+    line: "\uBC25\uC918"
+  - lineType: 0
+    line: "\uBC25 \uB9CE\uC774 \uC918"
+  - lineType: 1
+    line: "\uB9DB\uC788\uB124"
+  - lineType: 1
+    line: GOOD
+  - lineType: 2
+    line: Normal
+  - lineType: 2
+    line: "\uBA39\uC744\uB9CC \uD558\uB124\uC694"
+  - lineType: 3
+    line: "\uB9DB\uC5C6\uC5B4\uC694"
+  - lineType: 3
+    line: "\uB178\uB9DB"
+  - lineType: 4
+    line: "\uB098\uC05C\uC0AC\uB78C\uC544"
+  - lineType: 4
+    line: "\uB098\uC05C\uC0AC\uB78C\uC544"
