@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3777052439910750145}
   - component: {fileID: 7524546829643875630}
   - component: {fileID: 7995734522637702447}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: LightGreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,7 +114,7 @@ GameObject:
   - component: {fileID: 3274889052197864957}
   - component: {fileID: 914719103517454452}
   - component: {fileID: 1896069673511494088}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: LightRed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -213,7 +213,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5234625129787094910}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -477,7 +477,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5999150967648447897}
   - component: {fileID: 323588547684335551}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Grill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -731,7 +731,7 @@ GameObject:
   - component: {fileID: 452916886901830857}
   - component: {fileID: 5792032556462684430}
   - component: {fileID: 7052457140358940137}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -941,7 +941,7 @@ GameObject:
   - component: {fileID: 1733453358669041933}
   - component: {fileID: 1552106014748664153}
   - component: {fileID: 362409444924216748}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1062,6 +1062,10 @@ PrefabInstance:
     - target: {fileID: 390542621515834693, guid: 4a4e1e1b244c9f948aec37e4b47ccce6, type: 3}
       propertyPath: m_Name
       value: Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 390542621515834693, guid: 4a4e1e1b244c9f948aec37e4b47ccce6, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3232098669476431253, guid: 4a4e1e1b244c9f948aec37e4b47ccce6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1235,7 +1239,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3977142838995999212, guid: df51d597b8fd8184a81c6280887f4af3, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7808466817302517324, guid: df51d597b8fd8184a81c6280887f4af3, type: 3}
       propertyPath: _boxSize.x

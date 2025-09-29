@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using KWJ.Define;
+using UnityEngine;
 
 namespace KWJ.Food
 {
@@ -8,9 +9,22 @@ namespace KWJ.Food
         [SerializeField] private IngredientChecker ingredientChecker;
         
         //평가 완료
+        public bool IsCompleteEvaluation => _isCompleteEvaluation;
         private bool _isCompleteEvaluation;
 
-        private void Update()
+        public void SetFood(FoodType foodType, FoodState foodState)
+        {
+            m_FoodState = foodState;
+            m_FoodType = foodType;
+        }
+
+        public void Reset()
+        {
+            _isCompleteEvaluation = false;
+            ingredientChecker.Reset();
+        }
+
+        public void CreateFood()
         {
             if(_isCompleteEvaluation || ingredientChecker.IsValidIngredients == false) return;
             

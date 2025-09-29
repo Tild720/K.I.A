@@ -1,5 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using Code.Core.EventSystems;
+using KWJ.Define;
+using Unity.Mathematics;
 using UnityEngine;
+using Works.JW.Events;
 
 namespace Region
 {
@@ -32,7 +37,62 @@ namespace Region
             }
 
             DontDestroyOnLoad(this.gameObject);
+            
+            GameEventBus.AddListener<FoodEatEvent>(SetScore);
         }
+
+        private void OnDestroy()
+        {
+            GameEventBus.RemoveListener<FoodEatEvent>(SetScore);
+        }
+
+
+        public void SetScore(FoodEatEvent evt)
+        {
+            float multiplier = 1f;
+            float baseScore = 0f;
+            
+            switch (evt.foodState)
+            {
+                case FoodState.Good:
+                    multiplier = 1f;
+                    break;
+                case FoodState.Normal:
+                    multiplier = 0.5f;
+                    break;
+                case FoodState.Bad:
+                    multiplier = -1f;  
+                    break;
+            }
+
+
+            switch (evt.foodType)
+            {
+                case FoodType.Soup:
+                    baseScore = 3f;
+                    break;
+                case FoodType.Porridge:
+                    baseScore = 1f;
+                    break;
+                case FoodType.LowQualityMeat:
+                    baseScore = 5f;
+                    break;
+                case FoodType.Toast:
+                    baseScore = 3f;
+                    break;
+                case FoodType.Sandwich:
+                    baseScore = 10f;
+                    break;
+                case FoodType.Beef:
+                    baseScore = 15f;
+                    break;
+            }
+
+            float finalScore = Mathf.Min(Mathf.Max(baseScore * multiplier, -3),15);
+            
+            HealthFixed = (int)finalScore;
+        }
+ 
 
         private int _currentRegionIndex = 0;
         public RegionSO CurrentRegion => _regions[_currentRegionIndex];

@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Code.Core.EventSystems;
 using KWJ.Define;
 using KWJ.Food;
 using TMPro;
 using UnityEngine;
+using Works.JW.Events;
 using Random = UnityEngine.Random;
 
 namespace Code.NPC
@@ -13,7 +15,7 @@ namespace Code.NPC
     {
         [SerializeField] private Transform npcStandingPoint;
         [SerializeField] private Vector3 npcOffset;
-        [SerializeField] private float deleteDistance;
+        [SerializeField] private Vector3 npcDeleteOffset;
         [SerializeField] private float deleteTime;
         [SerializeField] private List<NPC> npcPrefabList;
         [SerializeField] private int npcCount;
@@ -54,9 +56,8 @@ namespace Code.NPC
             if (_npc.Count <= 0) return;
             
             _eatenCount++;
-            
-            Vector3 dir = _npc[0].transform.right;
-            Vector3 movePoint =  _npc[0].transform.position + dir * deleteDistance;
+
+            Vector3 movePoint = _npc[0].transform.position + npcDeleteOffset;
             
             _npc[0].MoveToPoint(movePoint);
             _npc[0].IsFront = false;
@@ -71,6 +72,12 @@ namespace Code.NPC
         [ContextMenu("Refresh")]
         private void RefreshNPCPoint()
         {
+            if (_npc.Count <= 0)
+            {
+                GameEventBus.RaiseEvent(NPCEvents.NpcLineEndEvent);
+                return;
+            }
+            
             for (int i = 0; i < _npc.Count; i++)
             {
                 Vector3 point = npcStandingPoint.position + (npcOffset * i);
@@ -86,19 +93,31 @@ namespace Code.NPC
             ShowTextUI(_npc[0].Speech(LineType.RequestFood));
         }
 
+        private void Update()
+        {
+            if (_npc.Count > 0)
+            {
+                if (_npc[0].IsMoveCompleted)
+                {
+                    _npc[0].RotateToPoint(transform.position);
+                }
+            }
+        }
+
         [ContextMenu("KILL")]
         private void FrontNPCKill()
         {
             if (_npc.Count <= 0) return;
             
+            
             NPC npc = _npc[0];
             _npc.RemoveAt(0);
             npc.IsFront = false;
-            npc.NPCDead();
+            npc.NPCDead(() => RefreshNPCPoint());
             if (_npc.Count > 0)
                 _npc[0].IsFront = true;
             
-            RefreshNPCPoint();
+            GameEventBus.RaiseEvent(NPCEvents.NpcLineEndEvent);
         }
 
         [ContextMenu("Skep")]
@@ -114,8 +133,10 @@ namespace Code.NPC
         {
             if (_npc.Count <= 0) return;
             
+            
             if (other.TryGetComponent(out Food food))
             {
+                GameEventBus.RaiseEvent(FoodEvents.FoodEatEvent.Init(food.FoodType, food.FoodState));
                 if (_npc[0].GetFood())
                 {
                     if (food.FoodState == FoodState.Good)
