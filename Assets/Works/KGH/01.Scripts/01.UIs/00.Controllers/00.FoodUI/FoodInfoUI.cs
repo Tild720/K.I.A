@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using Code.Core.EventSystems;
+using Core.EventSystem;
 using Foods;
 using TMPro;
 using UIs.Visuals;
@@ -10,38 +12,40 @@ namespace UIs.Controllers.FoodUI
 {
     public class FoodInfoUI : MonoBehaviour
     {
-        [Header("Info Ref")]
-        [SerializeField] private Image icon; 
+        [Header("Info Ref")] [SerializeField] private Image icon;
         [SerializeField] private TextMeshProUGUI foodNameText;
         [SerializeField] private TextMeshProUGUI priceText;
         [SerializeField] private TextMeshProUGUI foodDescriptionText;
         [SerializeField] private Transform ingredientItemParent;
         [SerializeField] private GameObject ingredientItemPrefab;
-        [Header("Counters Ref")]
-        [SerializeField] private Button addButton;
+
+        [Header("Counters Ref")] [SerializeField]
+        private Button addButton;
+
         [SerializeField] private Button subtractButton;
         [SerializeField] private TMP_InputField countInputField;
-        [Header("Confirm Ref")]
-        [SerializeField] private Button confirmButton;
-        
+
+        [Header("Confirm Ref")] [SerializeField]
+        private Button confirmButton;
+
         private List<IngredientItemUI> _ingredientItems = new List<IngredientItemUI>();
-        
+
         private VisualElement _addButtonVisualElement;
         private VisualElement _subtractButtonVisualElement;
         private VisualElement _confirmButtonVisualElement;
-        
+
         private FoodSO _currentFood;
-        
+
         private void Awake()
         {
             _addButtonVisualElement = addButton.GetComponent<VisualElement>();
             _subtractButtonVisualElement = subtractButton.GetComponent<VisualElement>();
             _confirmButtonVisualElement = confirmButton.GetComponent<VisualElement>();
-            
+
             addButton.onClick.AddListener(OnAdd);
             subtractButton.onClick.AddListener(OnSubtract);
             confirmButton.onClick.AddListener(OnConfirm);
-            
+
             countInputField.onEndEdit.AddListener(CheckValidInput);
             countInputField.onValueChanged.AddListener(CheckMaxCharacters);
         }
@@ -70,6 +74,7 @@ namespace UIs.Controllers.FoodUI
                 countInputField.text = "0";
                 return;
             }
+
             int maxBuyable = 99; // TODO: Calculate based on player's resources
             if (value > maxBuyable)
             {
@@ -80,13 +85,14 @@ namespace UIs.Controllers.FoodUI
             {
                 countInputField.text = value.ToString();
             }
+
             CheckButton();
         }
 
         public void SetUpFood(FoodSO food)
         {
             _currentFood = food;
-            
+
             icon.sprite = food.icon;
             foodNameText.text = food.foodName;
             priceText.text = food.price.ToString();
@@ -112,7 +118,7 @@ namespace UIs.Controllers.FoodUI
                 ingredientItemUI.SetIngredient(food.ingredient[i].icon, food.ingredient[i].ingredientName);
                 _ingredientItems.Add(ingredientItemUI);
             }
-            
+
             countInputField.text = "0";
         }
 
@@ -121,9 +127,10 @@ namespace UIs.Controllers.FoodUI
             var count = int.Parse(countInputField.text);
             count++;
             countInputField.text = count.ToString();
-            
+
             CheckButton();
         }
+
         public void OnSubtract()
         {
             var count = int.Parse(countInputField.text);
@@ -132,7 +139,7 @@ namespace UIs.Controllers.FoodUI
                 count--;
                 countInputField.text = count.ToString();
             }
-            
+
             CheckButton();
         }
 
@@ -143,7 +150,7 @@ namespace UIs.Controllers.FoodUI
             {
                 _subtractButtonVisualElement.AddState("disabled", 20);
                 subtractButton.interactable = false;
-                
+
                 _confirmButtonVisualElement.AddState("disabled", 10);
                 confirmButton.interactable = false;
             }
@@ -151,11 +158,11 @@ namespace UIs.Controllers.FoodUI
             {
                 _subtractButtonVisualElement.RemoveState("disabled");
                 subtractButton.interactable = true;
-                
+
                 _confirmButtonVisualElement.RemoveState("disabled");
                 confirmButton.interactable = true;
             }
-            
+
             bool canPurchaseMore = true; // TODO: Check if the player has enough resources to purchase
             if (!canPurchaseMore)
             {
@@ -171,7 +178,9 @@ namespace UIs.Controllers.FoodUI
 
         public void OnConfirm()
         {
-            //TODO: Confirm Purchase Logic
+            var count = int.Parse(countInputField.text);
+            if (count <= 0) return;
+            GameEventBus.RaiseEvent(PurchaseEvents.PurchaseEvent.Initialize(_currentFood, count));
         }
     }
 }
