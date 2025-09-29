@@ -28,11 +28,11 @@ namespace KWJ.Define
     {
         None = 0,
         
-        TopBurgerBun,
+        Bread,
         Patty,
         Lettuce,
         Tomato,
-        BottomBurgerBun,
+        LowQualityMeat,
                 
         Max,
     }
@@ -52,10 +52,13 @@ namespace KWJ.Define
     {
         None = 0,
         
-        LowQualityMeat,
+        //액체 음식
         Soup,
-        Toast,
         Porridge,
+        
+        //고체 음식
+        LowQualityMeat,
+        Toast,
         Sandwich,
         //Burger,
         Beef,
