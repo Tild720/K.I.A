@@ -18,6 +18,8 @@ namespace Code.Chat
         
         private int _chatIndex = 0;
         private bool _isChoiced = false;
+        
+        public int Point { get; set; }
 
         private void Start()
         {

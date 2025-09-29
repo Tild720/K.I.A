@@ -13,25 +13,6 @@ MonoBehaviour:
   m_Name: Chat1
   m_EditorClassIdentifier: 
   Chats:
-  - ChatType: 0
-    Messages:
-    - message: "\uC548\uB155\uD558\uC138\uC694."
-      delay: 5
-    - message: "\uBC18\uAC11\uC2B5\uB2C8\uB2E4."
-      delay: 5
-    Choices:
-    - action: "\uBB3C\uC5B4\uBCF4\uAE30"
-      message:
-        message: 
-        delay: 0
-      points: 10
-      reply: "\uB124\uB124"
-    - action: "\uB05D\uB0B4\uAE30"
-      message:
-        message: 
-        delay: 0
-      points: 10
-      reply: "\uB124\u3154\uB124\uB124~"
   - ChatType: 1
     Messages:
     - message: "\u314B\u314B\u314B\u314B\u314B\uC694."
@@ -42,12 +23,26 @@ MonoBehaviour:
     - action: "\uBB3C\uC5B4\uBCF4\uAE30"
       message:
         message: sadsdsd
-        delay: 0
+        delay: 3
       points: 10
       reply: "\uB124\uB124"
     - action: "\uB05D\uB0B4\uAE30"
       message:
-        message: 
-        delay: 0
+        message: "\u3147\u3134\u3147\u3134\u3147"
+        delay: 3
       points: 10
       reply: "\uB124\u3154\uB124\uB124~"
+  - ChatType: 0
+    Messages:
+    - message: dsssdsdsd
+      delay: 5
+    - message: sdsdsd
+      delay: 5
+    Choices: []
+  - ChatType: 2
+    Messages:
+    - message: "\uC624\uC804 10:15"
+      delay: 5
+    - message: "\uAD6C\u3160\u3145\uADEF\uADEF"
+      delay: 5
+    Choices: []
