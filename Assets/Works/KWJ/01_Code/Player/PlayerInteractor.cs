@@ -34,12 +34,16 @@ namespace KWJ.Players
         {
             _isInteracting = obj;
 
-            if(_interChecker.Interactable == null) return;
-            
-            if(_isInteracting)
+            if (_isInteracting)
+            {
+                if(_interChecker.Interactable == null) return;
                 _interChecker.Interactable.PointerDown(_agent);
+            }
             else
+            {
+                if(_interChecker.Interactable == null) return;
                 _interChecker.Interactable.PointerUp(_agent);
+            }
         }
     }
 }

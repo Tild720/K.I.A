@@ -15,6 +15,7 @@ namespace KWJ.Interactable.PickUpable
             transform.SetParent(dish);
             m_rigidbody.isKinematic = true;
             m_IsCompleteCooking = true;
+            m_collider.enabled = false;
             SetCanPickUp(false);
         }
     }
