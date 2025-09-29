@@ -52,8 +52,13 @@ namespace KWJ.Define
     {
         None = 0,
         
-        Burger,
+        LowQualityMeat,
+        Soup,
+        Toast,
+        Porridge,
         Sandwich,
+        //Burger,
+        Beef,
         
         Max,
     }
