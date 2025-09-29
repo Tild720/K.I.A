@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Code.Core.EventSystems;
 using KWJ.Define;
 using KWJ.Food;
 using TMPro;
 using UnityEngine;
+using Works.JW.Events;
 using Random = UnityEngine.Random;
 
 namespace Code.NPC
@@ -122,8 +124,10 @@ namespace Code.NPC
         {
             if (_npc.Count <= 0) return;
             
+            
             if (other.TryGetComponent(out Food food))
             {
+                GameEventBus.RaiseEvent(FoodEvents.FoodEatEvent.Init(food.FoodType, food.FoodState));
                 if (_npc[0].GetFood())
                 {
                     if (food.FoodState == FoodState.Good)

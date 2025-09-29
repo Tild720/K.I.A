@@ -10,7 +10,7 @@ namespace KWJ.Food
         //평가 완료
         private bool _isCompleteEvaluation;
 
-        private void Update()
+        public void CreateFood()
         {
             if(_isCompleteEvaluation || ingredientChecker.IsValidIngredients == false) return;
             
