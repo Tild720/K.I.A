@@ -6,7 +6,7 @@ using KWJ.Interactable.PickUpable;
 using KWJ.OverlapChecker;
 using UnityEngine;
 
-namespace KWJ.Interactable
+namespace KWJ.Food
 {
     [Serializable]
     public class IngredientOrder
@@ -19,9 +19,11 @@ namespace KWJ.Interactable
         [SerializeField] private RaycastChecker rayChecker;
         
         [SerializeField] private List<IngredientOrder> ingredientOrders = new List<IngredientOrder>();
+
+        public List<Ingredient> Ingredients => _ingredients;
+        private List<Ingredient> _ingredients = new List<Ingredient>();
         
-        private List<CookableIngredient> _ingredients = new List<CookableIngredient>();
-        
+        public bool IsCompleteStack => _isCompleteStack;
         private bool _isCompleteStack;
         
         private void Update()
@@ -30,13 +32,13 @@ namespace KWJ.Interactable
             
             GameObject[] foodIngredients = rayChecker.GetRaycastData();
             
-            CookableIngredient[] ingredients = foodIngredients.Select(i 
-                => i.GetComponentInChildren<CookableIngredient>()).ToArray();
+            Ingredient[] ingredients = foodIngredients.Select(i 
+                => i.GetComponentInChildren<Ingredient>()).ToArray();
 
             IngredientStackCheck(ingredients);
         }
 
-        private void IngredientStackCheck(CookableIngredient[] ingredients)
+        private void IngredientStackCheck(Ingredient[] ingredients)
         {
             foreach (var ingredientOrder in ingredientOrders)
             {

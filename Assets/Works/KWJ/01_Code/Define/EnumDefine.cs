@@ -36,4 +36,25 @@ namespace KWJ.Define
                 
         Max,
     }
+    
+    public enum FoodState
+    {
+        None = 0,
+        
+        Good,
+        Normal,
+        Bad,
+                
+        Max,
+    }
+    
+    public enum FoodType
+    {
+        None = 0,
+        
+        Burger,
+        Sandwich,
+        
+        Max,
+    }
 }

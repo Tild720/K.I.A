@@ -46,8 +46,6 @@ namespace KWJ.OverlapChecker
             else
                 count = Physics.RaycastNonAlloc(checkPoint.position, transform.forward, _results, length, targetMask);
             
-            Array.Sort(_results, (a, b) => a.distance.CompareTo(b.distance));
-            
             GameObject[] targets = new GameObject[count];
 
             for (int i = 0; i < count; i++)
@@ -55,6 +53,10 @@ namespace KWJ.OverlapChecker
                 targets[i] = _results[i].collider.gameObject;
             }
 
+            Array.Sort(targets, (a, b) =>
+                Vector3.Distance(checkPoint.position, a.transform.position)
+                    .CompareTo(Vector3.Distance(transform.position, b.transform.position)));
+            
             return targets;
         }
         
