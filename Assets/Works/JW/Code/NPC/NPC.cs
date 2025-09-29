@@ -1,4 +1,6 @@
-﻿using Unity.Cinemachine;
+﻿using System;
+using DG.Tweening;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
@@ -12,8 +14,10 @@ namespace Code.NPC
         [SerializeField] private float completeMoveWindow;
         [SerializeField] private float patience;
         [SerializeField] private float greed;
+        [SerializeField] private float deadAnimationTime;
 
         private float _timer;
+        private bool _isDead;
 
         public bool IsMoveCompleted => Vector3.Distance(transform.position, _agent.destination) < completeMoveWindow;
 
@@ -23,11 +27,20 @@ namespace Code.NPC
         {
             _agent = GetComponent<NavMeshAgent>();
             _timer = 0;
+            _isDead = false;
         }
 
         public void MoveToPoint(Vector3 point)
         {
             _agent.SetDestination(point);
+        }
+        
+        public void RotateToPoint(Vector3 point)
+        { 
+            Vector3 dir = point - transform.position;
+            dir.y = 0;
+            //dir.Normalize();
+            transform.rotation = Quaternion.LookRotation(dir);
         }
 
         public string Speech(LineType type)
@@ -46,10 +59,14 @@ namespace Code.NPC
             return true;
         }
 
-        public void NPCDead()
+        public void NPCDead(Action endCallback = null)
         {
-            Debug.Log("죽음");
-            Destroy(gameObject);
+            _isDead = true;
+            transform.DOLocalRotate(new Vector3(0, 0, 90), deadAnimationTime).OnComplete(() =>
+            {
+                Destroy(gameObject);
+                endCallback?.Invoke();
+            });
         }
 
         private void Update()
