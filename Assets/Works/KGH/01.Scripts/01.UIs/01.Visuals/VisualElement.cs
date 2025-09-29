@@ -10,7 +10,7 @@ namespace UIs.Visuals
         [SerializeField] private string defaultState = "default";
         [SerializeField] private bool isThisRoot;
         [SerializeField] private Transform stateRoot;
-        private Dictionary<string, int> _states;
+        private Dictionary<string, int> _states = new Dictionary<string, int>();
         private Dictionary<string, List<IUIState>> _effects = new Dictionary<string, List<IUIState>>();
         private List<VisualElement> _children = new List<VisualElement>();
         private string _currentState;

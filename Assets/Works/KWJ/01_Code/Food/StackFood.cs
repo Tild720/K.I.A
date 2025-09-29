@@ -1,7 +1,4 @@
-﻿using KWJ.Define;
-using KWJ.Interactable;
-using KWJ.Interactable.PickUpable;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace KWJ.Food
 {
@@ -9,29 +6,21 @@ namespace KWJ.Food
     {
         [SerializeField] private IngredientStackChecker ingredientChecker;
 
-        private int _deduction;
-
+        //평가 완료
         private bool _isCompleteEvaluation;
 
         private void Update()
         {
             if(_isCompleteEvaluation || ingredientChecker.IsCompleteStack == false) return;
-
+            
+            m_FoodType = ingredientChecker.FoodType;
+            
             foreach (var ingredient in ingredientChecker.Ingredients)
             {
-                if (ingredient is CookableIngredient cookableIngredient)
-                {
-                    if (cookableIngredient.CookingState != CookingState.Moderate)
-                        _deduction++;
-                }
+                ingredient.CompleteCooking(transform);
             }
-
-            if (_deduction >= 3)
-                m_FoodState = FoodState.Bad;
-            else if (_deduction >= 1)
-                m_FoodState = FoodState.Normal;
-            else if (_deduction == 0)
-                m_FoodState = FoodState.Good;
+            
+            m_FoodState = FoodQuality.FoodQualityCheck(ingredientChecker.Ingredients.ToArray());
 
             _isCompleteEvaluation = true;
         }

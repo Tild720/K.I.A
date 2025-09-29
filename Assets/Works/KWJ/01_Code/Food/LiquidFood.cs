@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using Works.KWJ._01_Code.Interactable;
 
 namespace KWJ.Food
 {
@@ -8,9 +7,23 @@ namespace KWJ.Food
     {
         [SerializeField] private IngredientChecker ingredientChecker;
         
+        //평가 완료
+        private bool _isCompleteEvaluation;
+
         private void Update()
         {
+            if(_isCompleteEvaluation || ingredientChecker.IsValidIngredients == false) return;
             
+            m_FoodType = ingredientChecker.FoodType;
+            
+            foreach (var ingredient in ingredientChecker.Ingredients)
+            {
+                Destroy(ingredient.gameObject);
+            }
+            
+            m_FoodState = FoodQuality.FoodQualityCheck(ingredientChecker.Ingredients.ToArray());
+
+            _isCompleteEvaluation = true;
         }
     }
 }

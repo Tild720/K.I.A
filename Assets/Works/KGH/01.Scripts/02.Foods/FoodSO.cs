@@ -11,8 +11,6 @@ namespace Foods
         public int price;
         [TextArea]
         public string description;
-        public int refugeePoint;
-        public int governmentPoint;
         public IngredientSO[] ingredient;
     }
 }
