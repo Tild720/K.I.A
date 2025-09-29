@@ -31,9 +31,9 @@ namespace UIs.Controllers.InfoUI
         {
             var currentRegion = RegionManager.CurrentRegion;
             if (currentRegion == null) return;
-            SetUpInfo(currentRegion.population, currentRegion.health, 0);
+            SetUpInfo(currentRegion.population, currentRegion.health, RegionManager.Money);
             StartPopUp();
-            infoBar.SetUpInfo(currentRegion.population, currentRegion.health, 0);
+            infoBar.SetUpInfo(currentRegion.population, currentRegion.health, RegionManager.Money);
         }
 
         private void SetUpInfo(int population, int health, int money)

@@ -2,7 +2,7 @@
 
 namespace Foods
 {
-    [CreateAssetMenu(fileName = "Food", menuName = "SO/Food", order = 0)]
+    [CreateAssetMenu(fileName = "Food", menuName = "SO/Food/Food", order = 0)]
     public class FoodSO : ScriptableObject
     {
         public string foodName;

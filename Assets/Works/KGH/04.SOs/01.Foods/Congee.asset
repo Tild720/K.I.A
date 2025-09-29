@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8e3f22d9ee815e4bab036d5775a3340, type: 3}
+  m_Name: Congee
+  m_EditorClassIdentifier: 
+  foodName: "\uB9E8\uC8FD"
+  foodPrefab: {fileID: 0}
+  icon: {fileID: -1502667278, guid: 431689c146d9b7843901d5848adc84a5, type: 3}
+  price: 0
+  description: "\uB9E8 \uC8FD\uC774\uB2E4. "
+  ingredient:
+  - {fileID: 11400000, guid: 121a653574ed03d46a7654eeed261cbd, type: 2}

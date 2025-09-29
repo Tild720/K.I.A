@@ -13,7 +13,7 @@ namespace Code.NPC
     {
         [SerializeField] private Transform npcStandingPoint;
         [SerializeField] private Vector3 npcOffset;
-        [SerializeField] private float deleteDistance;
+        [SerializeField] private Vector3 npcDeleteOffset;
         [SerializeField] private float deleteTime;
         [SerializeField] private List<NPC> npcPrefabList;
         [SerializeField] private int npcCount;
@@ -54,9 +54,8 @@ namespace Code.NPC
             if (_npc.Count <= 0) return;
             
             _eatenCount++;
-            
-            Vector3 dir = _npc[0].transform.right;
-            Vector3 movePoint =  _npc[0].transform.position + dir * deleteDistance;
+
+            Vector3 movePoint = _npc[0].transform.position + npcDeleteOffset;
             
             _npc[0].MoveToPoint(movePoint);
             _npc[0].IsFront = false;
@@ -86,6 +85,17 @@ namespace Code.NPC
             ShowTextUI(_npc[0].Speech(LineType.RequestFood));
         }
 
+        private void Update()
+        {
+            if (_npc.Count > 0)
+            {
+                if (_npc[0].IsMoveCompleted)
+                {
+                    _npc[0].RotateToPoint(transform.position);
+                }
+            }
+        }
+
         [ContextMenu("KILL")]
         private void FrontNPCKill()
         {
@@ -94,11 +104,9 @@ namespace Code.NPC
             NPC npc = _npc[0];
             _npc.RemoveAt(0);
             npc.IsFront = false;
-            npc.NPCDead();
+            npc.NPCDead(() => RefreshNPCPoint());
             if (_npc.Count > 0)
                 _npc[0].IsFront = true;
-            
-            RefreshNPCPoint();
         }
 
         [ContextMenu("Skep")]
