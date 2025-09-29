@@ -26,6 +26,7 @@ namespace Works.Tild.Code
                 Debug.Log("신뢰도 바닥.");
             }
         }
+        
 
         public void AddTrust(int percentage)
         {
