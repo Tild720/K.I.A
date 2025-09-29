@@ -157,6 +157,7 @@ GameObject:
   m_Component:
   - component: {fileID: 227631540283895474}
   - component: {fileID: 3204862014294567705}
+  - component: {fileID: 6482869857426982052}
   m_Layer: 5
   m_Name: 'HoverState '
   m_TagString: Untagged
@@ -200,6 +201,23 @@ MonoBehaviour:
   transition:
     duration: 0.2
     ease: 27
+--- !u!114 &6482869857426982052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2226764416294058426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd3a72a250124ab49f0ea550c752a578, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateName: hover
+  targetColor: {r: 1, g: 1, b: 1, a: 1}
+  transition:
+    duration: 0.2
+    ease: 3
 --- !u!1 &2485972865628831684
 GameObject:
   m_ObjectHideFlags: 0
@@ -809,6 +827,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1259985858216578246}
   - component: {fileID: 5353930710678241898}
+  - component: {fileID: 1293885836247279224}
   m_Layer: 5
   m_Name: 'SelectedState '
   m_TagString: Untagged
@@ -848,10 +867,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateName: selected
-  targetScale: {x: 1.125, y: 1.125}
+  targetScale: {x: 1.25, y: 1.25}
   transition:
     duration: 0.2
     ease: 27
+--- !u!114 &1293885836247279224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6284804201354169506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd3a72a250124ab49f0ea550c752a578, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateName: selected
+  targetColor: {r: 1, g: 1, b: 1, a: 1}
+  transition:
+    duration: 0.2
+    ease: 3
 --- !u!1 &6842721455032481607
 GameObject:
   m_ObjectHideFlags: 0
@@ -862,6 +898,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6924994407736419691}
   - component: {fileID: 3457769385650053592}
+  - component: {fileID: 9005377413739367285}
   m_Layer: 5
   m_Name: DefaultState
   m_TagString: Untagged
@@ -902,6 +939,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stateName: default
   targetScale: {x: 1, y: 1}
+  transition:
+    duration: 0.2
+    ease: 3
+--- !u!114 &9005377413739367285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6842721455032481607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd3a72a250124ab49f0ea550c752a578, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateName: default
+  targetColor: {r: 0.8235294, g: 0.81960785, b: 0.8392157, a: 1}
   transition:
     duration: 0.2
     ease: 3
@@ -1073,7 +1127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.8235294, g: 0.81960785, b: 0.8392157, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
