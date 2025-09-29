@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Foods
 {
-    [CreateAssetMenu(fileName = "Ingredient", menuName = "SO/Food", order = 0)]
+    [CreateAssetMenu(fileName = "Ingredient", menuName = "SO/Food/Ingredients", order = 0)]
     public class IngredientSO : ScriptableObject
     {
         public Sprite icon;

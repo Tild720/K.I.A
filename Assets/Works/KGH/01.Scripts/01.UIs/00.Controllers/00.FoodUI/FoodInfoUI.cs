@@ -120,6 +120,8 @@ namespace UIs.Controllers.FoodUI
             }
 
             countInputField.text = "0";
+            
+            CheckButton();
         }
 
         public void OnAdd()
