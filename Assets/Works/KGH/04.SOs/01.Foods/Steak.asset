@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8e3f22d9ee815e4bab036d5775a3340, type: 3}
   m_Name: Steak
   m_EditorClassIdentifier: 
-  foodName: "\uC720\uD1B5\uAE30\uD55C \uACE0\uAE30"
+  foodName: "\uC2A4\uD14C\uC774\uD06C"
   foodPrefab: {fileID: 0}
-  icon: {fileID: -1817601684, guid: d16f5d6878cb8ea4fb9e6db6617a06fb, type: 3}
+  icon: {fileID: -210830187, guid: 0a14d1fe2864271488f8760c66105f03, type: 3}
   price: 0
-  description: "\uAE40\uCE58 \uACE0\uAE30 "
+  description: "\uC2A4\uD14C\uC774\uD06C "
   ingredient:
   - {fileID: 11400000, guid: 121a653574ed03d46a7654eeed261cbd, type: 2}

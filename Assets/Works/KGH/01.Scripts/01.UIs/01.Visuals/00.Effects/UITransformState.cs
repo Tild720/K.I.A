@@ -26,7 +26,8 @@ namespace UIs.Visuals.Effects
 
         public void PlayEffect()
         {
-            _target?.DOScale(targetScale, transition.duration).SetEase(transition.ease).SetUpdate(true);
+            var scaleVec3 = new Vector3(targetScale.x, targetScale.y, 1f);
+            _target?.DOScale(scaleVec3, transition.duration).SetEase(transition.ease).SetUpdate(true);
         }
     }
 }

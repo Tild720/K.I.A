@@ -29,6 +29,8 @@ namespace UIs.Controllers.FoodUI
 
                 foodItemUI.VisualElement.OnStateChanged += str => HandleStateChange(str, food);
             }
+            
+            HandleStateChange(ConstDefine.HOVER, foods[0]);
         }
 
         private void HandleStateChange(string state, FoodSO food)
