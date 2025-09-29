@@ -23,10 +23,6 @@ namespace Region
             {
                 var clone = item.Clone() as RegionSO;
                 _regions.Add(clone);
-                
-                //test code
-                clone.health += 100;
-                Debug.Log($"Clone {clone.regionName} Health: {clone.health} (original: {item.health})");
             }
 
             DontDestroyOnLoad(this.gameObject);
