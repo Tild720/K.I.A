@@ -1385,6 +1385,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7301967238005264951, guid: 4a4e1e1b244c9f948aec37e4b47ccce6, type: 3}
+      propertyPath: onClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnKitchenwera
+      objectReference: {fileID: 0}
+    - target: {fileID: 7301967238005264951, guid: 4a4e1e1b244c9f948aec37e4b47ccce6, type: 3}
       propertyPath: onClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: ToggleLight
       objectReference: {fileID: 0}

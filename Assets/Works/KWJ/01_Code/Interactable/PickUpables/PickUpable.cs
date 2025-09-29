@@ -12,34 +12,52 @@ namespace KWJ.Interactable.PickUpable
         private Player _player;
         private bool _isPickUp;
 
+        private bool _canPickUp = true;
+
         public GameObject GameObject => gameObject;
-        private Rigidbody _rigidbody;
+        
+        public Rigidbody Rigidbody => m_rigidbody;
+        protected Rigidbody m_rigidbody;
+        
+        private Collider _collider;
 
         protected virtual void Awake()
         {
-            _rigidbody = GetComponent<Rigidbody>();
+            m_rigidbody = GetComponentInChildren<Rigidbody>();
+            _collider = GetComponentInChildren<Collider>();
+        }
+
+        protected virtual void SetCanPickUp(bool canPickUp)
+        {
+            _canPickUp = canPickUp;
+            m_rigidbody.isKinematic = !canPickUp;
+            _collider.enabled = canPickUp;
         }
 
         public void PointerDown(Entity entity)
         {
+            if(_canPickUp == false) return;
+            
             _interactor = entity.GetCompo<PlayerInteractor>();
             _player = entity as Player;
                 
             _isPickUp = true;
-            _rigidbody.useGravity = false;
+            m_rigidbody.useGravity = false;
             
             StartCoroutine(MoveToCatchPoint(_interactor.CatchPoint));
         }
 
         public void PointerUp(Entity entity)
         {
+            if(_canPickUp == false && _isPickUp == false) return;
+            
             _isPickUp = false;
-            _rigidbody.useGravity = true;
+            m_rigidbody.useGravity = true;
 
             Vector3 forceDir = _interactor.CatchPoint.position - transform.position;
             float distance = forceDir.magnitude;
             
-            _rigidbody.AddForce(forceDir * distance * _player.PlayerStatsSo.ThrowPower, ForceMode.Impulse);
+            m_rigidbody.AddForce(forceDir * distance * _player.PlayerStatsSo.ThrowPower, ForceMode.Impulse);
             
             _interactor = null;
         }
@@ -50,10 +68,10 @@ namespace KWJ.Interactable.PickUpable
             {
                 yield return new WaitForFixedUpdate();
                 
-                _rigidbody.position = Vector3.Lerp(transform.position,
+                m_rigidbody.position = Vector3.Lerp(transform.position,
                     targetTrm.position, 5 * Time.deltaTime);
 
-                _rigidbody.rotation = targetTrm.rotation;
+                m_rigidbody.rotation = targetTrm.rotation;
                 
                 if(!_isPickUp)
                     break;
