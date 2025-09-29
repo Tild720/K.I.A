@@ -9,30 +9,36 @@ using UnityEngine;
 namespace KWJ.Food
 {
     [Serializable]
-    public struct IngredientTemp
+    public struct IngredientCount
     {
         [field: SerializeField] public IngredientType ingredientType;
         [field: SerializeField] public int ingredientCount;
+    }
+
+    
+    [Serializable]
+    public class FoodRecipe
+    {
+        [field: SerializeField] public FoodType foodType;
+        [field:SerializeField] public List<IngredientCount> IngredientCounts { get; private set; }  = new List<IngredientCount>();
     }
     
     public class IngredientChecker : MonoBehaviour
     {
         [SerializeField] private BoxOverlapChecker boxChecker;
 
-        [SerializeField] private List<IngredientTemp> ingredientCounts = new List<IngredientTemp>();
-        private Dictionary<IngredientType, int> _ingredientCounts = new Dictionary<IngredientType, int>();
-        private Dictionary<IngredientType, int> _ingredientCountChecks = new Dictionary<IngredientType, int>();
+        //요리 조합법 리스트
+        [SerializeField] private List<FoodRecipe> foodRecipes = new List<FoodRecipe>();
         
+        //요리 조합법 확인용 리스트
+        private Dictionary<IngredientType, List<Ingredient>> _foodRecipeChecks = new Dictionary<IngredientType, List<Ingredient>>();
+        public List<Ingredient> Ingredients => _ingredients;
+        private List<Ingredient> _ingredients = new List<Ingredient>();
+        
+        public FoodType FoodType => _foodType;
+        private FoodType _foodType;
         public bool IsValidIngredients => _isValidIngredients;
         private bool _isValidIngredients;
-
-        private void Awake()
-        {
-            foreach (var ingredientCount in ingredientCounts)
-            {
-                _ingredientCounts[ingredientCount.ingredientType] = ingredientCount.ingredientCount;
-            }
-        }
 
         private void Update()
         {
@@ -45,23 +51,62 @@ namespace KWJ.Food
             
             IngredientCheck(ingredients);
         }
-        
+
         private void IngredientCheck(Ingredient[] ingredients)
         {
-            _ingredientCountChecks.Clear();
+            _foodRecipeChecks.Clear();
             
+            //_ingredientChecks에 재료들 세팅
             foreach (var ingredient in ingredients)
             {
-                _ingredientCountChecks[ingredient.IngredientType] += 1;
+                if(_foodRecipeChecks.ContainsKey(ingredient.IngredientType) == false)
+                    _foodRecipeChecks.Add(ingredient.IngredientType, new List<Ingredient>());
+                
+                _foodRecipeChecks[ingredient.IngredientType].Add(ingredient);
             }
             
-            foreach (var ingredientCount in _ingredientCounts)
-            {
-                if(_ingredientCounts[ingredientCount.Key]
-                   > _ingredientCountChecks[ingredientCount.Key]) return;
+            //foodRecipes에서 실제 있는 조합법인지 찾기
+            foreach (var foodRecipe in foodRecipes)
+            { 
+                int cnt = foodRecipe.IngredientCounts.Count;
+                
+                foreach (var foodRecipeCheck in _foodRecipeChecks)
+                {
+                    if (TryGetIngredientCount(foodRecipe.IngredientCounts, foodRecipeCheck.Key, out var count) == false
+                        || _foodRecipeChecks[foodRecipeCheck.Key].Count < count)
+                    {
+                        break;
+                    }
+
+                    cnt--;
+                }
+                
+                if (cnt == 0)
+                {
+                    _foodType = foodRecipe.foodType;
+                    break;
+                }
             }
+
+            foreach (var ingredientCountCheck in _foodRecipeChecks)
+                foreach (var ingredient in ingredientCountCheck.Value)
+                    _ingredients.Add(ingredient);
             
+            _foodRecipeChecks.Clear();
             _isValidIngredients = true;
+        }
+        private bool TryGetIngredientCount(List<IngredientCount> ingredientCounts, IngredientType ingredientType, out int count)
+        {
+            count = 0;
+            
+            foreach (var ingredientCount in ingredientCounts)
+                if (ingredientCount.ingredientType == ingredientType)
+                {
+                    count = ingredientCount.ingredientCount;
+                    return true;
+                }
+
+            return false;
         }
     }
 }

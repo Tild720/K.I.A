@@ -3,11 +3,11 @@ using KWJ.Define;
 using KWJ.Interactable.PickUpable;
 using UnityEngine;
 
-namespace KWJ.Manager
+namespace KWJ.Food
 {
-    public class FoodManager : MonoSingleton<FoodManager>
+    public class FoodQuality : MonoBehaviour
     {
-        public FoodState FoodQualityCheck(Ingredient[] ingredients)
+        public static FoodState FoodQualityCheck(Ingredient[] ingredients)
         {
             int deduction = 0;
             

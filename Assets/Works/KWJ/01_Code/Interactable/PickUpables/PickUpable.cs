@@ -27,7 +27,7 @@ namespace KWJ.Interactable.PickUpable
             _collider = GetComponentInChildren<Collider>();
         }
 
-        protected virtual void SetCanPickUp(bool canPickUp)
+        public virtual void SetCanPickUp(bool canPickUp)
         {
             _canPickUp = canPickUp;
             m_rigidbody.isKinematic = !canPickUp;

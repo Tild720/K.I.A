@@ -1,14 +1,17 @@
-﻿using UnityEngine;
+﻿using KWJ.Interactable.PickUpable;
+using UnityEngine;
 
-namespace Works.KWJ._01_Code.Interactable
+namespace KWJ.Interactable
 {
-    public class ItemHolder : MonoBehaviour
+    public class PickUpableHolder : MonoBehaviour
     {
-        [SerializeField] private Transform _container;
+        [SerializeField] private Transform container;
 
-        private void HoldItem(Transform target)
+        public void HoldPickUpalbe(PickUpable.PickUpable pickUpable)
         {
-            
+            pickUpable.SetCanPickUp(false);
+            pickUpable.transform.position = container.position;
+            pickUpable.transform.rotation = container.rotation;
         }
     }
 }
