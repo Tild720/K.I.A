@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Code.Core.EventSystems;
 using KWJ.Define;
 using KWJ.Food;
+using Region;
 using TMPro;
 using UnityEngine;
 using Works.JW.Events;
@@ -21,6 +22,8 @@ namespace Code.NPC
         [SerializeField] private List<NPC> npcPrefabList;
         [SerializeField] private TextMeshProUGUI ui;
         [SerializeField] private float animationSpeed;
+        [SerializeField] private float npcDeadTime = 60;
+        [SerializeField] private RegionSO regionSO;
          
         private Coroutine _textCoroutine;
         private WaitForSeconds _textWait;
@@ -28,11 +31,12 @@ namespace Code.NPC
 
         public NPC GetCurrentNPC() => _npc[0];
 
-        private int _eatenCount;
+        private float _deadTimer;
         
         private void Awake()
         {
             _textWait = new WaitForSeconds(animationSpeed);
+            _deadTimer = 0;
             _npc = new List<NPC>();
 
             GameEventBus.AddListener<ChatEndedEvent>(HandleChatEndEvent);
@@ -51,7 +55,6 @@ namespace Code.NPC
         private void Init(int count)
         {
             _npc = new List<NPC>();
-            _eatenCount = 0;
             
             for (int i = 0; i < count; i++)
             {
@@ -71,8 +74,6 @@ namespace Code.NPC
         {
             if (_npc.Count <= 0) return;
             
-            _eatenCount++;
-
             Vector3 movePoint = _npc[0].transform.position + npcDeleteOffset;
             
             _npc[0].MoveToPoint(movePoint);
@@ -88,6 +89,7 @@ namespace Code.NPC
         [ContextMenu("Refresh")]
         private void RefreshNPCPoint()
         {
+            _deadTimer = 0;
             if (_npc.Count <= 0)
             {
                 GameEventBus.RaiseEvent(NPCEvents.NpcLineEndEvent);
@@ -111,6 +113,13 @@ namespace Code.NPC
 
         private void Update()
         {
+            _deadTimer += Time.deltaTime;
+            if (_deadTimer >= npcDeadTime * ((float)regionSO.health / 100))
+            {
+                FrontNPCKill();
+                RefreshNPCPoint();
+            }
+            
             if (_npc.Count > 0)
             {
                 if (_npc[0].IsMoveCompleted)
@@ -124,7 +133,6 @@ namespace Code.NPC
         private void FrontNPCKill()
         {
             if (_npc.Count <= 0) return;
-            
             
             NPC npc = _npc[0];
             _npc.RemoveAt(0);
