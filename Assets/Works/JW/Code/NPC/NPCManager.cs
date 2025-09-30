@@ -150,7 +150,7 @@ namespace Code.NPC
             if (_npc.Count > 0)
                 _npc[0].IsFront = true;
             
-            GameEventBus.RaiseEvent(NPCEvents.NpcLineEndEvent);
+            GameEventBus.RaiseEvent(NPCEvents.NPCDeadEvent);
         }
 
         [ContextMenu("Skep")]

@@ -36,13 +36,16 @@ namespace KWJ.Manager
         
         private void CreateItem(PurchaseEvent evt)
         {
-            foreach (var ingred in evt.food.ingredient)
+            for (int j = 0; j < evt.count; j++)
             {
-                for (int i = 0; i < ingred.count; i++)
+                foreach (var ingred in evt.food.ingredient)
                 {
-                    GameObject item = Instantiate(ingred.ingredient.ingredientPrefab, itemSpawnPoint.position, Quaternion.identity);
-                    Ingredient ingredient = item.GetComponentInChildren<Ingredient>();
-                    ingredients.Add(ingredient);
+                    for (int i = 0; i < ingred.count; i++)
+                    {
+                        GameObject item = Instantiate(ingred.ingredient.ingredientPrefab, itemSpawnPoint.position, Quaternion.identity);
+                        Ingredient ingredient = item.GetComponentInChildren<Ingredient>();
+                        ingredients.Add(ingredient);
+                    }
                 }
             }
         }

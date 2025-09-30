@@ -60,6 +60,7 @@ namespace UIs.Controllers.ShopUI.FoodUI
 
             GameEventBus.RaiseEvent(UIEvents.FadeEvent.Initialize(() =>
             {
+                Time.timeScale = 1; 
                 GameEventBus.RaiseEvent(PurchaseEvents.PurchaseEvent.Initialize(_currentFood, count));
                 GameEventBus.RaiseEvent(PurchaseEvents.UseMoneyEvent.Initialize(_currentFood.price * count));
             }));

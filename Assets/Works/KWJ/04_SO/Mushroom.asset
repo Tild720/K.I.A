@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
   ingredientName: Mushroom
-  ingredientPrefab: {fileID: 842532088386279253, guid: c5116ca351f5cbe4e9ffed09dce87898, type: 3}
+  ingredientPrefab: {fileID: 6969116121417684515, guid: af1b23e0d6d17b346aaae049815bf548, type: 3}

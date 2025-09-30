@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
   ingredientName: Beard
-  ingredientPrefab: {fileID: 842532088386279253, guid: c5116ca351f5cbe4e9ffed09dce87898, type: 3}
+  ingredientPrefab: {fileID: 6969116121417684515, guid: 86c7636fc1d47fb43a65d60036b9d200, type: 3}
