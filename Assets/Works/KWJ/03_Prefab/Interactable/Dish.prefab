@@ -121,8 +121,6 @@ MonoBehaviour:
     <IngredientTypes>k__BackingField: 02000000
   - foodType: 3
     <IngredientTypes>k__BackingField: 05000000
-  - foodType: 1
-    <IngredientTypes>k__BackingField: 05000000
 --- !u!114 &2233283962762916201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,6 +274,10 @@ PrefabInstance:
     - target: {fileID: 7472625506266885906, guid: 28cb9f9ca6118594889a58408c9b5b92, type: 3}
       propertyPath: length
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7472625506266885906, guid: 28cb9f9ca6118594889a58408c9b5b92, type: 3}
+      propertyPath: maxCount
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7472625506266885906, guid: 28cb9f9ca6118594889a58408c9b5b92, type: 3}
       propertyPath: boxSize.y

@@ -13,6 +13,7 @@ namespace KWJ.Interactable.PickUpable
         public void CompleteCooking(Transform dish)
         {
             transform.SetParent(dish);
+            m_rigidbody.useGravity = false;
             m_rigidbody.isKinematic = true;
             m_IsCompleteCooking = true;
             m_collider.enabled = false;
