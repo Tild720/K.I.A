@@ -26,7 +26,7 @@ namespace KWJ.Manager
         
         private void AddItem(GetItemEvent evt)
         {
-            ingredients.Add(evt.pickUpable);
+            ingredients.Add(evt.ingredient);
         }
 
         private void CreateItem(PurchaseEvent evt)
@@ -34,7 +34,7 @@ namespace KWJ.Manager
             for (int i = 0; i < evt.count; i++)
             {
                 GameObject item = Instantiate(evt.food.foodPrefab, itemSpawnPoint.position, Quaternion.identity);
-                ingredients.Add(item.GetComponent<PickUpable>());
+                //ingredients.Add(item.GetComponent<PickUpable>());
             }
         }
     }
