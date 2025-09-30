@@ -30,7 +30,8 @@ namespace Works.Tild.Code
 
         public void AddTrust(int percentage)
         {
-            Trust += percentage;
+            Trust += Mathf.Max(Trust + percentage, 100);;
+            
         }
         
     }
