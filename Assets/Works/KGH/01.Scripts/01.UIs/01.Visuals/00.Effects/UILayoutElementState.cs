@@ -1,4 +1,5 @@
 ﻿using Core.Defines;
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
@@ -19,16 +20,18 @@ namespace UIs.Visuals.Effects
         {
             _target = owner.GetComponent<LayoutElement>();
             if (_target == null)
-                Debug.LogWarning($"[UICanvasGroupState] No CanvasGroup component found on {owner.name}");
+                Debug.LogWarning($"[LayoutElement] No CanvasGroup component found on {owner.name}");
         }
 
-        public void PlayEffect()
+        public UniTask PlayEffect()
         {
             var previousPreferredWidth = _target.flexibleWidth;
             var previousPreferredHeight = _target.flexibleHeight;
             
             DOVirtual.Float(previousPreferredWidth, flexibleWidth, transition.duration, value => _target.flexibleWidth = value).SetEase(transition.ease).SetUpdate(true);
             DOVirtual.Float(previousPreferredHeight, flexibleHeight, transition.duration, value => _target.flexibleHeight = value).SetEase(transition.ease).SetUpdate(true);
+            
+            return UniTask.WaitForSeconds(transition.duration, true);
         }
     }
 }

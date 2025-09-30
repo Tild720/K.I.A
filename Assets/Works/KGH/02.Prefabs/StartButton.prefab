@@ -66,7 +66,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.003921569, g: 0.47843137, b: 1, a: 0}
   m_RaycastTarget: 1
-  m_RaycastPadding: {x: 100, y: 0, z: 100, w: 0}
+  m_RaycastPadding: {x: 500, y: 0, z: 500, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -376,8 +376,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 73
+  m_fontSizeBase: 73
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -523,7 +523,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stateName: default
   transition:
-    duration: 0.375
+    duration: 0.2
     ease: 15
   flexibleWidth: 1
   flexibleHeight: 1
@@ -612,9 +612,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stateName: default
   transition:
-    duration: 0.375
+    duration: 0.2
     ease: 15
-  fontSize: 36
+  fontSize: 72
 --- !u!1 &8066678447869756248
 GameObject:
   m_ObjectHideFlags: 0
@@ -685,4 +685,4 @@ MonoBehaviour:
   transition:
     duration: 0.2
     ease: 27
-  fontSize: 48
+  fontSize: 108

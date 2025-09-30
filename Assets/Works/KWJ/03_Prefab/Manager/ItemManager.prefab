@@ -109,6 +109,7 @@ GameObject:
   - component: {fileID: 2071225455178680177}
   - component: {fileID: 1295076544265804744}
   - component: {fileID: 1077149243013387431}
+  - component: {fileID: 4172330167258047642}
   m_Layer: 0
   m_Name: Boxes_Refreshment _02 (1)
   m_TagString: Untagged
@@ -185,6 +186,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4172330167258047642
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1521274607395302936}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.009667728, y: 0.012932537, z: 0.0031691731}
+  m_Center: {x: -2.3686882e-15, y: 0.00000000485327, z: 0.0008681355}
 --- !u!1 &1842416540325676072
 GameObject:
   m_ObjectHideFlags: 0
@@ -196,6 +218,7 @@ GameObject:
   - component: {fileID: 3668986421614576833}
   - component: {fileID: 1131954518705839289}
   - component: {fileID: 5300532043395819443}
+  - component: {fileID: 4842731237631385731}
   m_Layer: 0
   m_Name: Boxes_Refreshment _02
   m_TagString: Untagged
@@ -272,6 +295,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4842731237631385731
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1842416540325676072}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.009667725, y: 0.012932517, z: 0.0031691713}
+  m_Center: {x: 4.7061605e-23, y: 9.869534e-16, z: 0.0008681322}
 --- !u!1 &2748186743296943451
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,6 +327,7 @@ GameObject:
   - component: {fileID: 491348141119713823}
   - component: {fileID: 5678722596043446434}
   - component: {fileID: 2416426286965124355}
+  - component: {fileID: 6102446254407140102}
   m_Layer: 0
   m_Name: Boxes_Refreshment _02 (2)
   m_TagString: Untagged
@@ -359,6 +404,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6102446254407140102
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2748186743296943451}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.009667723, y: 0.012932513, z: 0.0031691727}
+  m_Center: {x: 8.162248e-12, y: 2.6592225e-14, z: 0.0008681407}
 --- !u!1 &3550166943274695238
 GameObject:
   m_ObjectHideFlags: 0
@@ -405,7 +471,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 852484181bfe4efcabffe92007990261, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickUpables: []
+  ingredients: []
   itemSpawnPoint: {fileID: 6533164083472350734}
 --- !u!1 &3657326915395508167
 GameObject:
@@ -418,6 +484,7 @@ GameObject:
   - component: {fileID: 3242431634216152010}
   - component: {fileID: 6697462809924403014}
   - component: {fileID: 3942093684248720246}
+  - component: {fileID: 2602205496831717082}
   m_Layer: 0
   m_Name: Boxes_Refreshment _02
   m_TagString: Untagged
@@ -494,6 +561,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2602205496831717082
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3657326915395508167}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.009667723, y: 0.012932513, z: 0.0031691713}
+  m_Center: {x: 0, y: 3.9478136e-16, z: 0.0008681313}
 --- !u!1 &3975377531416683245
 GameObject:
   m_ObjectHideFlags: 0
@@ -505,6 +593,7 @@ GameObject:
   - component: {fileID: 4076852541720513126}
   - component: {fileID: 3649996519961532044}
   - component: {fileID: 3752117073754192647}
+  - component: {fileID: 6155894051579835397}
   m_Layer: 0
   m_Name: Boxes_Refreshment _02
   m_TagString: Untagged
@@ -581,6 +670,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6155894051579835397
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3975377531416683245}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.009667723, y: 0.012932513, z: 0.0031691713}
+  m_Center: {x: -0.0000000037252903, y: 3.9484396e-16, z: 0.0008681322}
 --- !u!1 &5046673574100597968
 GameObject:
   m_ObjectHideFlags: 0
@@ -623,6 +733,7 @@ GameObject:
   - component: {fileID: 519529369328185280}
   - component: {fileID: 3838753840462230820}
   - component: {fileID: 3034348736380934389}
+  - component: {fileID: 6558385624832593346}
   m_Layer: 0
   m_Name: Boxes_Refreshment _02 (1)
   m_TagString: Untagged
@@ -699,6 +810,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6558385624832593346
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5738134081521383388}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.009667728, y: 0.012932537, z: 0.0031691731}
+  m_Center: {x: -1.5489834e-15, y: 0.0000000048532716, z: 0.0008681336}
 --- !u!1 &5856624540957382703
 GameObject:
   m_ObjectHideFlags: 0
@@ -710,6 +842,7 @@ GameObject:
   - component: {fileID: 2862868927676817452}
   - component: {fileID: 5100649576866485714}
   - component: {fileID: 8661973333980181168}
+  - component: {fileID: 8001348450982713216}
   m_Layer: 0
   m_Name: Boxes_Refreshment _02 (1)
   m_TagString: Untagged
@@ -786,6 +919,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8001348450982713216
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5856624540957382703}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.009667728, y: 0.012932537, z: 0.0031691731}
+  m_Center: {x: -0.000000003725292, y: -0.000000024949053, z: 0.00086813734}
 --- !u!1 &6201024697156259593
 GameObject:
   m_ObjectHideFlags: 0
@@ -899,6 +1053,7 @@ GameObject:
   - component: {fileID: 6340867926390815783}
   - component: {fileID: 1719070156509637751}
   - component: {fileID: 3109687580847637798}
+  - component: {fileID: 6941148770756149290}
   m_Layer: 0
   m_Name: Boxes_Refreshment _02
   m_TagString: Untagged
@@ -975,6 +1130,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6941148770756149290
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8365569050316814957}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.009667723, y: 0.012932513, z: 0.0031691713}
+  m_Center: {x: 0, y: 3.9478136e-16, z: 0.00086813315}
 --- !u!1 &8984072606887556247
 GameObject:
   m_ObjectHideFlags: 0
@@ -986,6 +1162,7 @@ GameObject:
   - component: {fileID: 201323182516359883}
   - component: {fileID: 4106411309375787472}
   - component: {fileID: 2278661843605062125}
+  - component: {fileID: 2517741593768326617}
   m_Layer: 0
   m_Name: Boxes_Refreshment _02 (1)
   m_TagString: Untagged
@@ -1062,3 +1239,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2517741593768326617
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8984072606887556247}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.009667729, y: 0.012932539, z: 0.0031691731}
+  m_Center: {x: -4.414944e-15, y: 0.000000004853273, z: 0.0008681336}

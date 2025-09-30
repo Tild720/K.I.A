@@ -1,11 +1,15 @@
 ﻿using KWJ.Interactable.PickUpable;
 using KWJ.OverlapChecker;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace KWJ.Interactable
 {
     public class Sink : MonoBehaviour
     {
+        public UnityEvent onSinkEvent;
+        public UnityEvent offSinkEvent;
+        
         [SerializeField] private RaycastChecker raycastChecker;
         [SerializeField] private ParticleSystem particleSystem;
         [SerializeField] private GameObject button;
@@ -19,11 +23,13 @@ namespace KWJ.Interactable
             if (_isOn)
             {
                 particleSystem.Play();
+                onSinkEvent?.Invoke();
                 button.transform.rotation = Quaternion.Euler(0, 180, 0);
             }
             else
             {
                 particleSystem.Stop();
+                offSinkEvent?.Invoke();
                 button.transform.rotation = Quaternion.Euler(0, 220, 0);
             }
         }

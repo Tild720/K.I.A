@@ -1,4 +1,5 @@
 ﻿using Core.Defines;
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -20,10 +21,12 @@ namespace UIs.Visuals.Effects
                 Debug.LogWarning($"[UIFontState] No TextMeshProUGUI component found on {owner.name}");
         }
 
-        public void PlayEffect()
+        public UniTask PlayEffect()
         {
             var previousFontSize = _target.fontSize;
             DOVirtual.Float(previousFontSize, fontSize, transition.duration, value => _target.fontSize = value).SetEase(transition.ease).SetUpdate(true);
+            
+            return UniTask.WaitForSeconds(transition.duration, true);
         }
     }
 }

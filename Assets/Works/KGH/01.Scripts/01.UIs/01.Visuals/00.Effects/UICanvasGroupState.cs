@@ -1,4 +1,5 @@
 ﻿using Core.Defines;
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
 
@@ -19,10 +20,11 @@ namespace UIs.Visuals.Effects
                 Debug.LogWarning($"[UICanvasGroupState] No CanvasGroup component found on {owner.name}");
         }
 
-        public void PlayEffect()
+        public UniTask PlayEffect()
         {
             var previousAlpha = _target.alpha;
             DOVirtual.Float(previousAlpha, targetAlpha, transition.duration, value => _target.alpha = value).SetEase(transition.ease).SetUpdate(true);
+            return UniTask.WaitForSeconds(transition.duration, true);
         }
     }
 }
