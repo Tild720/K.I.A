@@ -78,9 +78,6 @@ namespace KWJ.Interactable.PickUpable
             {
                 yield return new WaitForFixedUpdate();
                 
-                /*m_rigidbody.position = Vector3.Lerp(transform.position,
-                    targetTrm.position, 5 * Time.deltaTime);*/
-                
                 Vector3 dir = targetTrm.position - m_rigidbody.position;
                 Vector3 force = dir * 50f - m_rigidbody.linearVelocity * 10f; 
                 m_rigidbody.AddForce(force);

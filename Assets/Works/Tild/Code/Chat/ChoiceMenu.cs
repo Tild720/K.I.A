@@ -36,6 +36,7 @@ namespace Code.Chat
 
         public void ChoiceHandler(ChoiceEvent obj)
         {
+            choices = new List<ChoiceBtn>();
             foreach (var message in obj.choice)
             {
             
@@ -47,4 +48,4 @@ namespace Code.Chat
         
         
     }
-}
+}   

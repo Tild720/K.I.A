@@ -14,7 +14,7 @@ namespace KWJ.FeedBacks
 
         public override void StopFeedback()
         {
-            
+            BroAudio.Stop(soundID);
         }
     }
 }

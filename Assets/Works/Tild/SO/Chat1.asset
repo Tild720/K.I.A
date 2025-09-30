@@ -63,6 +63,10 @@ MonoBehaviour:
     - message: "\uBD09\uC0AC\uB294 \uD478\uB4DC \uD2B8\uB7ED \uD615\uD0DC\uB85C \uC9C4\uD589,\\n\uC774\uBC88
         \uC608\uC0B0\uC740 3,000$\uC785\uB2C8\uB2E4."
       delay: 8
+    - message: "\uCCAB \uBD09\uC0AC\uB2C8 \uC608\uC0C1 \uC778\uC6D0\uC740 15\uBA85
+        \uC815\uB3C4\uC774\uBA70 \uC774\uBC88 \uBD09\uC0AC\uC5D0 \uB530\uB77C\\n
+        \uB2E4\uC74C \uBD09\uC0AC\uC5D0 \uC608\uC0B0\uC5D0 \uC601\uD5A5\uC774 \uAC11\uB2C8\uB2E4. "
+      delay: 7
     Choices:
     - action: "\uC608\uC0B0 \uC694\uCCAD"
       message:
@@ -78,15 +82,19 @@ MonoBehaviour:
       reply: 
   Region: {fileID: 11400000, guid: f6dbd64dac82d604b833563dacbda4bf, type: 2}
   SuccessMessages:
-  - message: "\uC54C\uACA0\uC2B5\uB2C8\uB2E4. \uC608\uC0B0\uC744 {multiplier} \\n\uC62C\uB824\uB4DC\uB9AC\uACA0\uC2B5\uB2C8\uB2E4."
+  - message: "\uC54C\uACA0\uC2B5\uB2C8\uB2E4. \uC608\uC0B0\uC744 {multiplier}\uBC30
+      \\n\uC62C\uB824\uB4DC\uB9AC\uACA0\uC2B5\uB2C8\uB2E4."
     delay: 7
   - message: "\uADF8\uB807\uAC8C \uB9D0\uC500\uD558\uC2DC\uB2C8.. \uC608\uC0B0\uC744
-      {multiplier}\\n \uC62C\uB824\uB4DC\uB9AC\uACA0\uC2B5\uB2C8\uB2E4."
+      {multiplier}\uBC30\\n \uC62C\uB824\uB4DC\uB9AC\uACA0\uC2B5\uB2C8\uB2E4."
     delay: 7
   - message: "\uB124. \uC608\uC0B0\uC744 {multiplier} \uC62C\uB824\uB4DC\uB9AC\uC8E0!"
     delay: 7
-  - message: "\uC608\uC0B0\uC744 {multiplier} \uC62C\uB824\uB4DC\uB9AC\uACA0\uC2B5\uB2C8\uB2E4.\\n
+  - message: "\uC608\uC0B0\uC744 {multiplier}\uBC30 \uC62C\uB824\uB4DC\uB9AC\uACA0\uC2B5\uB2C8\uB2E4.\\n
       \uB300\uC2E0 \uC798 \uC880 \uBD80\uD0C1\uB4DC\uB9BD\uB2C8\uB2E4!"
+    delay: 7
+  - message: "\uADF8\uB7FC.. \uAC74\uAC15 \uC218\uCE58\uB97C \uAE30\uB300\uD558\uACA0\uC2B5\uB2C8\uB2E4.
+      \\n{multiplier}\uBC30\uB85C \uB4DC\uB9AC\uC8E0."
     delay: 7
   FailMessages:
   - message: "\uADF8\uAC74 \uC5B4\uB824\uC6B8 \uAC70 \uAC19\uC740\uB370\uC694."
@@ -96,4 +104,10 @@ MonoBehaviour:
   - message: "\uADF8\uB807\uAC8C \uD574\uB4DC\uB9B4 \uC218 \uC5C6\uC2B5\uB2C8\uB2E4."
     delay: 6
   - message: "\uADF8\uAC74 \uC544\uB2C8\uC8E0."
+    delay: 4
+  - message: "\uC5B4\uB824\uC6B8 \uAC70 \uAC19\uB124\uC694."
+    delay: 4
+  - message: "\uC120 \uB118\uC9C0 \uB9C8\uC138\uC694."
+    delay: 4
+  - message: "\uC800\uD76C\uB294 \uC774\uAC8C \uD55C\uACC4\uC785\uB2C8\uB2E4."
     delay: 4

@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &680751360717190806
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2393938186453691794}
+  - component: {fileID: 5521783553967051302}
+  m_Layer: 0
+  m_Name: ChatManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2393938186453691794
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 680751360717190806}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.1153805, y: 3.036951, z: -7.512875}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5521783553967051302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 680751360717190806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 660dc9f27e0f496495d12bce389fae43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chatLists:
+  - {fileID: 11400000, guid: ac3d7e46bdb6a70428cd2a0707d60981, type: 2}
+  playerBubble: {fileID: 6735910218000607230, guid: 766c8854f046db743ac2906e20aede2d, type: 3}
+  targetBubble: {fileID: -4688786821763962980, guid: 4b580128ffbda7a468559a8c68d8819c, type: 3}
+  alertBubble: {fileID: -6991466397788683542, guid: 57ee101a973b5f2488e97fd8b26f235d, type: 3}
+  bubbleParent: {fileID: 0}

@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4c36b6638d5d456ba8061a3500afa45d, type: 3}
-  m_Name: Region
+  m_Name: 3
   m_EditorClassIdentifier: 
-  regionName: testRegion
+  regionName: "\uC608\uBA58"
   population: 100
   health: 100
   Money: 15000
