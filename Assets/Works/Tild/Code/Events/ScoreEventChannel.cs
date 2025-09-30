@@ -15,11 +15,11 @@ namespace Works.Tild.Code.Events
     {
         public int Money;
         public int Used;
-        public int Health;
-        public int HealthFixed;
+        public float Health;
+        public float HealthFixed;
         public int Died;
 
-        public ResultEvent Initializer(int money, int used, int health, int healthFixed, int died)
+        public ResultEvent Initializer(int money, int used, float health, float healthFixed, int died)
         {
             Money = money;
             Used = used;

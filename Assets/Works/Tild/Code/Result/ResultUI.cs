@@ -27,21 +27,18 @@ namespace Works.Tild.Code.Result
         {
             GameEventBus.AddListener<ResultEvent>(ResultHandler);
         }
-
-        private void Start()
-        {
-            ResultEvent resultEvent = new ResultEvent();
-            
-            ResultHandler(resultEvent.Initializer(10000,1200,45,-20,3));
-        }
-
         private void ResultHandler(ResultEvent obj)
         {
             StopAllCoroutines();
-            StartCoroutine(ShowResultCoroutine(obj));
+            
+            // Healthfixed : 약 10~50
+            int score = (int)(obj.HealthFixed / 3) - (obj.Died * 3);
+            TrustManager.Instance.AddTrust(score);
+            
+            StartCoroutine(ShowResultCoroutine(obj, 4));
         }
 
-        private IEnumerator ShowResultCoroutine(ResultEvent obj)
+        private IEnumerator ShowResultCoroutine(ResultEvent obj, int star)
         {
          
             uiGroup.DOFade(1, 0.3f); 
