@@ -45,9 +45,9 @@ namespace UIs.Controllers.InfoUI
         
         private async void StartPopUp()
         {
-            popUpElement.AddState("popUp", 20);
+            _ =popUpElement.AddState("popUp", 20);
             await Awaitable.WaitForSecondsAsync(popUpDuration);
-            popUpElement.RemoveState("popUp");
+            _ = popUpElement.RemoveState("popUp");
         }
     }
 }

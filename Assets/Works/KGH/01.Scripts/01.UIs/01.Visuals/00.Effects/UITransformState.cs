@@ -1,4 +1,5 @@
 ﻿using Core.Defines;
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
 
@@ -24,10 +25,12 @@ namespace UIs.Visuals.Effects
                 Debug.LogWarning($"[UITransformState] No RectTransform component found on {owner.name}");
         }
 
-        public void PlayEffect()
+        public UniTask PlayEffect()
         {
             var scaleVec3 = new Vector3(targetScale.x, targetScale.y, 1f);
             _target?.DOScale(scaleVec3, transition.duration).SetEase(transition.ease).SetUpdate(true);
+            
+            return UniTask.WaitForSeconds(transition.duration, true);
         }
     }
 }

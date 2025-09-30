@@ -29,9 +29,9 @@ namespace UIs.Controllers.FoodUI
         private void OnSelectHandler()
         {
             if (IsSelected)
-                VisualElement.RemoveState(ConstDefine.SELECTED);
+                _ = VisualElement.RemoveState(ConstDefine.SELECTED);
             else
-                VisualElement.AddState(ConstDefine.SELECTED, 20);
+                _ = VisualElement.AddState(ConstDefine.SELECTED, 20);
         }
 
         public void SetFood(FoodSO food)

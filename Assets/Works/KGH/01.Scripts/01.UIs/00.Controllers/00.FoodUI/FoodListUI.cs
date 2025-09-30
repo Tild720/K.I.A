@@ -49,7 +49,7 @@ namespace UIs.Controllers.FoodUI
                 if (_selectedFood != null && _selectedFood != food)
                 {
                     var previousSelectedItem = _foodItemUIs[_selectedFood];
-                    previousSelectedItem.VisualElement.RemoveState(ConstDefine.SELECTED);
+                    _ = previousSelectedItem.VisualElement.RemoveState(ConstDefine.SELECTED);
                 }
 
                 _selectedFood = food;

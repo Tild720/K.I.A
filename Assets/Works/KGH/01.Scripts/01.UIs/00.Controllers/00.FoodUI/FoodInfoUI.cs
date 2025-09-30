@@ -152,30 +152,30 @@ namespace UIs.Controllers.FoodUI
         {
             if (Count <= 0)
             {
-                _subtractButtonVisualElement.AddState("disabled", 20);
+                _ = _subtractButtonVisualElement.AddState("disabled", 20);
                 subtractButton.interactable = false;
 
-                _confirmButtonVisualElement.AddState("disabled", 10);
+                _ = _confirmButtonVisualElement.AddState("disabled", 10);
                 confirmButton.interactable = false;
             }
             else
             {
-                _subtractButtonVisualElement.RemoveState("disabled");
+                _ = _subtractButtonVisualElement.RemoveState("disabled");
                 subtractButton.interactable = true;
 
-                _confirmButtonVisualElement.RemoveState("disabled");
+                _ = _confirmButtonVisualElement.RemoveState("disabled");
                 confirmButton.interactable = true;
             }
 
             bool canPurchaseMore = RegionManager.Instance.Money >= Count * _currentFood.price;
             if (!canPurchaseMore)
             {
-                _addButtonVisualElement.AddState("disabled", 20);
+                _ = _addButtonVisualElement.AddState("disabled", 20);
                 addButton.interactable = false;
             }
             else
             {
-                _addButtonVisualElement.RemoveState("disabled");
+                _ = _addButtonVisualElement.RemoveState("disabled");
                 addButton.interactable = true;
             }
         }
