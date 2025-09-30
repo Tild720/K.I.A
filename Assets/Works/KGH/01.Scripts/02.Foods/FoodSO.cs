@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Core.Defines;
+using UnityEngine;
 
 namespace Foods
 {
@@ -11,6 +12,6 @@ namespace Foods
         public int price;
         [TextArea]
         public string description;
-        public IngredientSO[] ingredient;
+        public StructDefines.IngredientData[] ingredient;
     }
 }
