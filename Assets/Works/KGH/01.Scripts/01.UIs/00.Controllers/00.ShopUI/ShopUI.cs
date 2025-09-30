@@ -1,6 +1,7 @@
 ﻿using System;
 using Code.Core.EventSystems;
 using Core.EventSystem;
+using UIs.Controllers.ShopUI.FoodUI;
 using UIs.Controllers.ShopUI.InfoUI;
 using Unity.Cinemachine;
 using UnityEngine;
@@ -14,6 +15,7 @@ namespace UIs.Controllers.ShopUI
     {
         public UnityEvent OnShopOpened;
         [SerializeField] private PopUpUI popUpUI;
+        [SerializeField] private FoodInfoUI foodInfoUI;
         [SerializeField] private Canvas canvas;
         [SerializeField] private GraphicRaycaster graphicRaycaster;
         [SerializeField] private CinemachineCamera camera;
@@ -23,6 +25,9 @@ namespace UIs.Controllers.ShopUI
         {
             GameEventBus.AddListener<ChatEndedEvent>(OnChatEnded);
             GameEventBus.AddListener<PurchaseEvent>(OnPurchase);
+
+            canvas.enabled = false;
+            graphicRaycaster.enabled = false;
         }
 
         private void OnDestroy()
@@ -40,13 +45,15 @@ namespace UIs.Controllers.ShopUI
 
         private void OnChatEnded(ChatEndedEvent obj)
         {
+            Debug.Log("Shop Opened");
+            camera.Priority.Value = priorityWhenOpen;
             GameEventBus.RaiseEvent(UIEvents.FadeEvent.Initialize(() =>
             {
                 canvas.enabled = true;
                 graphicRaycaster.enabled = true;
                 OnShopOpened?.Invoke();
                 popUpUI.ShowPopUp(obj.Money, obj.NextRegion);
-                camera.Priority.Value = priorityWhenOpen;
+                foodInfoUI.Money = Mathf.RoundToInt(obj.Money);
             }));
         }
     }
