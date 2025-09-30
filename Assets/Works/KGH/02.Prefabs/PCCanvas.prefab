@@ -818,7 +818,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.56078434, g: 0.5568628, b: 0.5764706, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1704,6 +1704,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   popUpUI: {fileID: 6022260769279157757}
+  foodInfoUI: {fileID: 9082482101435418787}
   canvas: {fileID: 3737115883247599268}
   graphicRaycaster: {fileID: 4107446967432267931}
   camera: {fileID: 0}
@@ -4543,6 +4544,7 @@ MonoBehaviour:
   countInputField: {fileID: 915185558674065784}
   confirmButton: {fileID: 8104757299868915234}
   confirmPopUp: {fileID: 6450154939414656137}
+  Money: 0
 --- !u!1 &6948567045761013848
 GameObject:
   m_ObjectHideFlags: 0

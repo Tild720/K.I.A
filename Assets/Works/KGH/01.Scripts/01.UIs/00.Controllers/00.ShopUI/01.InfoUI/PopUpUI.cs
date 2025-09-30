@@ -14,6 +14,7 @@ namespace UIs.Controllers.ShopUI.InfoUI
         [SerializeField] private TextMeshProUGUI moneyText;
         [SerializeField] private float popUpDuration = 2f;
         [SerializeField] private InfoBarUI infoBar;
+        
         private string _populationText;
         private string _healthText;
         private string _moneyText;
