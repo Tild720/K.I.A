@@ -276,6 +276,10 @@ PrefabInstance:
       value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 7472625506266885906, guid: 28cb9f9ca6118594889a58408c9b5b92, type: 3}
+      propertyPath: maxCount
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7472625506266885906, guid: 28cb9f9ca6118594889a58408c9b5b92, type: 3}
       propertyPath: boxSize.y
       value: 0.01
       objectReference: {fileID: 0}
