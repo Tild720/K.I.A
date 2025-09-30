@@ -17,4 +17,8 @@ MonoBehaviour:
   icon: {fileID: -228212302, guid: 5fea743cefc691943ad35a83da9cc0d6, type: 3}
   price: 0
   description: "\uC218\uD504\uB2E4. "
-  ingredient: []
+  ingredient:
+  - ingredient: {fileID: 11400000, guid: 6dae2dd3b5c99524f87da1bef1326e1b, type: 2}
+    count: 2
+  - ingredient: {fileID: 11400000, guid: d5167a183be2f0f4bb36b1e1ff18aec6, type: 2}
+    count: 3
