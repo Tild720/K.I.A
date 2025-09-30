@@ -18,4 +18,5 @@ MonoBehaviour:
   price: 0
   description: "\uB610\uC2A4\uB728\n"
   ingredient:
-  - {fileID: 11400000, guid: 121a653574ed03d46a7654eeed261cbd, type: 2}
+  - ingredient: {fileID: 11400000, guid: ab18657835fdf1643bbaaffee2ab2572, type: 2}
+    count: 5
