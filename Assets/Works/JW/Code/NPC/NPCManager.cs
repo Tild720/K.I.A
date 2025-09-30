@@ -49,6 +49,7 @@ namespace Code.NPC
 
         private void HandleChatEndEvent(ChatEndedEvent evt)
         {
+            regionSO = evt.NextRegion;
             Init(evt.NextRegion.population);
         }
 
@@ -116,6 +117,8 @@ namespace Code.NPC
 
         private void Update()
         {
+            if (regionSO == null) return;
+            
             _deadTimer += Time.deltaTime;
             if (_deadTimer >= npcDeadTime * ((float)regionSO.health / 100))
             {
