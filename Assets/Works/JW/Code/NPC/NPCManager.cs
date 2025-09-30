@@ -21,6 +21,7 @@ namespace Code.NPC
         [SerializeField] private List<NPC> npcPrefabList;
         [SerializeField] private TextMeshProUGUI ui;
         [SerializeField] private float animationSpeed;
+        [SerializeField] private float npcDeadTime;
          
         private Coroutine _textCoroutine;
         private WaitForSeconds _textWait;
@@ -28,12 +29,13 @@ namespace Code.NPC
 
         public NPC GetCurrentNPC() => _npc[0];
 
-        private int _eatenCount;
+        private float _deadTimer;
         
         private void Awake()
         {
             _textWait = new WaitForSeconds(animationSpeed);
-
+            _deadTimer = 0;
+                
             GameEventBus.AddListener<ChatEndedEvent>(HandleChatEndEvent);
         }
 
@@ -50,7 +52,6 @@ namespace Code.NPC
         private void Init(int count)
         {
             _npc = new List<NPC>();
-            _eatenCount = 0;
             
             for (int i = 0; i < count; i++)
             {
@@ -70,8 +71,6 @@ namespace Code.NPC
         {
             if (_npc.Count <= 0) return;
             
-            _eatenCount++;
-
             Vector3 movePoint = _npc[0].transform.position + npcDeleteOffset;
             
             _npc[0].MoveToPoint(movePoint);
@@ -87,6 +86,7 @@ namespace Code.NPC
         [ContextMenu("Refresh")]
         private void RefreshNPCPoint()
         {
+            _deadTimer = 0;
             if (_npc.Count <= 0)
             {
                 GameEventBus.RaiseEvent(NPCEvents.NpcLineEndEvent);
@@ -110,6 +110,13 @@ namespace Code.NPC
 
         private void Update()
         {
+            _deadTimer += Time.deltaTime;
+            if (_deadTimer >= npcDeadTime)
+            {
+                FrontNPCKill();
+                RefreshNPCPoint();
+            }
+            
             if (_npc.Count > 0)
             {
                 if (_npc[0].IsMoveCompleted)
