@@ -1,6 +1,7 @@
 ﻿using KWJ.Players;
 using UnityEngine;
 using KWJ.Entities;
+using UnityEngine.InputSystem.Controls;
 
 namespace KWJ.Players
 {
@@ -25,6 +26,7 @@ namespace KWJ.Players
         {
             _agent.PlayerInputSo.OnInteractAction += OnInteract;
         }
+
         private void OnDisable()
         {
             _agent.PlayerInputSo.OnInteractAction -= OnInteract;

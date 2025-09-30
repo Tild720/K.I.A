@@ -1,4 +1,6 @@
-﻿using Foods;
+﻿using Code.Core.EventSystems;
+using Core.EventSystem;
+using Foods;
 using KWJ.Entities;
 using UnityEngine;
 
@@ -31,7 +33,9 @@ namespace KWJ.Interactable
             //if(count <= 0) return;
             
             count--;
-            Instantiate(_itemPrefab, itemSpawnPoint.position, Quaternion.identity);
+            GameObject item = Instantiate(_itemPrefab, itemSpawnPoint.position, Quaternion.identity);
+            PickUpable.PickUpable pickUpable = item.GetComponentInChildren<PickUpable.PickUpable>();
+            GameEventBus.RaiseEvent(GetItemEvents.GetItemEvent.Initialize(pickUpable));
         }
 
         public void PointerUp(Entity entity)
