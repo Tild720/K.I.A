@@ -38,16 +38,16 @@ namespace Region
 
             DontDestroyOnLoad(this.gameObject);
             
-            GameEventBus.AddListener<FoodEatEvent>(SetScore);
+            GameEventBus.AddListener<FoodEatEvent>(AddScore);
         }
 
         private void OnDestroy()
         {
-            GameEventBus.RemoveListener<FoodEatEvent>(SetScore);
+            GameEventBus.RemoveListener<FoodEatEvent>(AddScore);
         }
 
 
-        public void SetScore(FoodEatEvent evt)
+        public void AddScore(FoodEatEvent evt)
         {
             float multiplier = 1f;
             float baseScore = 0f;
@@ -89,7 +89,7 @@ namespace Region
             }
 
             float finalScore = Mathf.Min(Mathf.Max(baseScore * multiplier, -3),15);
-            
+                
             HealthFixed = (int)finalScore;
         }
  
