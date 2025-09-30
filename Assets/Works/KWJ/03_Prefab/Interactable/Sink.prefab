@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 8527742880385284399}
   - component: {fileID: 885205765330260622}
   m_Layer: 0
-  m_Name: WaterFallSoundFeedBack
+  m_Name: WaterFall_SoundFeedBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -156,6 +156,7 @@ MonoBehaviour:
     ID: 1073741843
     _sourceAsset: {fileID: 11400000, guid: 941931c1e37af9f4e92b35fdb348abef, type: 2}
     <DebugObject>k__BackingField: {fileID: 2218707272581359293}
+  isOncePlay: 0
 --- !u!1 &2417904732399913721
 GameObject:
   m_ObjectHideFlags: 0
@@ -1435,7 +1436,7 @@ GameObject:
   - component: {fileID: 6246826184332160356}
   - component: {fileID: 5045587351531369782}
   m_Layer: 0
-  m_Name: FaucetSoundFeedBack
+  m_Name: Faucet_SoundFeedBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1472,6 +1473,7 @@ MonoBehaviour:
     ID: 1073741839
     _sourceAsset: {fileID: 11400000, guid: 941931c1e37af9f4e92b35fdb348abef, type: 2}
     <DebugObject>k__BackingField: {fileID: 7006952121170929768}
+  isOncePlay: 1
 --- !u!1 &7340465963286968767
 GameObject:
   m_ObjectHideFlags: 0

@@ -29,7 +29,7 @@ namespace KWJ.Interactable.PickUpable
                     {
                         liquidFood.SetFood(pot.LiquidFood.FoodType, pot.LiquidFood.FoodState);
                         _isFill = true;
-                        pot.SubtractionAmountWater(0.1f);
+                        pot.SubtractionAmountWater(0.2f);
                         water.SetActive(true);
                     }
                     

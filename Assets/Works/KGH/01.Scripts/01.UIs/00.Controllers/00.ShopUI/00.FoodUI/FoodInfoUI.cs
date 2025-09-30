@@ -1,9 +1,6 @@
 ﻿using System.Collections.Generic;
-using Code.Core.EventSystems;
-using Core.EventSystem;
 using Cysharp.Threading.Tasks;
 using Foods;
-using Region;
 using TMPro;
 using UIs.Visuals;
 using UnityEngine;
@@ -40,6 +37,7 @@ namespace UIs.Controllers.ShopUI.FoodUI
         private FoodSO _currentFood;
         
         private int Count => int.TryParse(countInputField.text, out int value) ? value : 0;
+        public int Money;
         
         private void Awake()
         {
@@ -108,7 +106,7 @@ namespace UIs.Controllers.ShopUI.FoodUI
                 if (i < food.ingredient.Length)
                 {
                     _ingredientItems[i].gameObject.SetActive(true);
-                    _ingredientItems[i].SetIngredient(food.ingredient[i].icon, food.ingredient[i].ingredientName);
+                    _ingredientItems[i].SetIngredient(food.ingredient[i].ingredient.icon, food.ingredient[i].ingredient.ingredientName);
                 }
                 else
                 {
@@ -120,7 +118,7 @@ namespace UIs.Controllers.ShopUI.FoodUI
             {
                 var item = Instantiate(ingredientItemPrefab, ingredientItemParent);
                 var ingredientItemUI = item.GetComponent<IngredientItemUI>();
-                ingredientItemUI.SetIngredient(food.ingredient[i].icon, food.ingredient[i].ingredientName);
+                ingredientItemUI.SetIngredient(food.ingredient[i].ingredient.icon, food.ingredient[i].ingredient.ingredientName);
                 _ingredientItems.Add(ingredientItemUI);
             }
 
@@ -168,8 +166,8 @@ namespace UIs.Controllers.ShopUI.FoodUI
                 _confirmButtonVisualElement.RemoveState("disabled").Forget();
                 confirmButton.interactable = true;
             }
-
-            bool canPurchaseMore = RegionManager.Instance.Money >= Count * _currentFood.price;
+            
+            bool canPurchaseMore = Money >= Count * _currentFood.price;
             if (!canPurchaseMore)
             {
                 _addButtonVisualElement.AddState("disabled", 20).Forget();

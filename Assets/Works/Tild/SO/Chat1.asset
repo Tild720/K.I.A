@@ -23,50 +23,50 @@ MonoBehaviour:
   - ChatType: 1
     Messages:
     - message: "\uC548\uB155\uD558\uC138\uC694. \\n"
-      delay: 3
+      delay: 0
     - message: "\uC800\uB294 \uBD09\uC0AC\uC790\uB2D8\uC758 \uD65C\uB3D9\uC744 \uB3D5\uB294"
-      delay: 5
+      delay: 0
     - message: "\uC815\uBD80 K.I.A. \uD504\uB85C\uC81D\uD2B8\uC758 \uC694\uC6D0\uC785\uB2C8\uB2E4."
-      delay: 4
+      delay: 0
     - message: "K.I.A.\uB294 Keep It Alive\uC758 \uC904\uC784\uB9D0\uB85C,"
-      delay: 4
+      delay: 0
     - message: "\uC804 \uC138\uACC4\uC758 \uAE30\uC544\uB97C \uC885\uC2DD\uC2DC\uD0A4\uB824\uACE0
         \uD558\uB294 \uAC83\uC774 \uBAA9\uC801\uC785\uB2C8\uB2E4."
-      delay: 4
+      delay: 0
     Choices: []
   - ChatType: 0
     Messages:
     - message: "\uBC18\uAC11\uC2B5\uB2C8\uB2E4. \\\\n"
-      delay: 5
+      delay: 0
     - message: "\uC5B4\uB5A4 \uAC78 \uB3C4\uC640\uC8FC\uC2DC\uB098\uC694?"
-      delay: 5
+      delay: 0
     Choices: []
   - ChatType: 1
     Messages:
     - message: "\uC800\uB294 \uBD09\uC0AC\uC790\uB2D8\uC758 \uD65C\uB3D9\uC5D0 \uD544\uC694\uD55C
         \uC608\uC0B0 \uC870\uC815\uACFC"
-      delay: 5
+      delay: 0
     - message: "\uBAA9\uC801 \uC9C0\uC5ED\uC5D0 \uB300\uD55C \uC124\uBA85\uC744 \uB4DC\uB9B4
         \uC608\uC815\uC785\uB2C8\uB2E4."
-      delay: 5
+      delay: 0
     - message: "\uC810\uCC28 \uAE30\uC544 \uC815\uB3C4\uAC00 \uC2EC\uD55C \uC9C0\uC5ED\uC73C\uB85C
         \uC774\uB3D9\uD560 \uAC83\uC774\uACE0,"
-      delay: 6
+      delay: 0
     - message: "\uC774\uBC88\uC5D0 \uAC08 \uC9C0\uC5ED\uC740 \uCF00\uB0D0 \uBD81\uBD80,
         \uAC00\uBB44\uC774 \uC2EC\uD55C \uC9C0\uC5ED\uC73C\uB85C"
-      delay: 7
+      delay: 0
     - message: "\uD558\uB8E8 \uD55C \uB07C\uB85C \uBC84\uD2F0\uB294 \uAC00\uC815\uC774
         \uB9CE\uACE0"
-      delay: 5
+      delay: 0
     - message: " \uC544\uC774\uB4E4 \uC131\uC7A5 \uC9C0\uC5F0\uC774 \uC2EC\uAC01\uD569\uB2C8\uB2E4."
-      delay: 5
+      delay: 0
     - message: "\uBD09\uC0AC\uB294 \uD478\uB4DC \uD2B8\uB7ED \uD615\uD0DC\uB85C \uC9C4\uD589,\\n\uC774\uBC88
         \uC608\uC0B0\uC740 3,000$\uC785\uB2C8\uB2E4."
-      delay: 8
+      delay: 0
     - message: "\uCCAB \uBD09\uC0AC\uB2C8 \uC608\uC0C1 \uC778\uC6D0\uC740 15\uBA85
         \uC815\uB3C4\uC774\uBA70 \uC774\uBC88 \uBD09\uC0AC\uC5D0 \uB530\uB77C\\n
         \uB2E4\uC74C \uBD09\uC0AC\uC5D0 \uC608\uC0B0\uC5D0 \uC601\uD5A5\uC774 \uAC11\uB2C8\uB2E4. "
-      delay: 7
+      delay: 0
     Choices:
     - action: "\uC608\uC0B0 \uC694\uCCAD"
       message:

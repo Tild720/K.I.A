@@ -36,6 +36,8 @@ namespace Code.NPC
             _textWait = new WaitForSeconds(animationSpeed);
             _deadTimer = 0;
                 
+            _npc = new List<NPC>();
+
             GameEventBus.AddListener<ChatEndedEvent>(HandleChatEndEvent);
         }
 
