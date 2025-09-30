@@ -55,6 +55,8 @@ namespace Code.NPC
 
         private void Init(int count)
         {
+            RenderSettings.skybox = regionSO.skyBox;
+            
             for (int i = 0; i < _npc.Count; i++)
                 Destroy(_npc[i].gameObject);
             
