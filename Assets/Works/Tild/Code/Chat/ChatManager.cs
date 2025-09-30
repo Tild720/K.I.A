@@ -30,11 +30,7 @@ namespace Code.Chat
         private float currentMoney;
         
         public int Point { get; set; }
-
-        private void Start()
-        {
-            StartChat();
-        }
+        
         private void ScrollToBottomSmooth()
         {
           

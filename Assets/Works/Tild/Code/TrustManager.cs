@@ -32,11 +32,11 @@ namespace Works.Tild.Code
         
             Trust -= percentage;
             currency.text = $"신뢰도 {Trust}%";
-            if (Trust > 30)
+            if (Trust < 30)
             {
                 currency.color = Color.red;
             }
-            else if (Trust < 30)
+            else if (Trust > 30)
             {
                 currency.color = Color.green;
             }
