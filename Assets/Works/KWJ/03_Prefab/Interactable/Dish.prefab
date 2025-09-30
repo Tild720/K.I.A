@@ -121,8 +121,6 @@ MonoBehaviour:
     <IngredientTypes>k__BackingField: 02000000
   - foodType: 3
     <IngredientTypes>k__BackingField: 05000000
-  - foodType: 1
-    <IngredientTypes>k__BackingField: 05000000
 --- !u!114 &2233283962762916201
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -38,6 +38,8 @@ namespace KWJ.Food
             
             Ingredient[] ingredients = foodIngredients.Select(i 
                 => i.GetComponentInChildren<Ingredient>()).ToArray();
+            
+            if(ingredients[0] == null) return;
 
             IngredientStackCheck(ingredients);
         }
