@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
   ingredientName: LowQualityMeat
-  ingredientPrefab: {fileID: 842532088386279253, guid: c5116ca351f5cbe4e9ffed09dce87898, type: 3}
+  ingredientPrefab: {fileID: 842532088386279253, guid: 63167d03916bd3344b2e5222e6fe476e, type: 3}
