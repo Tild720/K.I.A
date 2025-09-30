@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using KWJ.Entities;
 using KWJ.Players;
 using UnityEngine;
@@ -11,6 +12,8 @@ namespace KWJ.Interactable.PickUpable
         private PlayerInteractor _interactor;
         private Player _player;
         private bool _isPickUp;
+
+        private bool _isDestroy;
 
         protected bool m_canPickUp = true;
 
@@ -51,7 +54,7 @@ namespace KWJ.Interactable.PickUpable
         {
             _isPickUp = false;
             
-            if(m_canPickUp == false) return;
+            if(m_canPickUp == false || _isDestroy) return;
             
             if(m_rigidbody != null)
                 m_rigidbody.useGravity = true;
@@ -62,6 +65,11 @@ namespace KWJ.Interactable.PickUpable
             m_rigidbody.AddForce(forceDir * distance * _player.PlayerStatsSo.ThrowPower, ForceMode.Impulse);
             
             _interactor = null;
+        }
+
+        private void OnDestroy()
+        {
+            _isDestroy = true;
         }
 
         private IEnumerator MoveToCatchPoint(Transform targetTrm)
