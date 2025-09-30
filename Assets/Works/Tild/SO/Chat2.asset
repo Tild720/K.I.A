@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aeccaa1ae1940c7be978fff052856c8, type: 3}
+  m_Name: Chat2
+  m_EditorClassIdentifier: 
+  Chats:
+  - ChatType: 1
+    Messages:
+    - message: "\uC77C\uB2E8 \uACE0\uC0DD\uD558\uC168\uC2B5\uB2C8\uB2E4."
+      delay: 4
+    - message: "\uC774\uC81C \uB2E4\uC74C \uBAA9\uC801\uC9C0\uB85C \uC774\uB3D9\uD569\uB2C8\uB2E4."
+      delay: 3
+    - message: "\uB2E4\uC74C \uBAA9\uC801\uC9C0\uB294 \uB2C8\uC81C\uB974 \uBD81\uBD80.
+        \uC0AC\uD558\uB77C \uC0AC\uB9C9\uC5D0 \uC18D\uD558\uB294\\n\uAC74\uC870\uD55C
+        \uC9C0\uC5ED\uC785\uB2C8\uB2E4."
+      delay: 7
+    Choices: []
+  - ChatType: 0
+    Messages:
+    - message: "\uC0AC\uB9C9\uC774\uC694..?!! "
+      delay: 4
+    - message: "\uC0C1\uD669\uC740 \uC5B4\uB5A4\uAC00\uC694?"
+      delay: 3
+    Choices: []
+  - ChatType: 1
+    Messages:
+    - message: "\uB18D\uC791\uBB3C \uC218\uD655\uC774 \uBD88\uADDC\uCE59\uD558\uACE0,
+        \uC2DD\uB8CC\uD488 \uAC00\uACA9\uC774 \uACC4\uC18D \uC624\uB974\uACE0 \uC788\uC2B5\uB2C8\uB2E4."
+      delay: 7
+    - message: "\uC544\uC774\uB4E4\uC740 \uC601\uC591\uC2E4\uC870 \uC704\uD5D8\uC774
+        \uB192\uC2B5\uB2C8\uB2E4."
+      delay: 4
+    - message: "\uB2C8\uC81C\uB974\uC5D0\uC11C\uB294 30\uBA85 \uC815\uB3C4\uB97C
+        \uC9C0\uC6D0\uD560 \uAC83 \uAC19\uACE0,\\n\uC608\uC0B0\uC740 5000$\uC785\uB2C8\uB2E4."
+      delay: 4
+    Choices:
+    - action: "\uC608\uC0B0 \uC694\uCCAD"
+      message:
+        message: "\uC608\uC0B0\uC774 \uBD80\uC871\uD560 \uAC83 \uAC19\uC2B5\uB2C8\uB2E4."
+        delay: 4
+      points: 0
+      reply: 
+    - action: "\uB098\uAC00\uAE30"
+      message:
+        message: "\uADF8\uB7FC \uB2E4\uB140\uC624\uACA0\uC2B5\uB2C8\uB2E4."
+        delay: 0
+      points: 0
+      reply: "\uD589\uC6B4\uC744 \uBE55\uB2C8\uB2E4."
+  Region: {fileID: 11400000, guid: 9dd1aca5205309943aa93a9b998f8ab4, type: 2}
+  SuccessMessages:
+  - message: "\uC54C\uACA0\uC2B5\uB2C8\uB2E4. \uC608\uC0B0\uC744 {multiplier}\uBC30
+      \\n\uC62C\uB824\uB4DC\uB9AC\uACA0\uC2B5\uB2C8\uB2E4."
+    delay: 7
+  - message: "\uADF8\uB807\uAC8C \uB9D0\uC500\uD558\uC2DC\uB2C8.. \uC608\uC0B0\uC744
+      {multiplier}\uBC30\\n \uC62C\uB824\uB4DC\uB9AC\uACA0\uC2B5\uB2C8\uB2E4."
+    delay: 7
+  - message: "\uB124. \uC608\uC0B0\uC744 {multiplier}\uBC30 \uC62C\uB824\uB4DC\uB9AC\uC8E0!"
+    delay: 7
+  - message: "\uC608\uC0B0\uC744 {multiplier}\uBC30 \uC62C\uB824\uB4DC\uB9AC\uACA0\uC2B5\uB2C8\uB2E4.\\n
+      \uB300\uC2E0 \uC798 \uC880 \uBD80\uD0C1\uB4DC\uB9BD\uB2C8\uB2E4!"
+    delay: 7
+  - message: "\uADF8\uB7FC.. \uAC74\uAC15 \uC218\uCE58\uB97C \uAE30\uB300\uD558\uACA0\uC2B5\uB2C8\uB2E4.\\n{multiplier}\uBC30\uB85C
+      \uB4DC\uB9AC\uC8E0."
+    delay: 7
+  FailMessages:
+  - message: "\uADF8\uAC74 \uC5B4\uB824\uC6B8 \uAC70 \uAC19\uC740\uB370\uC694."
+    delay: 6
+  - message: "\uB9D0\uB3C4 \uC548\uB418\uB294 \uC598\uAE30\uC785\uB2C8\uB2E4."
+    delay: 6
+  - message: "\uADF8\uB807\uAC8C \uD574\uB4DC\uB9B4 \uC218 \uC5C6\uC2B5\uB2C8\uB2E4."
+    delay: 6
+  - message: "\uADF8\uAC74 \uC544\uB2C8\uC8E0."
+    delay: 4
+  - message: "\uC5B4\uB824\uC6B8 \uAC70 \uAC19\uB124\uC694."
+    delay: 4
+  - message: "\uC120 \uB118\uC9C0 \uB9C8\uC138\uC694."
+    delay: 4
+  - message: "\uC800\uD76C\uB294 \uC774\uAC8C \uD55C\uACC4\uC785\uB2C8\uB2E4."
+    delay: 4

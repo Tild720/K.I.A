@@ -1,4 +1,5 @@
 ﻿using Core.Defines;
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
@@ -25,9 +26,10 @@ namespace UIs.Visuals.Effects
                 Debug.LogWarning($"[UIColorState] No Graphic component found on {owner.name}");
         }
 
-        public void PlayEffect()
+        public UniTask PlayEffect()
         {
             _target?.DOColor(targetColor, transition.duration).SetEase(transition.ease).SetUpdate(true);
+            return UniTask.WaitForSeconds(transition.duration, true);
         }
     }
 }

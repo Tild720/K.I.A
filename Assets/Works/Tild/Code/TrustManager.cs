@@ -18,6 +18,12 @@ namespace Works.Tild.Code
 
             Instance = this;
         }
+
+        private void Start()
+        {
+            Trust = 70;
+        }
+
         public void RemoveTrust(int percentage)
         {
             Trust -= percentage;
@@ -26,10 +32,12 @@ namespace Works.Tild.Code
                 Debug.Log("신뢰도 바닥.");
             }
         }
+        
 
         public void AddTrust(int percentage)
         {
-            Trust += percentage;
+            Trust += Mathf.Max(Trust + percentage, 100);;
+            
         }
         
     }

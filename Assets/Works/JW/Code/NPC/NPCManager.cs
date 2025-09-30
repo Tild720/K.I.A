@@ -136,6 +136,8 @@ namespace Code.NPC
             
             if (other.TryGetComponent(out Food food))
             {
+                if(food.FoodType == FoodType.None || food.FoodState == FoodState.None) return;
+                
                 GameEventBus.RaiseEvent(FoodEvents.FoodEatEvent.Init(food.FoodType, food.FoodState));
                 if (_npc[0].GetFood())
                 {

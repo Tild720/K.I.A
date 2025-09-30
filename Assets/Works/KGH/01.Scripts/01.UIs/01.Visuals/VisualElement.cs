@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using UIs.Visuals.Effects;
 using UnityEngine;
 
@@ -54,43 +55,44 @@ namespace UIs.Visuals
             _currentState = defaultState;
         }
 
-        private void OnDestroy()
+        public async UniTask AddState(string stateName, int priority)
         {
-            if (OnStateChanged != null)
-            {
-                OnStateChanged = null;
-            }
+            if (_effects.ContainsKey(stateName) || isThisRoot)
+                _states[stateName] = priority;
+
+            // _children.ForEach(c => c.AddState(stateName, priority));
+            var wh = UniTask.WhenAll(_children.ConvertAll(c => c.AddState(stateName, priority)));
+
+            await UniTask.WhenAll(UpdateState(), wh);
         }
 
-        public void AddState(string stateName, int priority)
-        {
-            _states[stateName] = priority;
-            _children.ForEach(c => c.AddState(stateName, priority));
-
-            UpdateState();
-        }
-
-        public void RemoveState(string stateName)
+        public async UniTask RemoveState(string stateName)
         {
             if (_states == null)
                 return;
-            _states.Remove(stateName);
-            _children.ForEach(c => c.RemoveState(stateName));
+            if (_states.ContainsKey(stateName))
+                _states.Remove(stateName);
+            // _children.ForEach(c => c.RemoveState(stateName));
+            UniTask wh = UniTask.CompletedTask;
+            if (_children.Count > 0)
+                wh = UniTask.WhenAll(_children.ConvertAll(c => c.RemoveState(stateName)));
 
-            UpdateState();
+            await UniTask.WhenAll(UpdateState(), wh);
+            
         }
-
-        private void UpdateState()
+        
+        private async UniTask UpdateState()
         {
             var nextState = GetHighestPriorityState();
             if (nextState != _currentState)
             {
                 _currentState = nextState;
+                OnStateChanged?.Invoke(_currentState);
                 
                 if (_effects.TryGetValue(_currentState, out var nextEffect))
-                    nextEffect.ForEach(e => e.PlayEffect());
-                
-                OnStateChanged?.Invoke(_currentState);
+                {
+                    await UniTask.WhenAll(nextEffect.ConvertAll(e => e.PlayEffect()));
+                }
             }
         }
 

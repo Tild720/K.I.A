@@ -53,10 +53,13 @@ namespace KWJ.OverlapChecker
                 targets[i] = _results[i].collider.gameObject;
             }
 
-            Array.Sort(targets, (a, b) =>
-                Vector3.Distance(checkPoint.position, a.transform.position)
-                    .CompareTo(Vector3.Distance(transform.position, b.transform.position)));
-            
+            if (count > 0)
+            {
+                Array.Sort(targets, (a, b) =>
+                    Vector3.Distance(checkPoint.position, a.transform.position)
+                        .CompareTo(Vector3.Distance(transform.position, b.transform.position)));
+            }
+
             return targets;
         }
         

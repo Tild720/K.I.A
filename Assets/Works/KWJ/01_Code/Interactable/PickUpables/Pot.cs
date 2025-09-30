@@ -10,13 +10,16 @@ namespace KWJ.Interactable.PickUpable
 {
     public class Pot : PickUpable
     {
+        public float CurrentAmountWater => currentAmountWater;
         [SerializeField] [Range(0, 1)] private float currentAmountWater;
         [SerializeField] private float minY = 0f;   // 시작 높이
         [SerializeField] private float maxY = 1.5f;
         [Space]
-        [ColorUsage(false, false)] [SerializeField] private Color cookingColor;
+        [ColorUsage(true, false)] [SerializeField] private Color cookingColor;
+        [ColorUsage(true, false)] [SerializeField] private Color baseColor;
         [SerializeField] private GameObject water;
         
+        public LiquidFood LiquidFood => liquidFood;
         [SerializeField] private LiquidFood liquidFood;
 
         private List<Material> _material;
@@ -37,7 +40,12 @@ namespace KWJ.Interactable.PickUpable
             base.Awake();
             
             _material = new List<Material>();
-            _material = GetComponentInChildren<MeshRenderer>().materials.ToList();
+            _material = water.GetComponentInChildren<MeshRenderer>().materials.ToList();
+            
+            foreach (var material in _material)
+            {
+                material.color = baseColor;
+            }
         }
         
 
@@ -45,7 +53,7 @@ namespace KWJ.Interactable.PickUpable
         {
             if ((transform.rotation.eulerAngles.x > 90 && transform.rotation.eulerAngles.x < 270) 
                 || (transform.rotation.eulerAngles.z > 90 && transform.rotation.eulerAngles.z < 270) )
-                ResetAmountWater();
+                ResetWater();
 
             ApplyHeight();
         }
@@ -57,10 +65,21 @@ namespace KWJ.Interactable.PickUpable
             water.transform.localPosition = lp;
         }
 
+        public void SubtractionAmountWater(float amount)
+        {
+            currentAmountWater -= amount;
+
+            if (currentAmountWater == 0)
+                ResetWater();
+        }
 
         public void CreateFood()
         {
+            if(currentAmountWater < 0.02f) return;
+            
             liquidFood.CreateFood();
+            
+            if(liquidFood.IsCompleteEvaluation == false) return;
             
             foreach (var material in _material)
             {
@@ -74,8 +93,6 @@ namespace KWJ.Interactable.PickUpable
                 water.SetActive(true);
             
             currentAmountWater += amount;
-            
-            print(amount);
         }
         
         public override void PointerDown(Entity entity)
@@ -86,11 +103,6 @@ namespace KWJ.Interactable.PickUpable
             
             SetCanPickUp(true);
             _gasStove.SetHasPot(false);
-        }
-
-        public override void PointerUp(Entity entity)
-        {
-            base.PointerUp(entity);
         }
         
         public void Initialized(GasStove gasStove)
@@ -105,8 +117,14 @@ namespace KWJ.Interactable.PickUpable
             _isPutdown = !canPickUp;
         }
         
-        private void ResetAmountWater()
+        private void ResetWater()
         {
+            foreach (var material in _material)
+            {
+                material.color = baseColor;
+            }
+
+            liquidFood.Reset();
             water.SetActive(false);
             currentAmountWater = 0;
         }

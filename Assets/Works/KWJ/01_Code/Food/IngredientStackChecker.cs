@@ -38,6 +38,8 @@ namespace KWJ.Food
             
             Ingredient[] ingredients = foodIngredients.Select(i 
                 => i.GetComponentInChildren<Ingredient>()).ToArray();
+            
+            if(ingredients[0] == null) return;
 
             IngredientStackCheck(ingredients);
         }
@@ -46,27 +48,19 @@ namespace KWJ.Food
         {
             foreach (var ingredientOrder in ingredientOrders)
             {
-                int cnt = 0;
                 for (int i = 0; i < ingredients.Length; i++)
                 {
-                    if (ingredients[i].Rigidbody.linearVelocity.y == 0 ||
-                        ingredientOrder.IngredientTypes[i] != ingredients[i].IngredientType) break;
+                    if (ingredients[i].Rigidbody.linearVelocity.y == 0
+                        || ingredientOrder.IngredientTypes.Count != ingredients.Length
+                        || ingredientOrder.IngredientTypes[i] != ingredients[i].IngredientType) break;
 
-                    cnt++;
-                    
-                    if (cnt == ingredientOrder.IngredientTypes.Count)
-                    {
-                        //재료 순서가 맞으면 리스트에 넣어주기
-                        for (int j = 0; j < cnt; j++)
-                        {
-                            _ingredients.Add(ingredients[j]);
-                        }
+                    //재료 순서가 맞으면 리스트에 넣어주기
+                    _ingredients.AddRange(ingredients);
                         
-                        _foodType = ingredientOrder.foodType;
+                    _foodType = ingredientOrder.foodType;
                         
-                        _isCompleteStack = true;
-                        return;
-                    }
+                    _isCompleteStack = true;
+                    return;
                 }
             }
         }

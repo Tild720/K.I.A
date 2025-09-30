@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using KWJ.Entities;
 using KWJ.Players;
 using UnityEngine;
@@ -11,6 +12,8 @@ namespace KWJ.Interactable.PickUpable
         private PlayerInteractor _interactor;
         private Player _player;
         private bool _isPickUp;
+
+        private bool _isDestroy;
 
         protected bool m_canPickUp = true;
 
@@ -31,6 +34,7 @@ namespace KWJ.Interactable.PickUpable
         {
             m_canPickUp = canPickUp;
             m_rigidbody.isKinematic = !canPickUp;
+            m_rigidbody.useGravity = true;
         }
 
         public virtual void PointerDown(Entity entity)
@@ -48,10 +52,12 @@ namespace KWJ.Interactable.PickUpable
 
         public virtual void PointerUp(Entity entity)
         {
-            if(m_canPickUp == false && _isPickUp == false) return;
-            
             _isPickUp = false;
-            m_rigidbody.useGravity = true;
+            
+            if(m_canPickUp == false || _isDestroy) return;
+            
+            if(m_rigidbody != null)
+                m_rigidbody.useGravity = true;
 
             Vector3 forceDir = _interactor.CatchPoint.position - transform.position;
             float distance = forceDir.magnitude;
@@ -61,16 +67,22 @@ namespace KWJ.Interactable.PickUpable
             _interactor = null;
         }
 
+        private void OnDestroy()
+        {
+            _isDestroy = true;
+        }
+
         private IEnumerator MoveToCatchPoint(Transform targetTrm)
         {
             while (true)
             {
                 yield return new WaitForFixedUpdate();
                 
-                m_rigidbody.position = Vector3.Lerp(transform.position,
-                    targetTrm.position, 5 * Time.deltaTime);
-
-                m_rigidbody.rotation = targetTrm.rotation;
+                Vector3 dir = targetTrm.position - m_rigidbody.position;
+                Vector3 force = dir * 50f - m_rigidbody.linearVelocity * 10f; 
+                m_rigidbody.AddForce(force);
+                
+                m_rigidbody.MoveRotation(targetTrm.rotation);
                 
                 if(!_isPickUp)
                     break;

@@ -48,9 +48,17 @@ namespace KWJ.Food
             Ingredient[] ingredients = foodIngredients.Select(i 
                 => i.GetComponentInChildren<Ingredient>()).ToArray();
             
-            if(ingredients.Length == 0) return;
+            if(ingredients.Length == 0 || ingredients[0] == null) return;
             
             IngredientCheck(ingredients);
+        }
+
+        public void Reset()
+        {
+            _ingredients.Clear();
+            _foodType = FoodType.None;
+            _isValidIngredients = false;
+            _foodRecipeChecks.Clear();
         }
 
         private void IngredientCheck(Ingredient[] ingredients)
@@ -74,7 +82,7 @@ namespace KWJ.Food
                 foreach (var foodRecipeCheck in _foodRecipeChecks)
                 {
                     if (TryGetIngredientCount(foodRecipe.IngredientCounts, foodRecipeCheck.Key, out var count) == false
-                        || _foodRecipeChecks[foodRecipeCheck.Key].Count < count) return;
+                        || _foodRecipeChecks[foodRecipeCheck.Key].Count < count) break;
 
                     cnt--;
                 }
@@ -85,6 +93,8 @@ namespace KWJ.Food
                     break;
                 }
             }
+            
+            if(_foodType == FoodType.None) return;
 
             foreach (var ingredientCountCheck in _foodRecipeChecks)
                 foreach (var ingredient in ingredientCountCheck.Value)
