@@ -13,6 +13,7 @@ namespace Controllers
         [SerializeField] private EnumDefines.UIType defaultUI = EnumDefines.UIType.TITLE;
         private Dictionary<EnumDefines.UIType, BaseUI> _uiDic = new Dictionary<EnumDefines.UIType, BaseUI>();
         private BaseUI _currentUI;
+        public BaseUI CurrentUI => _currentUI;
 
         private void Awake()
         {
@@ -28,12 +29,12 @@ namespace Controllers
                 _uiDic.Add(ui.UIType, ui);
                 if (ui.UIType == defaultUI)
                 {
-                    _ = ui.Show();
+                    ui.Show().Forget();
                     _currentUI = ui;
                 }
                 else
                 {
-                    _ = ui.Hide();
+                    ui.Hide().Forget();
                 }
             }
 

@@ -2850,7 +2850,8 @@ MonoBehaviour:
   - {fileID: 7688659990274457471, guid: 4af7c6e063ad21f429cb16d9eb7fa900, type: 3}
   ui: {fileID: 1665425672}
   animationSpeed: 0.15
-  npcDeadTime: 0
+  npcDeadTime: 60
+  regionSO: {fileID: 11400000, guid: f6dbd64dac82d604b833563dacbda4bf, type: 2}
 --- !u!4 &2100497646
 Transform:
   m_ObjectHideFlags: 0

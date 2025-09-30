@@ -54,6 +54,9 @@ namespace Code.NPC
 
         private void Init(int count)
         {
+            for (int i = 0; i < _npc.Count; i++)
+                Destroy(_npc[i].gameObject);
+            
             _npc = new List<NPC>();
             
             for (int i = 0; i < count; i++)
