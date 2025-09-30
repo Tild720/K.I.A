@@ -1,5 +1,6 @@
 ﻿using System;
 using Code.Core.EventSystems;
+using Core.EventSystem;
 using UIs.Controllers.ShopUI.InfoUI;
 using UnityEngine;
 using UnityEngine.Events;
@@ -11,10 +12,12 @@ namespace UIs.Controllers.ShopUI
     {
         public UnityEvent OnShopOpened;
         [SerializeField] private PopUpUI popUpUI;
+
         private void Awake()
         {
             GameEventBus.AddListener<ChatEndedEvent>(OnChatEnded);
         }
+
         private void OnDestroy()
         {
             GameEventBus.RemoveListener<ChatEndedEvent>(OnChatEnded);
@@ -22,8 +25,11 @@ namespace UIs.Controllers.ShopUI
 
         private void OnChatEnded(ChatEndedEvent obj)
         {
-            OnShopOpened?.Invoke();
-            popUpUI.ShowPopUp(obj.Money, obj.NextRegion);
+            GameEventBus.RaiseEvent(UIEvents.FadeEvent.Initialize(() =>
+            {
+                OnShopOpened?.Invoke();
+                popUpUI.ShowPopUp(obj.Money, obj.NextRegion);
+            }));
         }
     }
 }
