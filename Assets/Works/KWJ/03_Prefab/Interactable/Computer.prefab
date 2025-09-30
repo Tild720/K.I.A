@@ -283,7 +283,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 0.35, y: 0.58, z: 0.59}
   m_Center: {x: -0.06, y: 0.15, z: 0}
@@ -397,7 +397,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1411861081824284106, guid: a871a5c5e68143e499bd74d264d681f8, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.00283
+      value: -0.00284
       objectReference: {fileID: 0}
     - target: {fileID: 1411861081824284106, guid: a871a5c5e68143e499bd74d264d681f8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -461,11 +461,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3737115883247599268, guid: a871a5c5e68143e499bd74d264d681f8, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4107446967432267931, guid: a871a5c5e68143e499bd74d264d681f8, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5163742542705384019, guid: a871a5c5e68143e499bd74d264d681f8, type: 3}
       propertyPath: m_SizeDelta.x
