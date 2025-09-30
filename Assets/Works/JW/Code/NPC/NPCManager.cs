@@ -22,6 +22,7 @@ namespace Code.NPC
         [SerializeField] private List<NPC> npcPrefabList;
         [SerializeField] private TextMeshProUGUI ui;
         [SerializeField] private float animationSpeed;
+        [SerializeField] private float textDeleteTime;
         [SerializeField] private float npcDeadTime = 60;
         [SerializeField] private RegionSO regionSO;
          
@@ -228,7 +229,8 @@ namespace Code.NPC
                 ui.maxVisibleCharacters++;
             }
             
-            yield return _textWait;
+            yield return textDeleteTime;
+            ui.text = string.Empty;
             endCallback?.Invoke();
         }
     }
