@@ -20,7 +20,7 @@ namespace UIs.Visuals.Effects
         {
             _target = owner.GetComponent<LayoutElement>();
             if (_target == null)
-                Debug.LogWarning($"[UICanvasGroupState] No CanvasGroup component found on {owner.name}");
+                Debug.LogWarning($"[LayoutElement] No CanvasGroup component found on {owner.name}");
         }
 
         public UniTask PlayEffect()

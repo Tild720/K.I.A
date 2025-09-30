@@ -2854,7 +2854,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultState: default
   isThisRoot: 0
-  stateRoot: {fileID: 0}
+  stateRoot: {fileID: 6957065313001493753}
 --- !u!1 &4234486783419832989
 GameObject:
   m_ObjectHideFlags: 0

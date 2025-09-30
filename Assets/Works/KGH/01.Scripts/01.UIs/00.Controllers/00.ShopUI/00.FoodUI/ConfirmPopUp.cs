@@ -13,17 +13,15 @@ namespace UIs.Controllers.ShopUI.FoodUI
     public class ConfirmPopUp : MonoBehaviour
     {
         [SerializeField] private VisualElement popupRoot;
-        [Header("food")]
-        [SerializeField] private Image icon;
+        [Header("food")] [SerializeField] private Image icon;
         [SerializeField] private TextMeshProUGUI foodNameText;
         [SerializeField] private TextMeshProUGUI countText;
-        [SerializeField] private TextMeshProUGUI totalPriceText; 
-        [Header("Buttons")]
-        [SerializeField] private Button cancelButton;
+        [SerializeField] private TextMeshProUGUI totalPriceText;
+        [Header("Buttons")] [SerializeField] private Button cancelButton;
         [SerializeField] private Button confirmButton;
-        
+
         private string _countFormat;
-        
+
         private FoodSO _currentFood;
         private int count;
 
@@ -33,7 +31,7 @@ namespace UIs.Controllers.ShopUI.FoodUI
             cancelButton.onClick.AddListener(OnCancel);
             confirmButton.onClick.AddListener(OnConfirm);
         }
-        
+
         private void OnDestroy()
         {
             cancelButton.onClick.RemoveListener(OnCancel);
@@ -59,8 +57,12 @@ namespace UIs.Controllers.ShopUI.FoodUI
         private void OnConfirm()
         {
             popupRoot.RemoveState("show").Forget();
-            GameEventBus.RaiseEvent(PurchaseEvents.PurchaseEvent.Initialize(_currentFood, count));
-            GameEventBus.RaiseEvent(PurchaseEvents.UseMoneyEvent.Initialize(_currentFood.price * count));
+
+            GameEventBus.RaiseEvent(UIEvents.FadeEvent.Initialize(() =>
+            {
+                GameEventBus.RaiseEvent(PurchaseEvents.PurchaseEvent.Initialize(_currentFood, count));
+                GameEventBus.RaiseEvent(PurchaseEvents.UseMoneyEvent.Initialize(_currentFood.price * count));
+            }));
         }
     }
 }
