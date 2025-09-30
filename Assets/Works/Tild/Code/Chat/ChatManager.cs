@@ -122,8 +122,8 @@ namespace Code.Chat
 
                 _isChoiced = true;
                 GameEventBus.RaiseEvent(_chatEndedEvent.Initializer(currentMoney, chatLists[_chatIndex].Region));
-                chatGroup.DOFade(0, 1);
-                yield return new WaitForSeconds(1); 
+                chatGroup.DOFade(0, 1).SetUpdate(true);
+                yield return new WaitForSecondsRealtime(1); 
                 foreach (Transform child in bubbleParent)
                 {
                     Destroy(child.gameObject);
