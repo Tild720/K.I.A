@@ -18,6 +18,12 @@ namespace Works.Tild.Code
 
             Instance = this;
         }
+
+        private void Start()
+        {
+            Trust = 70;
+        }
+
         public void RemoveTrust(int percentage)
         {
             Trust -= percentage;

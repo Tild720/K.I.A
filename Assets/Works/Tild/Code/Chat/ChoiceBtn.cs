@@ -25,6 +25,7 @@ namespace Code.Chat
         {
             bubble.DOScale(Vector3.zero, 0.15f).OnComplete(() =>
             {
+                bubble.DOKill();
                 Destroy(gameObject);
             });
             

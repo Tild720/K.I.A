@@ -17,11 +17,12 @@ namespace Code.Chat
         [SerializeField] private ChatBubble alertBubble; 
         [SerializeField] private Transform bubbleParent; 
         private readonly ChoiceEvent _choiceEvent = ChatEventChannel.ChoiceEvent;
+        private readonly ChatEndedEvent _chatEndedEvent = ChatEventChannel.ChatEndedEvent;
         
         private int _chatIndex = 0;
         private bool _isChoiced = false;
 
-        private int currentMoney;
+        private float currentMoney;
         
         public int Point { get; set; }
 
@@ -41,20 +42,73 @@ namespace Code.Chat
         }
 
         private IEnumerator ChoiceReply(Choice choice)
+{
+    ChatBubble plrBubble = Instantiate(playerBubble, bubbleParent);
+    plrBubble.Initialize(choice.message.message);
+    yield return new WaitForSeconds(choice.message.delay);
+
+    if (choice.action == "예산 요청")
+    {
+        int rand = UnityEngine.Random.Range(0, 100);
+        bool isSuccess = rand < TrustManager.Instance.Trust;
+
+        if (isSuccess)
         {
-            if (choice.action == "예산 증가")
-            { 
-                TrustManager.Instance.Trust;
-            }
-            else
-            {
-                ChatBubble bubble = Instantiate(targetBubble, bubbleParent);
-                bubble.Initialize(choice.message.message);
-                yield return new WaitForSeconds(choice.message.delay);
-                _isChoiced = true;  
-            };
-   
+
+            Message successMessage = chatLists[_chatIndex]
+                .SuccessMessages[UnityEngine.Random.Range(0, chatLists[_chatIndex].SuccessMessages.Count)];
+            
+            ChatBubble bubble = Instantiate(targetBubble, bubbleParent);
+            bubble.Initialize(successMessage.message);
+
+        
+            float multiplier = UnityEngine.Random.Range(1f, 2f);
+            multiplier = Mathf.Round(multiplier * 100f) / 100f;
+            bubble.Replace(multiplier);
+
+
+            int trustLoss = Mathf.CeilToInt(10f * multiplier); 
+            TrustManager.Instance.RemoveTrust(trustLoss);
+
+
+            currentMoney *= multiplier;
+
+            yield return new WaitForSeconds(successMessage.delay);
         }
+        else
+        {
+
+            Message failMessage = chatLists[_chatIndex]
+                .FailMessages[UnityEngine.Random.Range(0, chatLists[_chatIndex].FailMessages.Count)];
+            
+            ChatBubble bubble = Instantiate(targetBubble, bubbleParent);
+            bubble.Initialize(failMessage.message);
+
+
+            TrustManager.Instance.RemoveTrust(UnityEngine.Random.Range(0, 5));
+            
+            yield return new WaitForSeconds(failMessage.delay);
+        }
+
+
+        Choice leave = new Choice();
+        leave.action = "나가기";
+        leave.message.message = "출발하겠습니다.";
+        leave.message.delay = 3f;
+        GameEventBus.RaiseEvent(_choiceEvent.Initializer(new List<Choice> { choice, leave }));
+    }
+    else
+    {
+
+        ChatBubble bubble = Instantiate(targetBubble, bubbleParent);
+        bubble.Initialize("행운을 빕니다.");
+        yield return new WaitForSeconds(choice.message.delay);
+
+        _isChoiced = true;
+        GameEventBus.RaiseEvent(_chatEndedEvent.Initializer(currentMoney, chatLists[_chatIndex].Region));
+    }
+}
+
 
         public void NextChat()
         {
@@ -71,6 +125,7 @@ namespace Code.Chat
         
         public void StartChat()
         {
+            currentMoney = chatLists[_chatIndex].Region.Money;
             StopAllCoroutines(); 
             if (_chatIndex < chatLists.Count)
             {
@@ -112,7 +167,7 @@ namespace Code.Chat
                   
                    
                 }
-                if (currentChat.ChatType == ChatType.Target)
+                if (currentChat.ChatType == ChatType.Target && currentChat.Choices.Count > 0)
                 {
                     GameEventBus.RaiseEvent(_choiceEvent.Initializer(currentChat.Choices));
                     yield return new WaitUntil(() => _isChoiced == true);

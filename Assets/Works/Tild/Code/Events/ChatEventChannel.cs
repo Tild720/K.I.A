@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Code.Chat;
 using Code.Core.EventSystems;
+using Region;
 
 namespace Works.Tild.Code.Events
 {
@@ -9,6 +10,7 @@ namespace Works.Tild.Code.Events
         public static ChatEvent ChatEvent = new ChatEvent();
         public static ChoiceBtnEvent ChoiceBtnEvent = new ChoiceBtnEvent();
         public static ChoiceEvent ChoiceEvent = new ChoiceEvent();
+        public static ChatEndedEvent ChatEndedEvent = new ChatEndedEvent();
     }
     public class ChoiceEvent : GameEvent
     {
@@ -35,6 +37,17 @@ namespace Works.Tild.Code.Events
         public ChatEvent Initializer(Message getMessage)
         {
             message = getMessage;
+            return this;
+        }
+    }
+    public class ChatEndedEvent : GameEvent
+    {
+        public float Money;
+        public RegionSO NextRegion;
+        public ChatEndedEvent Initializer(float getMoney, RegionSO nextRegion)
+        {
+            Money = getMoney;
+            NextRegion = nextRegion;
             return this;
         }
     }
