@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Code.Core.EventSystems;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.UI;
 using Works.Tild.Code;
 using Works.Tild.Code.Events;
 using Random = System.Random;
@@ -16,7 +17,8 @@ namespace Code.Chat
         [SerializeField] private ChatBubble playerBubble; 
         [SerializeField] private ChatBubble targetBubble; 
         [SerializeField] private ChatBubble alertBubble; 
-        [SerializeField] private Transform bubbleParent; 
+        [SerializeField] private Transform bubbleParent;
+        [SerializeField] private ScrollRect chatScrollRect;
         [SerializeField] private CanvasGroup chatGroup;
         private readonly ChoiceEvent _choiceEvent = ChatEventChannel.ChoiceEvent;
         private readonly ChatEndedEvent _chatEndedEvent = ChatEventChannel.ChatEndedEvent;
@@ -32,7 +34,18 @@ namespace Code.Chat
         {
             StartChat();
         }
+        private void ScrollToBottomSmooth()
+        {
+          
+            StartCoroutine(ScrollDelayed());
+        }
 
+        private IEnumerator ScrollDelayed()
+        {
+            yield return null; 
+            Canvas.ForceUpdateCanvases();
+            chatScrollRect.DOVerticalNormalizedPos(0f, 0.2f);
+        }
         private void Awake()
         {
             GameEventBus.AddListener<ChoiceBtnEvent>(OnChoiceBtnEvent); 
@@ -47,6 +60,7 @@ namespace Code.Chat
         {
             ChatBubble plrBubble = Instantiate(playerBubble, bubbleParent);
             plrBubble.Initialize(choice.message.message);
+            ScrollToBottomSmooth();
             yield return new WaitForSeconds(choice.message.delay);
 
             if (choice.action == "예산 요청")
@@ -62,7 +76,7 @@ namespace Code.Chat
                     
                     ChatBubble bubble = Instantiate(targetBubble, bubbleParent);
                     bubble.Initialize(successMessage.message);
-
+                    ScrollToBottomSmooth();
                 
                     float multiplier = UnityEngine.Random.Range(1.3f, 2f);
                     multiplier = Mathf.Round(multiplier * 100f) / 100f;
@@ -85,6 +99,7 @@ namespace Code.Chat
                     
                     ChatBubble bubble = Instantiate(targetBubble, bubbleParent);
                     bubble.Initialize(failMessage.message);
+                    ScrollToBottomSmooth();
 
 
                     TrustManager.Instance.RemoveTrust(UnityEngine.Random.Range(5, 10));
@@ -104,19 +119,21 @@ namespace Code.Chat
 
                 ChatBubble bubble = Instantiate(targetBubble, bubbleParent);
                 bubble.Initialize("행운을 빕니다.");
+                ScrollToBottomSmooth();
                 yield return new WaitForSeconds(choice.message.delay);
 
                 _isChoiced = true;
                 GameEventBus.RaiseEvent(_chatEndedEvent.Initializer(currentMoney, chatLists[_chatIndex].Region));
-                chatGroup.DOFade(0, 1).OnComplete(() =>
+                chatGroup.DOFade(0, 1);
+                yield return new WaitForSeconds(1); 
+                foreach (Transform child in bubbleParent)
                 {
-                    foreach (GameObject child in bubbleParent)
-                    {
-                        Destroy(child);
-                    }
+                    Destroy(child.gameObject);
+                }
 
+                    
                     chatGroup.blocksRaycasts = false;
-                });
+                    Debug.Log("CCC");
                 
             }
         }
@@ -177,7 +194,7 @@ namespace Code.Chat
 
                     if (bubble != null)
                         bubble.Initialize(msg.message);
-                    
+                    ScrollToBottomSmooth();
                     
              
                     yield return new WaitForSeconds(msg.delay);

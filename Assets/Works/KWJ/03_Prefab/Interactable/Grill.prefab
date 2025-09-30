@@ -266,6 +266,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2566829081998507204}
+  - {fileID: 8467291315295672062}
   m_Father: {fileID: 5999150967648447897}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2295107766491803337
@@ -494,6 +495,7 @@ MonoBehaviour:
     ID: 1073741841
     _sourceAsset: {fileID: 11400000, guid: 941931c1e37af9f4e92b35fdb348abef, type: 2}
     <DebugObject>k__BackingField: {fileID: 2741931101421275258}
+  isOncePlay: 1
 --- !u!1 &3840089434017962033
 GameObject:
   m_ObjectHideFlags: 0
@@ -547,6 +549,55 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &4596244190203603867
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8467291315295672062}
+  - component: {fileID: 527158337288577524}
+  m_Layer: 0
+  m_Name: Grilling_SoundFeedBack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8467291315295672062
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4596244190203603867}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3356093233468680808}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &527158337288577524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4596244190203603867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1671955f4577444dbec2fa78453d756f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundID:
+    ID: 1073741842
+    _sourceAsset: {fileID: 11400000, guid: 941931c1e37af9f4e92b35fdb348abef, type: 2}
+    <DebugObject>k__BackingField: {fileID: 4596244190203603867}
+  isOncePlay: 0
 --- !u!1 &5129031661360215540
 GameObject:
   m_ObjectHideFlags: 0
@@ -597,6 +648,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f722eb4f0644e3aa40982216f5aceab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onGrillingEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 527158337288577524}
+        m_TargetAssemblyTypeName: KWJ.FeedBacks.SoundFeedBack, Assembly-CSharp
+        m_MethodName: CreateFeedback
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  offGrillingEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 527158337288577524}
+        m_TargetAssemblyTypeName: KWJ.FeedBacks.SoundFeedBack, Assembly-CSharp
+        m_MethodName: StopFeedback
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   boxChecker: {fileID: 795983189235552497}
   cookingType: 2
 --- !u!1 &5888979890880608256

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: 3
   m_EditorClassIdentifier: 
   regionName: "\uC608\uBA58"
-  population: 100
-  health: 100
-  Money: 15000
+  population: 25
+  health: 40
+  Money: 7000
