@@ -33,6 +33,7 @@ namespace Code.NPC
         private void Awake()
         {
             _textWait = new WaitForSeconds(animationSpeed);
+            _npc = new List<NPC>();
 
             GameEventBus.AddListener<ChatEndedEvent>(HandleChatEndEvent);
         }

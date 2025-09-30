@@ -1274,7 +1274,10 @@ MonoBehaviour:
   deleteTime: 2
   npcPrefabList:
   - {fileID: 7688659990274457471, guid: 4af7c6e063ad21f429cb16d9eb7fa900, type: 3}
-  npcCount: 10
+  - {fileID: 7688659990274457471, guid: 72ee744c682840e468137cc795482751, type: 3}
+  - {fileID: 7688659990274457471, guid: 3e3a298e042a46547abdeda7c527c95d, type: 3}
+  - {fileID: 7688659990274457471, guid: 6fc61040f1e41b445a4c03a2089bae17, type: 3}
+  - {fileID: 7688659990274457471, guid: 9ea97f47173b59e46a28f45b7cb2a0eb, type: 3}
   ui: {fileID: 2140102242}
   animationSpeed: 0
 --- !u!4 &387297943
