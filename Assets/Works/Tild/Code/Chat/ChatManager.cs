@@ -3,7 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using Code.Core.EventSystems;
 using UnityEngine;
+using Works.Tild.Code;
 using Works.Tild.Code.Events;
+using Random = System.Random;
 
 namespace Code.Chat
 {
@@ -18,6 +20,8 @@ namespace Code.Chat
         
         private int _chatIndex = 0;
         private bool _isChoiced = false;
+
+        private int currentMoney;
         
         public int Point { get; set; }
 
@@ -38,10 +42,18 @@ namespace Code.Chat
 
         private IEnumerator ChoiceReply(Choice choice)
         {
-            ChatBubble bubble = Instantiate(targetBubble, bubbleParent);
-            bubble.Initialize(choice.message.message);
-            yield return new WaitForSeconds(choice.message.delay);
-            _isChoiced = true;
+            if (choice.action == "예산 증가")
+            { 
+                TrustManager.Instance.Trust;
+            }
+            else
+            {
+                ChatBubble bubble = Instantiate(targetBubble, bubbleParent);
+                bubble.Initialize(choice.message.message);
+                yield return new WaitForSeconds(choice.message.delay);
+                _isChoiced = true;  
+            };
+   
         }
 
         public void NextChat()
