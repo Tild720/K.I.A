@@ -5,6 +5,8 @@ using KWJ.Define;
 using Unity.Mathematics;
 using UnityEngine;
 using Works.JW.Events;
+using Works.Tild.Code;
+using Works.Tild.Code.Events;
 
 namespace Region
 {
@@ -13,6 +15,7 @@ namespace Region
         [SerializeField] private List<RegionSO> targetRegions;
         private List<RegionSO> _regions = new List<RegionSO>();
         public static RegionManager Instance { get; private set; }
+        private readonly ResultEvent ResultEvent = ScoreEventChannel.ResultEvent;
 
         public int Money;
         public int Used;
@@ -39,6 +42,20 @@ namespace Region
             DontDestroyOnLoad(this.gameObject);
             
             GameEventBus.AddListener<FoodEatEvent>(AddScore);
+            GameEventBus.AddListener<NPCLineEndEvent>(ViewResult);
+            GameEventBus.AddListener<NPCDeadEvent>(DeadAdding);
+        }
+
+        private void DeadAdding(NPCDeadEvent obj)
+        {
+            Died += 1;
+        }
+
+        private void ViewResult(NPCLineEndEvent obj)
+        {
+            GameEventBus.RaiseEvent(ResultEvent.Initializer(Money, Used, HealthOrigin, HealthFixed,Died));
+            
+            
         }
 
         private void OnDestroy()
@@ -88,9 +105,9 @@ namespace Region
                     break;
             }
 
-            float finalScore = Mathf.Min(Mathf.Max(baseScore * multiplier, -3),15);
+            float finalScore = Mathf.Min(Mathf.Max(baseScore * multiplier, -5),15);
                 
-            HealthFixed = (int)finalScore;
+            HealthFixed += (int)finalScore;
         }
  
 

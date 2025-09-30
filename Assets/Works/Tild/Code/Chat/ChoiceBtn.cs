@@ -23,13 +23,12 @@ namespace Code.Chat
 
         public void Disappear()
         {
-            bubble.DOScale(Vector3.zero, 0.15f).OnComplete(() =>
+            bubble.DOScale(Vector3.zero, 0.15f).OnKill(() =>
             {
-                bubble.DOKill();
                 Destroy(gameObject);
             });
-            
         }
+
       
         public void OnClick()
         {
