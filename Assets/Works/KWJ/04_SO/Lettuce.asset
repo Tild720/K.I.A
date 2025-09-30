@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Lettuce
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
-  ingredientName: Tomato
-  ingredientPrefab: {fileID: 1781481496601856203, guid: 8f3903889c6a9da4e9d1d2e1a6e875a0, type: 3}
+  ingredientName: Lettuce
+  ingredientPrefab: {fileID: 1145477034948035240, guid: 1554d38bd4a76db438255e93ac7e228c, type: 3}

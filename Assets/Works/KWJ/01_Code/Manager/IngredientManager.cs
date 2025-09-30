@@ -43,6 +43,7 @@ namespace KWJ.Manager
                     GameObject item = Instantiate(ingred.ingredient.ingredientPrefab, itemSpawnPoint.position, Quaternion.identity);
                     Ingredient ingredient = item.GetComponentInChildren<Ingredient>();
                     ingredients.Add(ingredient);
+                    print(ingredient.gameObject.name);
                 }
             }
         }
