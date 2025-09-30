@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 3
   m_EditorClassIdentifier: 
   regionName: "\uC608\uBA58"
-  population: 25
+  population: 1
   health: 40
   Money: 7000
+  skyBox: {fileID: 0}

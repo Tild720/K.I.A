@@ -28,6 +28,8 @@ namespace KWJ.Manager
         {
             foreach (var ingredient in ingredients)
             {
+                if(ingredient == null) continue;
+                
                 Destroy(ingredient.gameObject);
             }
             

@@ -167,7 +167,7 @@ namespace UIs.Controllers.ShopUI.FoodUI
                 confirmButton.interactable = true;
             }
             
-            bool canPurchaseMore = Money >= Count * _currentFood.price;
+            bool canPurchaseMore = Money >= (Count + 1) * _currentFood.price;
             if (!canPurchaseMore)
             {
                 _addButtonVisualElement.AddState("disabled", 20).Forget();

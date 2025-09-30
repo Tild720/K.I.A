@@ -29,6 +29,8 @@ namespace Works.Tild.Code.Result
         }
         private void ResultHandler(ResultEvent obj)
         {
+            Debug.LogError("erorr");
+            Debug.Log(obj.Money);
             StopAllCoroutines();
             
             // Healthfixed : 약 10~50

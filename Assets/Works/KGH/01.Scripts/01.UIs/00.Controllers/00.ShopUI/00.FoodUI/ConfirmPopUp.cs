@@ -3,6 +3,7 @@ using Code.Core.EventSystems;
 using Core.EventSystem;
 using Cysharp.Threading.Tasks;
 using Foods;
+using Region;
 using TMPro;
 using UIs.Visuals;
 using UnityEngine;
@@ -62,7 +63,7 @@ namespace UIs.Controllers.ShopUI.FoodUI
             {
                 Time.timeScale = 1; 
                 GameEventBus.RaiseEvent(PurchaseEvents.PurchaseEvent.Initialize(_currentFood, count));
-                GameEventBus.RaiseEvent(PurchaseEvents.UseMoneyEvent.Initialize(_currentFood.price * count));
+                RegionManager.Instance.Money -= _currentFood.price * count;
             }));
         }
     }

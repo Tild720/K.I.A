@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Code.Core.EventSystems;
 using DG.Tweening;
+using Region;
 using UnityEngine;
 using UnityEngine.UI;
 using Works.JW.Events;
@@ -23,6 +24,7 @@ namespace Code.Chat
         [SerializeField] private CanvasGroup chatGroup;
         private readonly ChoiceEvent _choiceEvent = ChatEventChannel.ChoiceEvent;
         private readonly ChatEndedEvent _chatEndedEvent = ChatEventChannel.ChatEndedEvent;
+        private readonly ResultEvent ResultEvent = ScoreEventChannel.ResultEvent;
         
         private int _chatIndex = 0;
         private bool _isChoiced = false;
@@ -142,7 +144,7 @@ namespace Code.Chat
             _chatIndex++;
             if (_chatIndex < chatLists.Count)
             {
-           
+                
                 StartChat();
             }
             else
@@ -150,7 +152,12 @@ namespace Code.Chat
                 Debug.Log("모든 대화가 끝났습니다.");
             }
         }
-        
+
+        private IEnumerator DelayedChat()
+        {
+            yield return new WaitForSeconds(12);
+            StartChat();
+        }
         public void StartChat()
         {
             chatGroup.DOFade(1, 1).OnComplete(() =>
