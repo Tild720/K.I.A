@@ -31,6 +31,7 @@ namespace KWJ.Interactable.PickUpable
         {
             m_canPickUp = canPickUp;
             m_rigidbody.isKinematic = !canPickUp;
+            m_rigidbody.useGravity = true;
         }
 
         public virtual void PointerDown(Entity entity)
@@ -48,10 +49,12 @@ namespace KWJ.Interactable.PickUpable
 
         public virtual void PointerUp(Entity entity)
         {
-            if(m_canPickUp == false && _isPickUp == false) return;
-            
             _isPickUp = false;
-            m_rigidbody.useGravity = true;
+            
+            if(m_canPickUp == false) return;
+            
+            if(m_rigidbody != null)
+                m_rigidbody.useGravity = true;
 
             Vector3 forceDir = _interactor.CatchPoint.position - transform.position;
             float distance = forceDir.magnitude;

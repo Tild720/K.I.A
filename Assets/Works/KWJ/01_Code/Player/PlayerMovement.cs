@@ -127,16 +127,16 @@ namespace KWJ.Players
 
         private void OnJump()
         {
-            if (_groundChecker.GroundCheck())
+            /*if (_groundChecker.GroundCheck())
             {
                 _rigidbody.AddForce(Vector3.up * _jumpPower, ForceMode.Impulse);
                 _rigidbody.linearVelocity = new Vector3(_rigidbody.linearVelocity.x, 0, _rigidbody.linearVelocity.z);
-            }
+            }*/
         }
 
         private void OnRun(bool obj)
         {
-            if (!_staminaChecker.CanRun) return;
+            //if (!_staminaChecker.CanRun) return;
 
             if (obj)
             {
