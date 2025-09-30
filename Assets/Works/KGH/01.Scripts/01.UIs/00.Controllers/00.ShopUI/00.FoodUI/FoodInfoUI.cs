@@ -106,7 +106,7 @@ namespace UIs.Controllers.ShopUI.FoodUI
                 if (i < food.ingredient.Length)
                 {
                     _ingredientItems[i].gameObject.SetActive(true);
-                    _ingredientItems[i].SetIngredient(food.ingredient[i].icon, food.ingredient[i].ingredientName);
+                    _ingredientItems[i].SetIngredient(food.ingredient[i].ingredient.icon, food.ingredient[i].ingredient.ingredientName);
                 }
                 else
                 {
@@ -118,7 +118,7 @@ namespace UIs.Controllers.ShopUI.FoodUI
             {
                 var item = Instantiate(ingredientItemPrefab, ingredientItemParent);
                 var ingredientItemUI = item.GetComponent<IngredientItemUI>();
-                ingredientItemUI.SetIngredient(food.ingredient[i].icon, food.ingredient[i].ingredientName);
+                ingredientItemUI.SetIngredient(food.ingredient[i].ingredient.icon, food.ingredient[i].ingredient.ingredientName);
                 _ingredientItems.Add(ingredientItemUI);
             }
 

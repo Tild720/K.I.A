@@ -1,11 +1,15 @@
 ﻿using KWJ.Interactable.PickUpable;
 using KWJ.OverlapChecker;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace KWJ.Interactable
 {
     public class GasStove : MonoBehaviour
     {
+        public UnityEvent onBoilingEvent;
+        public UnityEvent offBoilingEvent;
+        
         [SerializeField] private BoxOverlapChecker boxChecker;
         [SerializeField] private PickUpableFixture fixture;
 
@@ -20,12 +24,21 @@ namespace KWJ.Interactable
 
         private void Update()
         {
-            if (_hasPot)
+            if (_hasPot && _isOn)
             {
                 if (_pot.IsPutdown && _isOn)
                 {
                     _pot.CreateFood();
+
+                    if (_pot.CurrentAmountWater > 0)
+                    {
+                        onBoilingEvent?.Invoke();
+                    }
                 }
+            }
+            else
+            {
+                offBoilingEvent?.Invoke();
             }
             
             if(_hasPot || !boxChecker.BoxOverlapCheck()) return;
