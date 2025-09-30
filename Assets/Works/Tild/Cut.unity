@@ -3582,6 +3582,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2083783733}
     - target: {fileID: 5521783553967051302, guid: 50531099545a08d44957606e08f92f84, type: 3}
+      propertyPath: chatScrollRect
+      value: 
+      objectReference: {fileID: 1863523415}
+    - target: {fileID: 5521783553967051302, guid: 50531099545a08d44957606e08f92f84, type: 3}
       propertyPath: chatLists.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -6557,6 +6561,17 @@ PrefabInstance:
       addedObject: {fileID: 279101064}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73687775ed3d0bc4e89f961f3062cf06, type: 3}
+--- !u!114 &1863523415 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7150264719741587885, guid: abd2b02af785a2842bc547f92abf2064, type: 3}
+  m_PrefabInstance: {fileID: 373262589}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa08ab6e0800fa44ae55d278d1423e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1866148996
 GameObject:
   m_ObjectHideFlags: 0
@@ -9809,6 +9824,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1895157026153302051, guid: c12c62ddd3bf5ef49aa5f8b63f3441e5, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.98
+      objectReference: {fileID: 0}
+    - target: {fileID: 1895157026153302051, guid: c12c62ddd3bf5ef49aa5f8b63f3441e5, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 1895157026153302051, guid: c12c62ddd3bf5ef49aa5f8b63f3441e5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.714
+      objectReference: {fileID: 0}
     - target: {fileID: 3550166943274695238, guid: c12c62ddd3bf5ef49aa5f8b63f3441e5, type: 3}
       propertyPath: m_Name
       value: ItemManager

@@ -30,19 +30,32 @@ MonoBehaviour:
     Choices: []
   - ChatType: 0
     Messages:
-    - message: "\uADF8\uAC74 \uADF8\uB807\uACE0, \uC774\uC81C \uB2E4\uC74C \uC9C0\uC5ED\uC73C\uB85C
-        \uAC00\uC57C\uD569\uB2C8\uB2E4."
+    - message: "\uC544.. \uC774\uBC88\uC5D4 \uB0B4\uC804 \uC9C0\uC5ED..??"
       delay: 0
-    - message: "\uC804\uC7C1 \uB54C\uBB38\uC5D0 \uC2DD\uB7C9\uC774 \uB4E4\uC5B4\uC624\uC9C0
-        \uBABB\uD558\uACE0,"
+    - message: "\uC0B4\uC9DD \uB450\uB835\uC9C0\uB9CC.. \uC54C\uACA0\uC2B5\uB2C8\uB2E4."
       delay: 0
-    - message: "\uBE75\uC774\uB098 \uBB3C\uC870\uCC28 \uAD6C\uD558\uAE30 \uD798\uB4E4\uACE0,
-        \uC544\uC774\uB4E4\uC774 \uBA3C\uC800 \uD76C\uC0DD\uB418\uACE0 \uC788\uB294"
-      delay: 0
-    - message: "\uC608\uBA58 \uB0B4\uC804 \uC9C0\uC5ED\uC5D0\uC11C \uBD09\uC0AC\uB97C
-        \uC9C4\uD589\uD569\uB2C8\uB2E4."
+    - message: "\uC608\uC0B0\uACFC \uC778\uC6D0\uC744 \uC54C\uB824\uC8FC\uC138\uC694."
       delay: 0
     Choices: []
+  - ChatType: 1
+    Messages:
+    - message: "\uC774\uBC88 \uC608\uBA58\uC5D0\uC11C\uB294  \uC778\uC6D0 25\uBA85,"
+      delay: 0
+    - message: "\uC608\uC0B0 7000$\uC785\uB2C8\uB2E4."
+      delay: 0
+    Choices:
+    - action: "\uC608\uC0B0 \uC694\uCCAD"
+      message:
+        message: "\uC608\uC0B0\uC774 \uBD80\uC871\uD560 \uAC83 \uAC19\uC2B5\uB2C8\uB2E4."
+        delay: 4
+      points: 0
+      reply: 
+    - action: "\uB098\uAC00\uAE30"
+      message:
+        message: "\uADF8\uB7FC \uB2E4\uB140\uC624\uACA0\uC2B5\uB2C8\uB2E4."
+        delay: 0
+      points: 0
+      reply: "\uD589\uC6B4\uC744 \uBE55\uB2C8\uB2E4."
   Region: {fileID: 11400000, guid: 57439eb2950a8db4c8dc05f137de64d1, type: 2}
   SuccessMessages:
   - message: "\uC54C\uACA0\uC2B5\uB2C8\uB2E4. \uC608\uC0B0\uC744 {multiplier}\uBC30
