@@ -1704,6 +1704,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   popUpUI: {fileID: 6022260769279157757}
+  canvas: {fileID: 3737115883247599268}
+  graphicRaycaster: {fileID: 4107446967432267931}
+  camera: {fileID: 0}
+  priorityWhenOpen: 15
 --- !u!1 &2694086683270231898
 GameObject:
   m_ObjectHideFlags: 0
