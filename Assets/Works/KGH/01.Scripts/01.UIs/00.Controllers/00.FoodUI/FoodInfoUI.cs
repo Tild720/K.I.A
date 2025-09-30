@@ -2,6 +2,7 @@
 using Code.Core.EventSystems;
 using Core.EventSystem;
 using Foods;
+using Region;
 using TMPro;
 using UIs.Visuals;
 using UnityEngine;
@@ -35,7 +36,9 @@ namespace UIs.Controllers.FoodUI
         private VisualElement _confirmButtonVisualElement;
 
         private FoodSO _currentFood;
-
+        
+        private int Count => int.TryParse(countInputField.text, out int value) ? value : 0;
+        
         private void Awake()
         {
             _addButtonVisualElement = addButton.GetComponent<VisualElement>();
@@ -126,7 +129,7 @@ namespace UIs.Controllers.FoodUI
 
         public void OnAdd()
         {
-            var count = int.Parse(countInputField.text);
+            var count = Count;
             count++;
             countInputField.text = count.ToString();
 
@@ -135,8 +138,8 @@ namespace UIs.Controllers.FoodUI
 
         public void OnSubtract()
         {
-            var count = int.Parse(countInputField.text);
-            if (count > 0)
+            var count = Count;
+            if (Count > 0)
             {
                 count--;
                 countInputField.text = count.ToString();
@@ -147,8 +150,7 @@ namespace UIs.Controllers.FoodUI
 
         private void CheckButton()
         {
-            var count = int.Parse(countInputField.text);
-            if (count <= 0)
+            if (Count <= 0)
             {
                 _subtractButtonVisualElement.AddState("disabled", 20);
                 subtractButton.interactable = false;
@@ -165,7 +167,7 @@ namespace UIs.Controllers.FoodUI
                 confirmButton.interactable = true;
             }
 
-            bool canPurchaseMore = true; // TODO: Check if the player has enough resources to purchase
+            bool canPurchaseMore = RegionManager.Instance.Money >= Count * _currentFood.price;
             if (!canPurchaseMore)
             {
                 _addButtonVisualElement.AddState("disabled", 20);
@@ -180,9 +182,9 @@ namespace UIs.Controllers.FoodUI
 
         public void OnConfirm()
         {
-            var count = int.Parse(countInputField.text);
-            if (count <= 0) return;
-            GameEventBus.RaiseEvent(PurchaseEvents.PurchaseEvent.Initialize(_currentFood, count));
+            if (Count <= 0) return;
+            GameEventBus.RaiseEvent(PurchaseEvents.PurchaseEvent.Initialize(_currentFood, Count));
+            GameEventBus.RaiseEvent(PurchaseEvents.UseMoneyEvent.Initialize(_currentFood.price * Count));
         }
     }
 }

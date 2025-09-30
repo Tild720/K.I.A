@@ -3508,6 +3508,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateName: popUp
+  transition:
+    duration: 0.2
+    ease: 3
   targetAlpha: 1
 --- !u!114 &7415044420123517682
 MonoBehaviour:
@@ -3783,6 +3786,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateName: default
+  transition:
+    duration: 0.2
+    ease: 3
   targetAlpha: 0
 --- !u!114 &1312290057640856338
 MonoBehaviour:
