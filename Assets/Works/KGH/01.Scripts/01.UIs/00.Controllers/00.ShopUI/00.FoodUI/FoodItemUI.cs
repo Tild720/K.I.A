@@ -1,4 +1,5 @@
 ﻿using Core.Defines;
+using Cysharp.Threading.Tasks;
 using Foods;
 using TMPro;
 using UIs.Visuals;
@@ -14,7 +15,18 @@ namespace UIs.Controllers.ShopUI.FoodUI
         [SerializeField] private TextMeshProUGUI nameText;
         [SerializeField] private TextMeshProUGUI priceText;
         private VisualElement _visualElement;
-        public VisualElement VisualElement => _visualElement ??= GetComponent<VisualElement>();
+        public VisualElement VisualElement
+        {
+            get
+            {
+                if (_visualElement == null)
+                {
+                    _visualElement = GetComponent<VisualElement>();
+                }
+                return _visualElement;
+            }
+        }
+
         private Button _button;
         public bool IsSelected => _visualElement.CurrentState == ConstDefine.SELECTED;
 
@@ -22,16 +34,14 @@ namespace UIs.Controllers.ShopUI.FoodUI
         {
             _button = GetComponent<Button>();
             _button.onClick.AddListener(OnSelectHandler);
-
-            _visualElement = GetComponent<VisualElement>();
         }
 
         private void OnSelectHandler()
         {
             if (IsSelected)
-                _ = VisualElement.RemoveState(ConstDefine.SELECTED);
+                VisualElement.RemoveState(ConstDefine.SELECTED).Forget();
             else
-                _ = VisualElement.AddState(ConstDefine.SELECTED, 20);
+                VisualElement.AddState(ConstDefine.SELECTED, 20).Forget();
         }
 
         public void SetFood(FoodSO food)

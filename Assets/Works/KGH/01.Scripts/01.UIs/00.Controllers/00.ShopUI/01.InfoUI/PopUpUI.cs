@@ -1,4 +1,5 @@
-﻿using Region;
+﻿using Cysharp.Threading.Tasks;
+using Region;
 using TMPro;
 using UIs.Visuals;
 using UnityEngine;
@@ -42,9 +43,21 @@ namespace UIs.Controllers.ShopUI.InfoUI
         
         private async void StartPopUp()
         {
-            _ =popUpElement.AddState("popUp", 20);
+            popUpElement.AddState("popUp", 20).Forget();
             await Awaitable.WaitForSecondsAsync(popUpDuration);
-            _ = popUpElement.RemoveState("popUp");
+            popUpElement.RemoveState("popUp").Forget();
         }
+
+#if UNITY_EDITOR
+        [ContextMenu("ShowPopUp")]
+        public void ShowPopUp()
+        {
+            var currentRegion = RegionManager.Instance.CurrentRegion;
+            if (currentRegion == null) return;
+            SetUpInfo(currentRegion.population, currentRegion.health, RegionManager.Instance.Money);
+            StartPopUp();
+            infoBar.SetUpInfo(currentRegion.population, currentRegion.health, RegionManager.Instance.Money);
+        }
+#endif
     }
 }

@@ -55,17 +55,9 @@ namespace UIs.Visuals
             _currentState = defaultState;
         }
 
-        private void OnDestroy()
-        {
-            if (OnStateChanged != null)
-            {
-                OnStateChanged = null;
-            }
-        }
-
         public async UniTask AddState(string stateName, int priority)
         {
-            if (_effects.ContainsKey(stateName))
+            if (_effects.ContainsKey(stateName) || isThisRoot)
                 _states[stateName] = priority;
 
             // _children.ForEach(c => c.AddState(stateName, priority));
@@ -81,24 +73,26 @@ namespace UIs.Visuals
             if (_states.ContainsKey(stateName))
                 _states.Remove(stateName);
             // _children.ForEach(c => c.RemoveState(stateName));
-            var wh = UniTask.WhenAll(_children.ConvertAll(c => c.RemoveState(stateName)));
+            UniTask wh = UniTask.CompletedTask;
+            if (_children.Count > 0)
+                wh = UniTask.WhenAll(_children.ConvertAll(c => c.RemoveState(stateName)));
 
             await UniTask.WhenAll(UpdateState(), wh);
+            
         }
-
+        
         private async UniTask UpdateState()
         {
             var nextState = GetHighestPriorityState();
             if (nextState != _currentState)
             {
                 _currentState = nextState;
-
+                OnStateChanged?.Invoke(_currentState);
+                
                 if (_effects.TryGetValue(_currentState, out var nextEffect))
                 {
                     await UniTask.WhenAll(nextEffect.ConvertAll(e => e.PlayEffect()));
                 }
-
-                OnStateChanged?.Invoke(_currentState);
             }
         }
 

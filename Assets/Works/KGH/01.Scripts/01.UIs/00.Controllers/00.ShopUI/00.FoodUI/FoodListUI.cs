@@ -27,7 +27,10 @@ namespace UIs.Controllers.ShopUI.FoodUI
                 _foodItemUIs.Add(food, foodItemUI);
                 foodItemUI.SetFood(food);
 
-                foodItemUI.VisualElement.OnStateChanged += str => HandleStateChange(str, food);
+                foodItemUI.VisualElement.OnStateChanged += str =>
+                {
+                    HandleStateChange(str, food);
+                };
             }
             
             HandleStateChange(ConstDefine.HOVER, foods[0]);

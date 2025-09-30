@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Code.Core.EventSystems;
 using Core.EventSystem;
+using Cysharp.Threading.Tasks;
 using Foods;
 using Region;
 using TMPro;
@@ -28,6 +29,7 @@ namespace UIs.Controllers.ShopUI.FoodUI
 
         [Header("Confirm Ref")] [SerializeField]
         private Button confirmButton;
+        [SerializeField] private ConfirmPopUp confirmPopUp;
 
         private List<IngredientItemUI> _ingredientItems = new List<IngredientItemUI>();
 
@@ -152,30 +154,30 @@ namespace UIs.Controllers.ShopUI.FoodUI
         {
             if (Count <= 0)
             {
-                _ = _subtractButtonVisualElement.AddState("disabled", 20);
+                _subtractButtonVisualElement.AddState("disabled", 20).Forget();
                 subtractButton.interactable = false;
 
-                _ = _confirmButtonVisualElement.AddState("disabled", 10);
+                _confirmButtonVisualElement.AddState("disabled", 10).Forget();
                 confirmButton.interactable = false;
             }
             else
             {
-                _ = _subtractButtonVisualElement.RemoveState("disabled");
+                _subtractButtonVisualElement.RemoveState("disabled").Forget();
                 subtractButton.interactable = true;
 
-                _ = _confirmButtonVisualElement.RemoveState("disabled");
+                _confirmButtonVisualElement.RemoveState("disabled").Forget();
                 confirmButton.interactable = true;
             }
 
             bool canPurchaseMore = RegionManager.Instance.Money >= Count * _currentFood.price;
             if (!canPurchaseMore)
             {
-                _ = _addButtonVisualElement.AddState("disabled", 20);
+                _addButtonVisualElement.AddState("disabled", 20).Forget();
                 addButton.interactable = false;
             }
             else
             {
-                _ = _addButtonVisualElement.RemoveState("disabled");
+                _addButtonVisualElement.RemoveState("disabled").Forget();
                 addButton.interactable = true;
             }
         }
@@ -183,8 +185,7 @@ namespace UIs.Controllers.ShopUI.FoodUI
         public void OnConfirm()
         {
             if (Count <= 0) return;
-            GameEventBus.RaiseEvent(PurchaseEvents.PurchaseEvent.Initialize(_currentFood, Count));
-            GameEventBus.RaiseEvent(PurchaseEvents.UseMoneyEvent.Initialize(_currentFood.price * Count));
+            confirmPopUp.SetUp(_currentFood, Count);
         }
     }
 }
