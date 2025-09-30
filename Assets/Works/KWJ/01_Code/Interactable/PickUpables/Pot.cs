@@ -104,11 +104,6 @@ namespace KWJ.Interactable.PickUpable
             SetCanPickUp(true);
             _gasStove.SetHasPot(false);
         }
-
-        public override void PointerUp(Entity entity)
-        {
-            base.PointerUp(entity);
-        }
         
         public void Initialized(GasStove gasStove)
         {
