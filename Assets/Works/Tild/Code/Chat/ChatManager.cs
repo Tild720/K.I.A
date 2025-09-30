@@ -5,6 +5,7 @@ using Code.Core.EventSystems;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
+using Works.JW.Events;
 using Works.Tild.Code;
 using Works.Tild.Code.Events;
 using Random = System.Random;
@@ -49,6 +50,7 @@ namespace Code.Chat
         private void Awake()
         {
             GameEventBus.AddListener<ChoiceBtnEvent>(OnChoiceBtnEvent); 
+            GameEventBus.AddListener<NPCLineEndEvent>(NextChat); 
         }
 
         private void OnChoiceBtnEvent(ChoiceBtnEvent obj)
@@ -139,7 +141,7 @@ namespace Code.Chat
         }
 
 
-        public void NextChat()
+        public void NextChat(NPCLineEndEvent evt)
         {
             _chatIndex++;
             if (_chatIndex < chatLists.Count)
