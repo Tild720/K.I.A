@@ -7,6 +7,7 @@ using KWJ.Food;
 using TMPro;
 using UnityEngine;
 using Works.JW.Events;
+using Works.Tild.Code.Events;
 using Random = UnityEngine.Random;
 
 namespace Code.NPC
@@ -18,7 +19,6 @@ namespace Code.NPC
         [SerializeField] private Vector3 npcDeleteOffset;
         [SerializeField] private float deleteTime;
         [SerializeField] private List<NPC> npcPrefabList;
-        [SerializeField] private int npcCount;
         [SerializeField] private TextMeshProUGUI ui;
         [SerializeField] private float animationSpeed;
          
@@ -33,11 +33,26 @@ namespace Code.NPC
         private void Awake()
         {
             _textWait = new WaitForSeconds(animationSpeed);
-            
+
+            GameEventBus.AddListener<ChatEndedEvent>(HandleChatEndEvent);
+        }
+
+        private void OnDestroy()
+        {
+            GameEventBus.RemoveListener<ChatEndedEvent>(HandleChatEndEvent);
+        }
+
+        private void HandleChatEndEvent(ChatEndedEvent evt)
+        {
+            Init(evt.NextRegion.population);
+        }
+
+        private void Init(int count)
+        {
             _npc = new List<NPC>();
             _eatenCount = 0;
             
-            for (int i = 0; i < npcCount; i++)
+            for (int i = 0; i < count; i++)
             {
                 int idx = Random.Range(0,npcPrefabList.Count);
                 NPC npc = Instantiate(npcPrefabList[idx],transform);
