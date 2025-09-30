@@ -1,7 +1,7 @@
 ﻿using TMPro;
 using UnityEngine;
 
-namespace UIs.Controllers.InfoUI
+namespace UIs.Controllers.ShopUI.InfoUI
 {
     public class InfoBarUI : MonoBehaviour
     {

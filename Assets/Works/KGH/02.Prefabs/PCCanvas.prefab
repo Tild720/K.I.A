@@ -1000,6 +1000,7 @@ GameObject:
   - component: {fileID: 3263957675426208712}
   - component: {fileID: 4107446967432267931}
   - component: {fileID: 4716989013766402425}
+  - component: {fileID: 6679390807914787758}
   m_Layer: 5
   m_Name: PCCanvas
   m_TagString: Untagged
@@ -1072,7 +1073,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 78.85
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &4107446967432267931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1103,6 +1104,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowMaskGraphic: 1
+--- !u!114 &6679390807914787758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2598343252870015191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb6e7a81e8c945e79f17f09d9195fe82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnShopOpened:
+    m_PersistentCalls:
+      m_Calls: []
+  popUpUI: {fileID: 6022260769279157757}
 --- !u!1 &2694086683270231898
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,7 +6,7 @@ using UIs.Visuals.Handlers;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UIs.Controllers.FoodUI
+namespace UIs.Controllers.ShopUI.FoodUI
 {
     public class FoodListUI : MonoBehaviour
     {

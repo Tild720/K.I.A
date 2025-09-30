@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UIs.Controllers.FoodUI
+namespace UIs.Controllers.ShopUI.FoodUI
 {
     public class IngredientItemUI : MonoBehaviour
     {

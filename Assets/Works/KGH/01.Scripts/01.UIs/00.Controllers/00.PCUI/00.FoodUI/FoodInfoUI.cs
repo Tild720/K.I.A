@@ -9,7 +9,7 @@ using UnityEngine;
 using Button = UnityEngine.UI.Button;
 using Image = UnityEngine.UI.Image;
 
-namespace UIs.Controllers.FoodUI
+namespace UIs.Controllers.ShopUI.FoodUI
 {
     public class FoodInfoUI : MonoBehaviour
     {

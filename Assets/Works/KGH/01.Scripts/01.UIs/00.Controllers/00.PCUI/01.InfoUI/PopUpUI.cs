@@ -3,7 +3,7 @@ using TMPro;
 using UIs.Visuals;
 using UnityEngine;
 
-namespace UIs.Controllers.InfoUI
+namespace UIs.Controllers.ShopUI.InfoUI
 {
     public class PopUpUI : MonoBehaviour
     {
@@ -17,8 +17,6 @@ namespace UIs.Controllers.InfoUI
         private string _healthText;
         private string _moneyText;
         
-        private RegionManager RegionManager => RegionManager.Instance;
-        
         private void Awake()
         {
             _populationText = populationText.text;
@@ -26,14 +24,13 @@ namespace UIs.Controllers.InfoUI
             _moneyText = moneyText.text;
         }
         
-        [ContextMenu("ShowPopUp")]
-        public void ShowPopUp()
+        public void ShowPopUp(float getMoney, RegionSO nextRegion)
         {
-            var currentRegion = RegionManager.CurrentRegion;
+            var currentRegion = nextRegion;
             if (currentRegion == null) return;
-            SetUpInfo(currentRegion.population, currentRegion.health, RegionManager.Money);
+            SetUpInfo(currentRegion.population, currentRegion.health, Mathf.RoundToInt(getMoney));
             StartPopUp();
-            infoBar.SetUpInfo(currentRegion.population, currentRegion.health, RegionManager.Money);
+            infoBar.SetUpInfo(currentRegion.population, currentRegion.health, Mathf.RoundToInt(getMoney));
         }
 
         private void SetUpInfo(int population, int health, int money)
