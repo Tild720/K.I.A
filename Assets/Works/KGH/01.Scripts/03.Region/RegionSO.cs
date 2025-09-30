@@ -9,6 +9,7 @@ namespace Region
         public string regionName;
         public int population;
         public int health; //0~100
+        public float Money;
         public object Clone()
         {
             return MemberwiseClone();
