@@ -36,10 +36,16 @@ namespace Code.Chat
         }
         private void ScrollToBottomSmooth()
         {
-            Canvas.ForceUpdateCanvases();
-            chatScrollRect.DOVerticalNormalizedPos(0f, 0.2f); // 0.2초 동안 스크롤
+          
+            StartCoroutine(ScrollDelayed());
         }
 
+        private IEnumerator ScrollDelayed()
+        {
+            yield return null; 
+            Canvas.ForceUpdateCanvases();
+            chatScrollRect.DOVerticalNormalizedPos(0f, 0.2f);
+        }
         private void Awake()
         {
             GameEventBus.AddListener<ChoiceBtnEvent>(OnChoiceBtnEvent); 
@@ -54,6 +60,7 @@ namespace Code.Chat
         {
             ChatBubble plrBubble = Instantiate(playerBubble, bubbleParent);
             plrBubble.Initialize(choice.message.message);
+            ScrollToBottomSmooth();
             yield return new WaitForSeconds(choice.message.delay);
 
             if (choice.action == "예산 요청")
@@ -117,16 +124,16 @@ namespace Code.Chat
 
                 _isChoiced = true;
                 GameEventBus.RaiseEvent(_chatEndedEvent.Initializer(currentMoney, chatLists[_chatIndex].Region));
-                chatGroup.DOFade(0, 1).OnComplete(() =>
+                chatGroup.DOFade(0, 1);
+                yield return new WaitForSeconds(1); 
+                foreach (Transform child in bubbleParent)
                 {
-                    foreach (GameObject child in bubbleParent)
-                    {
-                        Destroy(child);
-                    }
+                    Destroy(child.gameObject);
+                }
 
+                    
                     chatGroup.blocksRaycasts = false;
                     Debug.Log("CCC");
-                });
                 
             }
         }

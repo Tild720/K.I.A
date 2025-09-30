@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   regionName: "\uCF00\uB0D0 \uBD81\uBD80"
   population: 15
-  health: 70
+  health: 60
   Money: 3000
