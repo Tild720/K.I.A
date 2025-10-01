@@ -6,6 +6,7 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Works.JW.Code;
 using Works.Tild.Code;
 using Works.Tild.Code.Events;
 using Random = System.Random;
@@ -31,11 +32,7 @@ namespace Code.Chat
         private float currentMoney;
         
         public int Point { get; set; }
-
-        private void Start()
-        {
-            StartChat();
-        }
+        
         private void ScrollToBottomSmooth()
         {
           
@@ -175,6 +172,7 @@ namespace Code.Chat
         
         public void StartChat()
         {
+            GameManager.instance.SetCursor(true);
             GameEventBus.RaiseEvent(_choiceEvent.Initializer(new List<Choice>()));
             chatGroup.DOFade(1, 1).OnComplete(() =>
             {

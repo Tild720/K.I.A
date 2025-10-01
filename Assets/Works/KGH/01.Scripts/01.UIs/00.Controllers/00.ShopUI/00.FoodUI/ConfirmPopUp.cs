@@ -8,6 +8,7 @@ using TMPro;
 using UIs.Visuals;
 using UnityEngine;
 using UnityEngine.UI;
+using Works.JW.Code;
 
 namespace UIs.Controllers.ShopUI.FoodUI
 {
@@ -61,6 +62,7 @@ namespace UIs.Controllers.ShopUI.FoodUI
 
             GameEventBus.RaiseEvent(UIEvents.FadeEvent.Initialize(() =>
             {
+                GameManager.instance.SetCursor(false);
                 Time.timeScale = 1;
                 GameEventBus.RaiseEvent(PurchaseEvents.PurchaseEvent.Initialize(_currentFood, count));
                 RegionManager.Instance.Money -= _currentFood.price * count;

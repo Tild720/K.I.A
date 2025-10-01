@@ -28,7 +28,7 @@ namespace KWJ.Manager
         {
             foreach (var ingredient in ingredients)
             {
-                Destroy(ingredient.gameObject);
+                Destroy(ingredient?.gameObject);
             }
             
             ingredients.Clear();
