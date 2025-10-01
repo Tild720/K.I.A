@@ -56,7 +56,10 @@ namespace Code.NPC
         private void HandleSkipEvent(bool evt)
         {
             if (evt)
+            {
                 SkepNPC();
+                RefreshNPCPoint();
+            }
         }
 
         private void HandleChatEndEvent(ChatEndedEvent evt)
