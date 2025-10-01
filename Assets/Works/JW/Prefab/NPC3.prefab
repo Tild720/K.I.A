@@ -112,25 +112,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcLines:
   - lineType: 0
-    line: "\uBC25\uC918"
+    line: "\uB098\uB294 \uC0AC\uC2E4 \uB9DB\uC788\uB294 \uC74C\uC2DD\uC744 \uC6D0\uD568"
   - lineType: 0
-    line: "\uBC25 \uB9CE\uC774 \uC918"
+    line: "\uC2E0\uC774\uC2DC\uC5EC \uC800\uC5D0\uAC8C \uBC25\uC744 \uB0B4\uB824\uC8FC\uC138\uC694"
   - lineType: 1
-    line: "\uB9DB\uC788\uB124"
+    line: "\uAC10\uC0AC\uD569\uB2C8\uB2E4 \uC9C4\uC9DC \uC798\uBA39\uACA0\uC2B5\uB2C8\uB2E4 "
   - lineType: 1
-    line: GOOD
+    line: "\uC800\uC5D0\uAC8C \uC77C\uC6A9\uD560 \uC591\uC2DD\uC744 \uC8FC\uC154\uC11C
+      \uAC10\uC0AC\uD569\uB2C8\uB2E4"
   - lineType: 2
-    line: Normal
-  - lineType: 2
-    line: "\uBA39\uC744\uB9CC \uD558\uB124\uC694"
+    line: "\uC798\uBA39\uACA0\uC2B5\uB2C8\uB2E4"
   - lineType: 3
-    line: "\uB9DB\uC5C6\uC5B4\uC694"
+    line: "\uC74C \uC77C\uB2E8 \uBC1B\uC544\uB458\uAC8C\uC694"
   - lineType: 3
-    line: "\uB178\uB9DB"
+    line: "\uBA39\uC5B4\uB294 \uBCFC\uAC8C\uC694"
   - lineType: 4
-    line: "\uB098\uC05C\uC0AC\uB78C\uC544"
+    line: "\uCC9C\uBC8C\uBC1B\uC744\uAC81\uB2C8\uB2E4"
   - lineType: 4
-    line: "\uB098\uC05C\uC0AC\uB78C\uC544"
+    line: "\uBC24\uAE38 \uC870\uC2EC\uD558\uC138\uC694"
 --- !u!1001 &1121241615836919096
 PrefabInstance:
   m_ObjectHideFlags: 0
