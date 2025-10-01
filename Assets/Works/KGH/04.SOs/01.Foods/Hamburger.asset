@@ -24,5 +24,5 @@ MonoBehaviour:
     count: 5
   - ingredient: {fileID: 11400000, guid: 4a7729cc132f87e468a2455f50d9920e, type: 2}
     count: 2
-  - ingredient: {fileID: 11400000, guid: 6dae2dd3b5c99524f87da1bef1326e1b, type: 2}
+  - ingredient: {fileID: 11400000, guid: 121a653574ed03d46a7654eeed261cbd, type: 2}
     count: 2

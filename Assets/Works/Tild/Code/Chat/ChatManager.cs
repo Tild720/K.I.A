@@ -163,13 +163,13 @@ namespace Code.Chat
                     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
                 });
                 ;
-                Debug.Log("모든 대화가 끝났습니다.");
+                SceneManager.LoadScene("EndingScene2");
             }
         }
 
         IEnumerator DelayedChat()
         {
-            yield return new WaitForSeconds(6);
+            yield return null;
             StartChat();
         }
         

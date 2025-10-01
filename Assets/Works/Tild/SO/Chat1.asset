@@ -22,7 +22,7 @@ MonoBehaviour:
     Choices: []
   - ChatType: 1
     Messages:
-    - message: "\uC548\uB155\uD558\uC138\uC694. \\n"
+    - message: "\uC548\uB155\uD558\uC138\uC694."
       delay: 2
     - message: "\uC800\uB294 \uBD09\uC0AC\uC790\uB2D8\uC758 \uD65C\uB3D9\uC744 \uB3D5\uB294"
       delay: 3
@@ -66,6 +66,9 @@ MonoBehaviour:
     - message: "\uCCAB \uBD09\uC0AC\uB2C8 \uC608\uC0C1 \uC778\uC6D0\uC740 15\uBA85
         \uC815\uB3C4\uC774\uBA70 \uC774\uBC88 \uBD09\uC0AC\uC5D0 \uB530\uB77C\\n
         \uB2E4\uC74C \uBD09\uC0AC\uC5D0 \uC608\uC0B0\uC5D0 \uC601\uD5A5\uC774 \uAC11\uB2C8\uB2E4. "
+      delay: 4
+    - message: "R \uD0A4\uB97C \uB20C\uB7EC \uC74C\uC2DD \uC694\uAD6C\uB97C \uAC70\uC808\uD560
+        \uC218 \uC788\uC2B5\uB2C8\uB2E4."
       delay: 4
     Choices:
     - action: "\uC608\uC0B0 \uC694\uCCAD"
