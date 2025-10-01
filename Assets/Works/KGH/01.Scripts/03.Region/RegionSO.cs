@@ -10,6 +10,7 @@ namespace Region
         public int population;
         public int health; //0~100
         public float Money;
+        public Material skyBox;
         public object Clone()
         {
             return MemberwiseClone();

@@ -44,8 +44,9 @@ namespace UIs.Controllers.ShopUI.InfoUI
         
         private async void StartPopUp()
         {
+            Time.timeScale = 0;
             popUpElement.AddState("popUp", 20).Forget();
-            await Awaitable.WaitForSecondsAsync(popUpDuration);
+            await UniTask.WaitForSeconds(popUpDuration, true);
             popUpElement.RemoveState("popUp").Forget();
         }
 

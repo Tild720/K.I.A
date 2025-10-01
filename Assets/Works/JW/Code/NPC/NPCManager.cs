@@ -5,6 +5,7 @@ using Code.Core.EventSystems;
 using KWJ.Define;
 using KWJ.Food;
 using Region;
+using Settings.InputSystem;
 using TMPro;
 using UnityEngine;
 using Works.JW.Events;
@@ -25,6 +26,7 @@ namespace Code.NPC
         [SerializeField] private float textDeleteTime;
         [SerializeField] private float npcDeadTime = 150;
         [SerializeField] private RegionSO regionSO;
+        [SerializeField] private PlayerInputSO input;
          
         private Coroutine _textCoroutine;
         private WaitForSeconds _textWait;
@@ -40,13 +42,21 @@ namespace Code.NPC
             _textWait = new WaitForSeconds(animationSpeed);
             _deadTimer = 0;
             _npc = new List<NPC>();
+            input.OnCrouchAction += HandleSkipEvent;
             
             GameEventBus.AddListener<ChatEndedEvent>(HandleChatEndEvent);
         }
 
         private void OnDestroy()
         {
+            input.OnCrouchAction -= HandleSkipEvent;
             GameEventBus.RemoveListener<ChatEndedEvent>(HandleChatEndEvent);
+        }
+
+        private void HandleSkipEvent(bool evt)
+        {
+            if (evt)
+                SkepNPC();
         }
 
         private void HandleChatEndEvent(ChatEndedEvent evt)
@@ -165,6 +175,7 @@ namespace Code.NPC
             if (_npc.Count <= 0) return;
             
             ShowTextUI(_npc[0].Speech(LineType.Complaint));
+            GameEventBus.RaiseEvent(NPCEvents.NPCDeadEvent);
             DeleteFrontNPC();
         }
 
@@ -235,7 +246,8 @@ namespace Code.NPC
                 ui.maxVisibleCharacters++;
             }
             
-            yield return _textWait;
+            yield return new WaitForSeconds(2);
+            ui.text = string.Empty;
             endCallback?.Invoke();
         }
     }
