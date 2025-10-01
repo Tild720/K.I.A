@@ -2,6 +2,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Works.JW.Code.UI
@@ -18,11 +19,11 @@ namespace Works.JW.Code.UI
         private void Awake()
         {
             _mainWait = new WaitForSeconds(mainLineAnimationTime);
-            image.gameObject.SetActive(false);
+            image?.gameObject.SetActive(false);
 
             StartCoroutine(TextAnimation(mainTextUI, mainLine, _mainWait, () =>
             {
-                image.gameObject.SetActive(true);
+                image?.gameObject.SetActive(true);
             }));
         }
 
@@ -30,6 +31,11 @@ namespace Works.JW.Code.UI
         {
             Application.Quit();
             Debug.Log("나가짐");
+        }
+
+        public void Retry()
+        {
+            SceneManager.LoadScene("Cut");
         }
 
         private IEnumerator TextAnimation(TextMeshProUGUI ui, string line, WaitForSeconds wait, Action endCallback = null)
