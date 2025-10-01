@@ -29,12 +29,9 @@ namespace Works.Tild.Code.Result
         }
         private void ResultHandler(ResultEvent obj)
         {
-<<<<<<< Updated upstream
-=======
             Debug.Log("ResultEvent");
 
             Debug.Log(obj.Money);
->>>>>>> Stashed changes
             StopAllCoroutines();
             
             // Healthfixed : 약 10~50

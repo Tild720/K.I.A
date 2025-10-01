@@ -22,12 +22,8 @@ namespace Code.NPC
         [SerializeField] private List<NPC> npcPrefabList;
         [SerializeField] private TextMeshProUGUI ui;
         [SerializeField] private float animationSpeed;
-<<<<<<< Updated upstream
-        [SerializeField] private float npcDeadTime = 60;
-=======
         [SerializeField] private float textDeleteTime;
         [SerializeField] private float npcDeadTime = 150;
->>>>>>> Stashed changes
         [SerializeField] private RegionSO regionSO;
          
         private Coroutine _textCoroutine;
@@ -54,11 +50,8 @@ namespace Code.NPC
 
         private void HandleChatEndEvent(ChatEndedEvent evt)
         {
-<<<<<<< Updated upstream
-=======
             Debug.Log("StartNPC");
             regionSO = evt.NextRegion;
->>>>>>> Stashed changes
             Init(evt.NextRegion.population);
         }
 

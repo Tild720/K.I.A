@@ -899,8 +899,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 203132719}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
-<<<<<<< Updated upstream
-=======
 --- !u!1 &211375409
 GameObject:
   m_ObjectHideFlags: 0
@@ -1167,7 +1165,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 228851137}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
->>>>>>> Stashed changes
 --- !u!1 &229511286
 GameObject:
   m_ObjectHideFlags: 0
@@ -1505,8 +1502,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6919830768554328934, guid: 73687775ed3d0bc4e89f961f3062cf06, type: 3}
   m_PrefabInstance: {fileID: 1848056596}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< Updated upstream
-=======
 --- !u!114 &274706383 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5521783553967051302, guid: 50531099545a08d44957606e08f92f84, type: 3}
@@ -1588,7 +1583,6 @@ MonoBehaviour:
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 0}
   m_BuildHeightMesh: 0
->>>>>>> Stashed changes
 --- !u!1 &279101063
 GameObject:
   m_ObjectHideFlags: 0
@@ -1999,12 +1993,9 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 970300987375241081, guid: abd2b02af785a2842bc547f92abf2064, type: 3}
-<<<<<<< Updated upstream
-=======
       insertIndex: -1
       addedObject: {fileID: 998537234}
     - targetCorrespondingSourceObject: {fileID: 8324292232832845553, guid: abd2b02af785a2842bc547f92abf2064, type: 3}
->>>>>>> Stashed changes
       insertIndex: -1
       addedObject: {fileID: 1174382537}
     m_AddedComponents: []
@@ -3628,9 +3619,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-<<<<<<< Updated upstream
-    m_AddedGameObjects: []
-=======
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 6728902718668220043, guid: b950463d78ebcd04b9094c642c96f209, type: 3}
       insertIndex: 1
@@ -3641,7 +3629,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3875008789579288630, guid: b950463d78ebcd04b9094c642c96f209, type: 3}
       insertIndex: 0
       addedObject: {fileID: 1442067753}
->>>>>>> Stashed changes
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b950463d78ebcd04b9094c642c96f209, type: 3}
 --- !u!1 &531897762
@@ -7480,8 +7467,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
-<<<<<<< Updated upstream
-=======
 --- !u!1 &1296139527
 GameObject:
   m_ObjectHideFlags: 0
@@ -7662,7 +7647,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1298655324}
   m_CullTransparentMesh: 1
->>>>>>> Stashed changes
 --- !u!1 &1299897845
 GameObject:
   m_ObjectHideFlags: 0
@@ -12907,111 +12891,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35ae8af887fcb594a9c328fce04f2caf, type: 3}
-<<<<<<< Updated upstream
---- !u!1 &2104769046
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2104769050}
-  - component: {fileID: 2104769049}
-  - component: {fileID: 2104769048}
-  - component: {fileID: 2104769047}
-  m_Layer: 5
-  m_Name: Canvas
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &2104769047
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2104769046}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
---- !u!114 &2104769048
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2104769046}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
-  m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
-  m_PhysicalUnit: 3
-  m_FallbackScreenDPI: 96
-  m_DefaultSpriteDPI: 96
-  m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
---- !u!223 &2104769049
-Canvas:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2104769046}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
-  m_PixelPerfect: 0
-  m_ReceivesEvents: 1
-  m_OverrideSorting: 0
-  m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 25
-  m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_TargetDisplay: 0
---- !u!224 &2104769050
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2104769046}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 998537234}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 0}
-=======
->>>>>>> Stashed changes
 --- !u!1 &2110745979
 GameObject:
   m_ObjectHideFlags: 0

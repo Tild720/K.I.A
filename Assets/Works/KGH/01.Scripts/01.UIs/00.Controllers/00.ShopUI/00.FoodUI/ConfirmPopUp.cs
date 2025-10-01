@@ -3,6 +3,7 @@ using Code.Core.EventSystems;
 using Core.EventSystem;
 using Cysharp.Threading.Tasks;
 using Foods;
+using Region;
 using TMPro;
 using UIs.Visuals;
 using UnityEngine;
@@ -61,13 +62,9 @@ namespace UIs.Controllers.ShopUI.FoodUI
             GameEventBus.RaiseEvent(UIEvents.FadeEvent.Initialize(() =>
             {
                 GameEventBus.RaiseEvent(PurchaseEvents.PurchaseEvent.Initialize(_currentFood, count));
-<<<<<<< Updated upstream
-                GameEventBus.RaiseEvent(PurchaseEvents.UseMoneyEvent.Initialize(_currentFood.price * count));
-=======
                 RegionManager.Instance.Money -= _currentFood.price * count;
                 RegionManager.Instance.Used = _currentFood.price * count;
                 
->>>>>>> Stashed changes
             }));
         }
     }

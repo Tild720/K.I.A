@@ -23,10 +23,7 @@ namespace Code.Chat
         [SerializeField] private CanvasGroup chatGroup;
         private readonly ChoiceEvent _choiceEvent = ChatEventChannel.ChoiceEvent;
         private readonly ChatEndedEvent _chatEndedEvent = ChatEventChannel.ChatEndedEvent;
-<<<<<<< Updated upstream
-=======
         private readonly ResultEndEvent ResultEvent = ScoreEventChannel.ResultEndEvent;
->>>>>>> Stashed changes
         
         private int _chatIndex = 0;
         private bool _isChoiced = false;
@@ -54,11 +51,8 @@ namespace Code.Chat
         private void Awake()
         {
             GameEventBus.AddListener<ChoiceBtnEvent>(OnChoiceBtnEvent); 
-<<<<<<< Updated upstream
-=======
             GameEventBus.AddListener<ResultEndEvent>(NextChat); 
        
->>>>>>> Stashed changes
         }
 
         private void OnChoiceBtnEvent(ChoiceBtnEvent obj)
@@ -153,23 +147,14 @@ namespace Code.Chat
         }
 
 
-<<<<<<< Updated upstream
-        public void NextChat()
-=======
         public void NextChat(ResultEndEvent evt)
->>>>>>> Stashed changes
         {
             Debug.Log("NextChat");
             _chatIndex++;
             if (_chatIndex < chatLists.Count)
             {
-<<<<<<< Updated upstream
-           
-                StartChat();
-=======
                 
                 StartCoroutine(DelayedChat());
->>>>>>> Stashed changes
             }
             else
             {
@@ -181,15 +166,12 @@ namespace Code.Chat
                 Debug.Log("모든 대화가 끝났습니다.");
             }
         }
-<<<<<<< Updated upstream
-=======
 
         IEnumerator DelayedChat()
         {
             yield return new WaitForSeconds(6);
             StartChat();
         }
->>>>>>> Stashed changes
         
         public void StartChat()
         {
