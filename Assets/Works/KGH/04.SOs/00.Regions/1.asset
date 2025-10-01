@@ -16,3 +16,7 @@ MonoBehaviour:
   population: 15
   health: 60
   Money: 3000
+<<<<<<< Updated upstream
+=======
+  skyBox: {fileID: 2100000, guid: 51b74d7bad397457d883c5940f7664d8, type: 2}
+>>>>>>> Stashed changes

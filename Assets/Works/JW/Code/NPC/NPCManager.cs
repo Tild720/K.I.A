@@ -22,7 +22,12 @@ namespace Code.NPC
         [SerializeField] private List<NPC> npcPrefabList;
         [SerializeField] private TextMeshProUGUI ui;
         [SerializeField] private float animationSpeed;
+<<<<<<< Updated upstream
         [SerializeField] private float npcDeadTime = 60;
+=======
+        [SerializeField] private float textDeleteTime;
+        [SerializeField] private float npcDeadTime = 150;
+>>>>>>> Stashed changes
         [SerializeField] private RegionSO regionSO;
          
         private Coroutine _textCoroutine;
@@ -38,7 +43,7 @@ namespace Code.NPC
             _textWait = new WaitForSeconds(animationSpeed);
             _deadTimer = 0;
             _npc = new List<NPC>();
-
+            
             GameEventBus.AddListener<ChatEndedEvent>(HandleChatEndEvent);
         }
 
@@ -49,6 +54,11 @@ namespace Code.NPC
 
         private void HandleChatEndEvent(ChatEndedEvent evt)
         {
+<<<<<<< Updated upstream
+=======
+            Debug.Log("StartNPC");
+            regionSO = evt.NextRegion;
+>>>>>>> Stashed changes
             Init(evt.NextRegion.population);
         }
 
@@ -96,6 +106,7 @@ namespace Code.NPC
             if (_npc.Count <= 0)
             {
                 GameEventBus.RaiseEvent(NPCEvents.NpcLineEndEvent);
+                Debug.Log("라인 끝");
                 return;
             }
             
@@ -120,7 +131,7 @@ namespace Code.NPC
             if (_deadTimer >= npcDeadTime * ((float)regionSO.health / 100))
             {
                 FrontNPCKill();
-                RefreshNPCPoint();
+                //RefreshNPCPoint();
             }
             
             if (_npc.Count > 0)
