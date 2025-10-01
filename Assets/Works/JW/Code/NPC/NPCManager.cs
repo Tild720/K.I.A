@@ -29,6 +29,7 @@ namespace Code.NPC
         private Coroutine _textCoroutine;
         private WaitForSeconds _textWait;
         private List<NPC> _npc;
+        private bool _isInit;
 
         public NPC GetCurrentNPC() => _npc[0];
 
@@ -57,6 +58,7 @@ namespace Code.NPC
 
         private void Init(int count)
         {
+            _isInit = true;
             for (int i = 0; i < _npc.Count; i++)
                 Destroy(_npc[i].gameObject);
             
@@ -95,10 +97,13 @@ namespace Code.NPC
         [ContextMenu("Refresh")]
         private void RefreshNPCPoint()
         {
+            if (!_isInit) return;
+            
             _deadTimer = 0;
             if (_npc.Count <= 0)
             {
                 GameEventBus.RaiseEvent(NPCEvents.NpcLineEndEvent);
+                _isInit = false;
                 Debug.Log("라인 끝");
                 return;
             }
@@ -120,10 +125,13 @@ namespace Code.NPC
 
         private void Update()
         {
+            if (regionSO == null || !_isInit) return;
+            
             _deadTimer += Time.deltaTime;
             if (_deadTimer >= npcDeadTime * ((float)regionSO.health / 100))
             {
                 FrontNPCKill();
+                _deadTimer = 0;
                 //RefreshNPCPoint();
             }
             
@@ -148,7 +156,7 @@ namespace Code.NPC
             if (_npc.Count > 0)
                 _npc[0].IsFront = true;
             
-            GameEventBus.RaiseEvent(NPCEvents.NpcLineEndEvent);
+            GameEventBus.RaiseEvent(NPCEvents.NPCDeadEvent);
         }
 
         [ContextMenu("Skep")]
