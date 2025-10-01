@@ -22,19 +22,21 @@ namespace Works.Tild.Code.Result
         [SerializeField] private CanvasGroup initGroup;
         [SerializeField] private CanvasGroup uiGroup;
         [SerializeField] private Image fadeImage;
-
+        private readonly ResultEndEvent ResultEvent = ScoreEventChannel.ResultEndEvent;
         private void Awake()
         {
             GameEventBus.AddListener<ResultEvent>(ResultHandler);
         }
         private void ResultHandler(ResultEvent obj)
         {
-            Debug.LogError("erorr");
+            Debug.Log("ResultEvent");
+
             Debug.Log(obj.Money);
             StopAllCoroutines();
             
             // Healthfixed : 약 10~50
             int score = (int)(obj.HealthFixed / 3) - (obj.Died * 3);
+            Debug.Log(score);
             TrustManager.Instance.AddTrust(score);
             
             StartCoroutine(ShowResultCoroutine(obj, 4));
@@ -72,10 +74,10 @@ namespace Works.Tild.Code.Result
             yield return new WaitForSeconds(1.5f);
 
       
-            string starStr = GetStarText(3);
+            string starStr = GetStarText(star);
             bar.DOScaleY(3.98f, 0.3f);
             yield return StartCoroutine(TypeText(starText, starStr));
-
+            yield return new WaitForSeconds(4);
             fadeImage.DOFade(1, 0.3f).OnComplete(() =>
             {
                 initGroup.DOFade(0, 0.3f);
@@ -88,9 +90,13 @@ namespace Works.Tild.Code.Result
                 fadeImage.DOFade(0, 0.3f).SetDelay(2f);
                 uiGroup.DOFade(0, 0.3f).SetDelay(2f).OnComplete((() =>
                 {
-                    uiGroup.blocksRaycasts = true;
+                    uiGroup.blocksRaycasts = false;
                 }));
             });
+            Debug.Log("ResultEndedEvent");
+            yield return new WaitForSeconds(3);
+            GameEventBus.RaiseEvent(ResultEvent);
+            
         }
 
         private IEnumerator TypeText(TMP_Text textComp, string fullText)

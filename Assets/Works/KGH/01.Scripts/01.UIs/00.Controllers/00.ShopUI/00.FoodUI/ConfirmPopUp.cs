@@ -61,9 +61,10 @@ namespace UIs.Controllers.ShopUI.FoodUI
 
             GameEventBus.RaiseEvent(UIEvents.FadeEvent.Initialize(() =>
             {
-                Time.timeScale = 1; 
                 GameEventBus.RaiseEvent(PurchaseEvents.PurchaseEvent.Initialize(_currentFood, count));
                 RegionManager.Instance.Money -= _currentFood.price * count;
+                RegionManager.Instance.Used = _currentFood.price * count;
+                
             }));
         }
     }

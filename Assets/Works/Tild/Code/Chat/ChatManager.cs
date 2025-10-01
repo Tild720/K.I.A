@@ -3,10 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using Code.Core.EventSystems;
 using DG.Tweening;
-using Region;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using Works.JW.Events;
 using Works.Tild.Code;
 using Works.Tild.Code.Events;
 using Random = System.Random;
@@ -24,7 +23,7 @@ namespace Code.Chat
         [SerializeField] private CanvasGroup chatGroup;
         private readonly ChoiceEvent _choiceEvent = ChatEventChannel.ChoiceEvent;
         private readonly ChatEndedEvent _chatEndedEvent = ChatEventChannel.ChatEndedEvent;
-        private readonly ResultEvent ResultEvent = ScoreEventChannel.ResultEvent;
+        private readonly ResultEndEvent ResultEvent = ScoreEventChannel.ResultEndEvent;
         
         private int _chatIndex = 0;
         private bool _isChoiced = false;
@@ -32,7 +31,11 @@ namespace Code.Chat
         private float currentMoney;
         
         public int Point { get; set; }
-        
+
+        private void Start()
+        {
+            StartChat();
+        }
         private void ScrollToBottomSmooth()
         {
           
@@ -48,7 +51,8 @@ namespace Code.Chat
         private void Awake()
         {
             GameEventBus.AddListener<ChoiceBtnEvent>(OnChoiceBtnEvent); 
-            GameEventBus.AddListener<NPCLineEndEvent>(NextChat); 
+            GameEventBus.AddListener<ResultEndEvent>(NextChat); 
+       
         }
 
         private void OnChoiceBtnEvent(ChoiceBtnEvent obj)
@@ -58,6 +62,7 @@ namespace Code.Chat
 
         private IEnumerator ChoiceReply(Choice choice)
         {
+            Debug.Log(choice.action);
             ChatBubble plrBubble = Instantiate(playerBubble, bubbleParent);
             plrBubble.Initialize(choice.message.message);
             ScrollToBottomSmooth();
@@ -65,6 +70,7 @@ namespace Code.Chat
 
             if (choice.action == "예산 요청")
             {
+                Debug.Log("예산요청");
                 int rand = UnityEngine.Random.Range(0, 100);
                 bool isSuccess = rand < TrustManager.Instance.Trust;
 
@@ -93,6 +99,7 @@ namespace Code.Chat
                 }
                 else
                 {
+               
 
                     Message failMessage = chatLists[_chatIndex]
                         .FailMessages[UnityEngine.Random.Range(0, chatLists[_chatIndex].FailMessages.Count)];
@@ -116,16 +123,17 @@ namespace Code.Chat
             }
             else
             {
-
+                Debug.Log("기타.." + choice.action);
                 ChatBubble bubble = Instantiate(targetBubble, bubbleParent);
                 bubble.Initialize("행운을 빕니다.");
                 ScrollToBottomSmooth();
                 yield return new WaitForSeconds(choice.message.delay);
 
+                Debug.Log("ChatEnded");
                 _isChoiced = true;
                 GameEventBus.RaiseEvent(_chatEndedEvent.Initializer(currentMoney, chatLists[_chatIndex].Region));
-                chatGroup.DOFade(0, 1).SetUpdate(true);
-                yield return new WaitForSecondsRealtime(1); 
+                chatGroup.DOFade(0, 1);
+                yield return new WaitForSeconds(1); 
                 foreach (Transform child in bubbleParent)
                 {
                     Destroy(child.gameObject);
@@ -139,27 +147,35 @@ namespace Code.Chat
         }
 
 
-        public void NextChat(NPCLineEndEvent evt)
+        public void NextChat(ResultEndEvent evt)
         {
+            Debug.Log("NextChat");
             _chatIndex++;
             if (_chatIndex < chatLists.Count)
             {
                 
-                StartChat();
+                StartCoroutine(DelayedChat());
             }
             else
             {
+                chatGroup.DOFade(1, 1).OnComplete(() =>
+                {
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                });
+                ;
                 Debug.Log("모든 대화가 끝났습니다.");
             }
         }
 
-        private IEnumerator DelayedChat()
+        IEnumerator DelayedChat()
         {
-            yield return new WaitForSeconds(12);
+            yield return new WaitForSeconds(6);
             StartChat();
         }
+        
         public void StartChat()
         {
+            GameEventBus.RaiseEvent(_choiceEvent.Initializer(new List<Choice>()));
             chatGroup.DOFade(1, 1).OnComplete(() =>
             {
                 currentMoney = chatLists[_chatIndex].Region.Money;
@@ -209,6 +225,7 @@ namespace Code.Chat
                 }
                 if (currentChat.ChatType == ChatType.Target && currentChat.Choices.Count > 0)
                 {
+                    Debug.Log("ChoiceEvent");
                     GameEventBus.RaiseEvent(_choiceEvent.Initializer(currentChat.Choices));
                     yield return new WaitUntil(() => _isChoiced == true);
                     _isChoiced = false;

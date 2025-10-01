@@ -23,12 +23,13 @@ namespace Code.NPC
         [SerializeField] private TextMeshProUGUI ui;
         [SerializeField] private float animationSpeed;
         [SerializeField] private float textDeleteTime;
-        [SerializeField] private float npcDeadTime = 60;
+        [SerializeField] private float npcDeadTime = 150;
         [SerializeField] private RegionSO regionSO;
          
         private Coroutine _textCoroutine;
         private WaitForSeconds _textWait;
         private List<NPC> _npc;
+        private bool _isInit;
 
         public NPC GetCurrentNPC() => _npc[0];
 
@@ -39,7 +40,7 @@ namespace Code.NPC
             _textWait = new WaitForSeconds(animationSpeed);
             _deadTimer = 0;
             _npc = new List<NPC>();
-
+            
             GameEventBus.AddListener<ChatEndedEvent>(HandleChatEndEvent);
         }
 
@@ -50,14 +51,14 @@ namespace Code.NPC
 
         private void HandleChatEndEvent(ChatEndedEvent evt)
         {
+            Debug.Log("StartNPC");
             regionSO = evt.NextRegion;
             Init(evt.NextRegion.population);
         }
 
         private void Init(int count)
         {
-            RenderSettings.skybox = regionSO.skyBox;
-            
+            _isInit = true;
             for (int i = 0; i < _npc.Count; i++)
                 Destroy(_npc[i].gameObject);
             
@@ -96,10 +97,14 @@ namespace Code.NPC
         [ContextMenu("Refresh")]
         private void RefreshNPCPoint()
         {
+            if (!_isInit) return;
+            
             _deadTimer = 0;
             if (_npc.Count <= 0)
             {
                 GameEventBus.RaiseEvent(NPCEvents.NpcLineEndEvent);
+                _isInit = false;
+                Debug.Log("라인 끝");
                 return;
             }
             
@@ -120,13 +125,14 @@ namespace Code.NPC
 
         private void Update()
         {
-            if (regionSO == null) return;
+            if (regionSO == null || !_isInit) return;
             
             _deadTimer += Time.deltaTime;
             if (_deadTimer >= npcDeadTime * ((float)regionSO.health / 100))
             {
                 FrontNPCKill();
-                RefreshNPCPoint();
+                _deadTimer = 0;
+                //RefreshNPCPoint();
             }
             
             if (_npc.Count > 0)
@@ -229,8 +235,7 @@ namespace Code.NPC
                 ui.maxVisibleCharacters++;
             }
             
-            yield return textDeleteTime;
-            ui.text = string.Empty;
+            yield return _textWait;
             endCallback?.Invoke();
         }
     }

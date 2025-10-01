@@ -52,7 +52,7 @@ MonoBehaviour:
     - action: "\uB098\uAC00\uAE30"
       message:
         message: "\uADF8\uB7FC \uB2E4\uB140\uC624\uACA0\uC2B5\uB2C8\uB2E4."
-        delay: 0
+        delay: 3
       points: 0
       reply: "\uD589\uC6B4\uC744 \uBE55\uB2C8\uB2E4."
   Region: {fileID: 11400000, guid: 9dd1aca5205309943aa93a9b998f8ab4, type: 2}

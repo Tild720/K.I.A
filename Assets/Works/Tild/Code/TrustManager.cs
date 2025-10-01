@@ -50,7 +50,7 @@ namespace Works.Tild.Code
         public void AddTrust(int percentage)
         {
             
-            Trust += Mathf.Max(Trust + percentage, 100);;
+            Trust = Mathf.Min(Trust + percentage, 100);;
             currency.text = $"신뢰도 {Trust}%";
         }
         

@@ -7,9 +7,13 @@ namespace Works.Tild.Code.Events
     public static class ScoreEventChannel
     {
         public static ResultEvent ResultEvent = new ResultEvent();
+        public static ResultEndEvent ResultEndEvent =  new ResultEndEvent();
     }
-    
 
+    public class ResultEndEvent : GameEvent
+    {
+        
+    }
 
     public class ResultEvent : GameEvent
     {
