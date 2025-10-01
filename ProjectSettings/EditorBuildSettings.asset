@@ -6,11 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/KWJ.unity
-    guid: a45c855fce14b7347b3753cbb21d9605
-  - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Works/Tild/Cut.unity
+    guid: bf735fa6d10660a4ea6f47b374620203
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: d4583b374f2f9824d83b4c3f2b7980c6, type: 3}
   m_UseUCBPForAssetBundles: 0

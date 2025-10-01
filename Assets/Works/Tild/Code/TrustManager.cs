@@ -1,6 +1,7 @@
 ﻿using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Works.Tild.Code
 {
@@ -52,6 +53,10 @@ namespace Works.Tild.Code
             
             Trust = Mathf.Min(Trust + percentage, 100);;
             currency.text = $"신뢰도 {Trust}%";
+            if (Trust < 0)
+            {
+                SceneManager.LoadScene("EndingScene2");
+            }
         }
         
     }

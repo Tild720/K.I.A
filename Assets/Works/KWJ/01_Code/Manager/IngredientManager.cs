@@ -28,8 +28,6 @@ namespace KWJ.Manager
         {
             foreach (var ingredient in ingredients)
             {
-                if(ingredient == null) continue;
-                
                 Destroy(ingredient.gameObject);
             }
             
@@ -38,15 +36,16 @@ namespace KWJ.Manager
         
         private void CreateItem(PurchaseEvent evt)
         {
-            for (int j = 0; j < evt.count; j++)
+            for (int i = 0; i < evt.count; i++)
             {
                 foreach (var ingred in evt.food.ingredient)
                 {
-                    for (int i = 0; i < ingred.count; i++)
+                    for (int j = 0; j < ingred.count; j++)
                     {
                         GameObject item = Instantiate(ingred.ingredient.ingredientPrefab, itemSpawnPoint.position, Quaternion.identity);
                         Ingredient ingredient = item.GetComponentInChildren<Ingredient>();
                         ingredients.Add(ingredient);
+                        print(ingredient.gameObject.name);
                     }
                 }
             }
