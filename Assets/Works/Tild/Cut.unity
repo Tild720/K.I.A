@@ -435,6 +435,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.3894
       objectReference: {fileID: 0}
+    - target: {fileID: 5995927892273163565, guid: f32d836ddea566440bea50909911cbaa, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6675917217482169985, guid: f32d836ddea566440bea50909911cbaa, type: 3}
       propertyPath: outline
       value: 
@@ -2438,6 +2442,7 @@ MonoBehaviour:
   textDeleteTime: 0.15
   npcDeadTime: 60
   regionSO: {fileID: 11400000, guid: f6dbd64dac82d604b833563dacbda4bf, type: 2}
+  input: {fileID: 0}
 --- !u!4 &387297943
 Transform:
   m_ObjectHideFlags: 0

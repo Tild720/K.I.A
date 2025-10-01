@@ -38,8 +38,8 @@ namespace Works.Tild.Code.Result
             int score = (int)(obj.HealthFixed / 3) - (obj.Died * 3);
             Debug.Log(score);
             TrustManager.Instance.AddTrust(score);
-            
-            StartCoroutine(ShowResultCoroutine(obj, 4));
+            GameEventBus.RaiseEvent(ResultEvent);
+
         }
 
         private IEnumerator ShowResultCoroutine(ResultEvent obj, int star)
@@ -95,7 +95,7 @@ namespace Works.Tild.Code.Result
             });
             Debug.Log("ResultEndedEvent");
             yield return new WaitForSeconds(3);
-            GameEventBus.RaiseEvent(ResultEvent);
+
             
         }
 
