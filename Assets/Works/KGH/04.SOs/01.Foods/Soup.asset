@@ -16,7 +16,8 @@ MonoBehaviour:
   foodPrefab: {fileID: 0}
   icon: {fileID: -228212302, guid: 5fea743cefc691943ad35a83da9cc0d6, type: 3}
   price: 1500
-  description: "\uC218\uD504\uB2E4. "
+  description: "\uC218\uD504\uC785\uB2C8\uB2E4. \uBE60\uB974\uAC8C \uD37C \uB098\uB97C
+    \uC218 \uC788\uC9C0\uB9CC \uC900\uBE44 \uAE30\uAC04\uC774 \uAE41\uB2C8\uB2E4."
   ingredient:
   - ingredient: {fileID: 11400000, guid: 6dae2dd3b5c99524f87da1bef1326e1b, type: 2}
     count: 2

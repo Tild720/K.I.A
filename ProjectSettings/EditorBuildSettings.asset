@@ -8,6 +8,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Works/Tild/Cut.unity
     guid: bf735fa6d10660a4ea6f47b374620203
+  - enabled: 1
+    path: Assets/Works/JW/Scenes/EndingScene.unity
+    guid: f6786992d3991d541aaf29095ce1656d
+  - enabled: 1
+    path: Assets/Works/JW/Scenes/EndingScene2.unity
+    guid: 4fe6d16ec2f79144dbeaf4eee02e58f9
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: d4583b374f2f9824d83b4c3f2b7980c6, type: 3}
   m_UseUCBPForAssetBundles: 0
