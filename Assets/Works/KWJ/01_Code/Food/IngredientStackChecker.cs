@@ -50,7 +50,7 @@ namespace KWJ.Food
             {
                 for (int i = 0; i < ingredients.Length; i++)
                 {
-                    if (ingredients[i].Rigidbody.linearVelocity.y == 0
+                    if (ingredients[i].Rigidbody.linearVelocity.y != 0
                         || ingredientOrder.IngredientTypes.Count != ingredients.Length
                         || ingredientOrder.IngredientTypes[i] != ingredients[i].IngredientType) break;
 
