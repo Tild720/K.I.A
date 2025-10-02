@@ -10,7 +10,7 @@ namespace KWJ.Manager
 {
     public class IngredientManager : MonoSingleton<IngredientManager>
     {
-        [SerializeField] private List<Ingredient> ingredients = new List<Ingredient>();
+        [SerializeField] private List<GameObject> ingredients = new List<GameObject>();
         [SerializeField] private Transform itemSpawnPoint;
         private void OnEnable()
         {
@@ -28,7 +28,7 @@ namespace KWJ.Manager
         {
             foreach (var ingredient in ingredients)
             {
-                Destroy(ingredient?.gameObject);
+                Destroy(ingredient);
             }
             
             ingredients.Clear();
@@ -43,10 +43,14 @@ namespace KWJ.Manager
                     for (int j = 0; j < ingred.count; j++)
                     {
                         GameObject item = Instantiate(ingred.ingredient.ingredientPrefab, itemSpawnPoint.position, Quaternion.identity);
-                        Ingredient ingredient = item.GetComponentInChildren<Ingredient>();
+
+                        if (item == null)
+                        {
+                            Debug.LogError("ingredientPrefab이 없습니다.");
+                            continue;
+                        }
                         
-                        if(ingredient != null)
-                            ingredients.Add(ingredient);
+                        ingredients.Add(item);
                     }
                 }
             }
