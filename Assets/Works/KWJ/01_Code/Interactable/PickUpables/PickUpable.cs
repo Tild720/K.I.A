@@ -34,7 +34,6 @@ namespace KWJ.Interactable.PickUpable
         {
             m_canPickUp = canPickUp;
             m_rigidbody.isKinematic = !canPickUp;
-            m_rigidbody.useGravity = true;
         }
 
         public virtual void PointerDown(Entity entity)

@@ -118,7 +118,7 @@ MonoBehaviour:
   - foodType: 5
     <IngredientTypes>k__BackingField: 0100000003000000040000000200000001000000
   - foodType: 6
-    <IngredientTypes>k__BackingField: 02000000
+    <IngredientTypes>k__BackingField: 06000000
   - foodType: 3
     <IngredientTypes>k__BackingField: 05000000
 --- !u!114 &2233283962762916201

@@ -33,6 +33,7 @@ namespace KWJ.Define
         Lettuce,
         Tomato,
         LowQualityMeat,
+        Beef,
         Broccoli,
         Potato,
         Mushroom,
