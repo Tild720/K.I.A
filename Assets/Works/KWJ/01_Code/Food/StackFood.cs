@@ -17,6 +17,8 @@ namespace KWJ.Food
             
             foreach (var ingredient in ingredientChecker.Ingredients)
             {
+                if(ingredient == null) continue;
+                
                 ingredient.CompleteCooking(transform);
             }
             

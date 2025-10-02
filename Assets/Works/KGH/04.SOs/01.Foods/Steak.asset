@@ -19,5 +19,5 @@ MonoBehaviour:
   description: "\uC2A4\uD14C\uC774\uD06C\uC785\uB2C8\uB2E4. \uAC00\uACA9\uC740 \uB192\uC73C\uB098
     \uAC74\uAC15 \uC0C1\uD0DC\uC5D0 \uD6A8\uACFC\uAC00 \uC88B\uC2B5\uB2C8\uB2E4."
   ingredient:
-  - ingredient: {fileID: 11400000, guid: 25b76d69a4a29564f974bff87ea93559, type: 2}
+  - ingredient: {fileID: 11400000, guid: cd4768a0bf2b4c64aa70b779c1f83054, type: 2}
     count: 5
